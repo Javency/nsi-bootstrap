@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
+    <title>国际学校四库全书-用户信息</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.css">
+    <link rel="stylesheet" href="../assets/css/user/userInfo.css">
+    <link rel="stylesheet" href="../assets/css/talent/talPublic.css">
+    <link rel="stylesheet" href="../assets/css/outCSS/webuploader.css">
+    <link rel="stylesheet" href="../assets/css/school/detailUpImg.css">
+</head>
+<body  data-spy="scroll" data-target="#myScrollspy" data-offset="190">
+<!--头部-->
+<header>
+    <nav class="navbar navbar-default navbar-fixed-top site-header renavbar-default renavbar">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" id="navBtn" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand renavbar-brand" href="http://www.xinxueshuo.cn/" target="_blank">
+                    <img alt="Brand" src="../assets/img/index/logo.png" width="170" height="36" class="logo">
+                </a>
+            </div>
+            <div class="nav-left collapse navbar-collapse greyCollapse" aria-expanded="false" id="bs-example-navbar-collapse-1" >
+                <ul class="nav navbar-nav navbar-left renavbar-nav">
+                    <li><a href="../other/index.html"> 首页</a></li>
+                    <li  class="borderBottom05" style="height:50px;"><a href="../school/search.html">学校数据库</a></li>
+                    <li  class="insBorderBottom05" style="height:50px;"><a href="../company/company.html">  机构数据库</a></li>
+                    <li class=" accessControl"  style="height:50px;"><a href="../talent/talent.html">  人才数据库</a></li>
+                    <li class="proBorderBottom05 "  style="height:50px;"><a href="../project/project.html">  项目数据库</a></li>
+                    <li class="visBorderBottom05"  style="height:50px;"><a href="../visible/visible.html" >  数据可视化</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right rightNav">
+                    <li><a href="../other/instruction.html"><span class="glyphicon glyphicon-th-list"></span> &nbsp;使用说明</a></li>
+                    <li style="display: none;margin-right: 4px;"><a href="../user/register.html" style="border:1px solid #ccc; padding-top: 5px;margin-top:10px;padding-bottom: 5px;margin-bottom: 10px;border-radius: 5px;"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
+                    <li style="display: none;"><a href="../user/login.html"  style="border:1px solid #ccc; padding-top: 5px;margin-top:10px;padding-bottom: 5px;margin-bottom: 10px;border-radius: 5px;"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
+                    <li>
+                        <a href="../user/userInfo.html" target="_blank" data-toggle="modal" data-target="" class="navUser"><span class="glyphicon glyphicon-user" style="color:#fff;top:2px;"></span>&nbsp; <span class="loginUser" style="color:#fff;">未登录</span>&nbsp;<span id="userLevel" >Lv</span></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle navMeun" data-toggle="dropdown"  style="color:#fff;">菜单<strong class="caret"></strong></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../user/userInfo.html"><span class="glyphicon glyphicon-th"></span>&nbsp;用户信息</a>
+                            </li>
+                            <li class="divider">
+                            </li>
+                            <li>
+                                <a href="../user/password.html"><span class="glyphicon glyphicon-edit"></span> 忘记密码</a>
+                            </li>
+                            <li class="divider">
+                            </li>
+                            <li>
+                                <a href="#"><span class="glyphicon glyphicon-star-empty"></span>&nbsp;我的贡献</a>
+                            </li>
+                            <li class="divider">
+                            </li>
+                            <li class="userMember000">
+                                <a href="javascript:;" id="exitLogin02"><span class="glyphicon glyphicon-off"></span>&nbsp;退出登录</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div><!-- /.container-fluid -->
+    </nav>
+</header>
+
+<!--<div class="container" style="margin-top:4%;">-->
+    <!--<div class="row">-->
+        <!--<div class="col-lg-2"></div>-->
+        <!--<div class="col-lg-8">-->
+            <!--<div class="panel panel-info">-->
+                <!--<div class="panel-heading">-->
+                    <!--<h3 class="panel-title"><span class="glyphicon glyphicon-send"></span>&nbsp;&nbsp;欢迎来到个人中心， <span style="color:#666666;font-weight: bold;" class="User_TureName">未登录</span></h3>-->
+                <!--</div>-->
+                <!--<div class="panel-body">-->
+                    <!--<div style="margin-top: 15px;">-->
+                        <!--<div class="col-lg-4 col-xs-4"><img src="../assets/img/userLogo.jpg" class="img-responsive" alt="用户信息" style="border-radius: 20px;"></div>-->
+                        <!--<div class="col-lg-8 col-xs-8 userInfo">-->
+                            <!--<h3 class="text-center User_TureName" style="background: #ccc;color: #fff;margin-top:0;padding: 10px 0;letter-spacing: 15px;" >Tmac-1</h3>-->
+                            <!--<p class="col-lg-6"> 我的等级：<span id="Member_sign">2</span></p>-->
+                            <!--<p class="col-lg-6"> 我的积分：<span id="User_score">120</span></p>-->
+                            <!--<p class="col-lg-12">我的邮箱：<span id="name">Tmac_binbin@163.com</span></p>-->
+                            <!--<p class="col-lg-12">我的电话：<span id="User_phone">18866668888</span></p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<div class="col-lg-12 "style="margin-top: 40px;">-->
+                        <!--<ul class="btn-group btn-group-justified" role="group" aria-label="justified button group" style="padding: 0 40px;">-->
+                            <!--<li class="btn-group active" role="group" >-->
+                                <!--<a type="button" class="btn btn-info" href="#comment" data-toggle="tab"> <span class="glyphicon glyphicon-comment"></span>&nbsp; &nbsp;&nbsp;功能添加中</a>-->
+                            <!--</li>-->
+                            <!--<li class="btn-group" role="group">-->
+                                <!--<a type="button" class="btn btn-info" href="#order" data-toggle="tab"><span class="glyphicon glyphicon-book"></span>&nbsp; &nbsp;&nbsp;我的简历</a>-->
+                            <!--</li>-->
+                            <!--<li class="btn-group" role="group">-->
+                                <!--<a type="button" class="btn btn-info" href="#contribution" data-toggle="tab"><span class="glyphicon glyphicon-star-empty"></span>&nbsp; &nbsp;&nbsp;功能添加中</a>-->
+                            <!--</li>-->
+                            <!--<li class="btn-group" role="group">-->
+                                <!--<a type="button" class="btn btn-info" href="#collection" data-toggle="tab"><span class="glyphicon glyphicon-heart-empty"></span>&nbsp; &nbsp;&nbsp;功能添加中</a>-->
+                            <!--</li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+
+                    <!--<div id="myTabContent" class="tab-content col-lg-10 col-lg-offset-1" style="height: 200px;border:1px dashed lightgray;margin-top: 30px;border-radius: 5px;">-->
+                        <!--<div class="tab-pane fade in active" id="comment">-->
+                            <!--<p>1、新学说是由国际学校资深专家共同打造的国际学校服务平台。 专注于中国国际教育行业信息挖掘，行业资讯传递，关注中国国际教 育行业的发展动态。以中立态度，对K12国际教育进行分析评说，为 从业人员和学校机构提供最新最全最公正的国际教育发展动态。</p>-->
+                        <!--</div>-->
+                        <!--<div class="tab-pane fade" id="order">-->
+                            <!--<div class="text-center" style="padding-top:40px;" id="writed"><span class="glyphicon glyphicon-ok" style="color: green;"></span> <span style="font-size: 18px;color: #1E9FFF;">简历基本信息已填写 </span><span style="color: #999;">*简历修改预览功能正在制作中</span></div>-->
+                            <!--<div class="text-center" style="padding-top:40px;" id="unwrited"><p><span class="glyphicon glyphicon-pencil"></span> <span style="font-size: 18px;">简历信息暂时未填写</span> <a href="../talent/insertTalent.html">立即填写</a></p></div>-->
+                            <!--<div class="text-center" style="padding-top:40px;" id="uploaded"><a class="btn btn-primary" target="_blank" id="resume">简历附件已上传</a><span style="color: #999;"> *简历修改预览功能正在制作中</span></div>-->
+                            <!--<div class="text-center" style="padding-top:40px;" id="unuploaded"><p><span class="glyphicon glyphicon-upload" style="font-size: 18px;"></span> <span style="font-size: 18px;">尚未上传简历附件</span> <a href="../talent/insertTalent.html">立即上传</a></p></div>-->
+                        <!--</div>-->
+                        <!--<div class="tab-pane fade" id="contribution">-->
+                            <!--<p>3、新学说是由国际学校资深专家共同打造的国际学校服务平台。 专 注于中国国际教育行业信息挖掘，行业资讯传递，关注中国国际教 育行业的发展动态。以中立态度，对K12国际教育进行分析评说，为 从业人员和学校机构提供最新最全最公正的国际教育发展动态。</p>-->
+                        <!--</div>-->
+                        <!--<div class="tab-pane fade" id="collection">-->
+                            <!--<p>4、新学说是由国际学校资深专家共同打造的国际学校服务平台。 专 注于中国国际教育行业信息挖掘，行业资讯传递，关注中国国际教 育行业的发展动态。以中立态度，对K12国际教育进行分析评说，为 从业人员和学校机构提供最新最全最公正的国际教育发展动态。-->
+                            <!--</p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<div class="col-lg-10 col-lg-offset-1 text-center" style="padding-top:40px;padding-bottom:15px;margin-top:50px;border-top:2px dashed #7C7C7C;">-->
+                        <!--<a href="amendpwd.html" class="btn btn-success">修改密码</a>-->
+                        <!--<a href="feedback.html" class="btn btn-success">意见反馈</a>-->
+                        <!--<a href="" class="btn btn-success">安全注销</a>-->
+                    <!--</div>-->
+
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-lg-2"></div>-->
+    <!--</div>-->
+<!--</div>-->
+
+<div class="container" style="margin-top: 2%;margin-bottom: 2%;">
+    <div class="row">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title text-center">
+                    <h2 class="text-center" style="margin-top: 10px;"><span class="glyphicon glyphicon-send"></span>&nbsp;&nbsp;欢迎来到个人中心， <span style="color:#666666;font-weight: bold;" class="User_TureName">未登录</span></h2>
+                </h3>
+            </div>
+            <div class="panel-body">
+                <nav class="col-sm-3" id="myScrollspy">
+                    <div class="container-fluid">
+                        <div class="container-fluid">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li class="active"><a href="#section1">我的信息</a></li>
+                                <li><a href="#section2">我的简历</a></li>
+                                <!--<li><a href="#section3">Section 3</a></li>-->
+                                <!--<li class="dropdown">-->
+                                <!--<a class="dropdown-toggle" data-toggle="dropdown" href="#">Section 4 <span class="caret"></span></a>-->
+                                <!--<ul class="dropdown-menu">-->
+                                <!--<li><a href="#section41">Section 4-1</a></li>-->
+                                <!--<li><a href="#section42">Section 4-2</a></li>-->
+                                <!--</ul>-->
+                                <!--</li>-->
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <div class="col-sm-9">
+                    <div id="section1" class="col-sm-12" style="background: #fafafa;margin-bottom: 40px;padding-bottom: 26px;" >
+                        <h3 style="color: #428bca;margin-bottom: 20px;"><span class="glyphicon glyphicon-th-large" style="top:4px;"></span>&nbsp;&nbsp; 我的信息</h3>
+                        <ul class="col-sm-12 myInfo">
+                            <li><p><span class="fontBold">姓名：</span><span class="User_TureName">加载中</span></p></li>
+                            <li><p><span class="fontBold">我的积分：</span><span id="User_score">加载中</span></p></li>
+                            <li><p><span class="fontBold">我的等级：</span><span id="Member_sign">加载中</span></p></li>
+                            <li><p><span class="fontBold"> 我的邮箱：</span><span id="name">加载中</span></p></li>
+                            <li><p><span class="fontBold">我的电话：</span><span id="User_phone">加载中</span></p></li>
+                        </ul>
+                        <!--<div class="text-center" style="padding-bottom: 20px;">-->
+                            <!--<a class="btn btn-success col-sm-12" >更新我的信息</a>-->
+                        <!--</div>-->
+                    </div>
+                    <div id="section2" class="col-sm-12" style="background: #fafafa;padding-bottom: 30px;">
+                        <h3 style="color: #428bca;margin-bottom: 20px;"><span class="glyphicon glyphicon-list-alt" style="top:5px;"></span> &nbsp;&nbsp;我的简历</h3>
+                        <div id="noBaseInfo" style="margin-bottom: 20px;">
+                            <p style="padding-left: 57px;"> *简历基本信息暂时未填写。<a href="../talent/createresume.html"><span class="glyphicon glyphicon-pencil"></span> 立即填写</a></p>
+                        </div>
+                        <div id="hasBaseInfo" class="hide">
+                            <div>
+                                <span class="col-sm-4" style="border-top:1px dashed #999;margin-top: 15px;"></span>
+                                <span class="col-sm-1"></span>
+                                <span class="col-sm-2 text-center" style="background: #eee;border-radius: 10px;font-size:18px;color:#555;padding-top:4px;padding-bottom: 4px;">基本信息</span>
+                                <span class="col-sm-1"></span>
+                                <span class="col-sm-4" style="border-top:1px dashed #999;margin-top: 15px;"></span>
+                                <ul class="col-sm-12" style="padding-left: 57px;margin-top: 20px;margin-bottom: 20px;">
+                                    <li><p><span class="fontBold">姓名：</span><span id="ResumeName">加载中</span></p></li>
+                                    <li><p><span class="fontBold">性别：</span><span id="Sex">加载中</span></p></li>
+                                    <li><p><span class="fontBold">手机：</span><span id="Phone">加载中</span></p></li>
+                                    <li><p><span class="fontBold">邮箱：</span><span id="Mail">加载中</span></p></li>
+                                    <li><p><span class="fontBold">最高学历：</span><span id="Education">加载中</span></p></li>
+                                    <li><p><span class="fontBold">专业：</span><span id="Major">加载中</span></p></li>
+                                    <li><p><span class="fontBold">现工作单位：</span ><span id="NowWorkplace">加载中</span></p></li>
+                                    <li><p><span class="fontBold">工作年限：</span><span id="WorkYear">加载中</span></p></li>
+                                    <li><p><span class="fontBold">是否公开简历：</span><span id="Public">加载中</span></p></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <span class="col-sm-4" style="border-top:1px dashed #999;margin-top: 15px;"></span>
+                                <span class="col-sm-1"></span>
+                                <span class="col-sm-2 text-center" style="background: #eee;border-radius: 10px;font-size:18px;color:#555;padding-top:4px;padding-bottom: 4px;">求职信息</span>
+                                <span class="col-sm-1"></span>
+                                <span class="col-sm-4" style="border-top:1px dashed #999;;margin-top: 15px;"></span>
+                                <ul class="col-sm-12" style="padding-left:57px;margin-top: 20px;margin-bottom: 20px;">
+                                    <li><p><span class="fontBold">期望工作地点：</span><span id="ExpectWorkPlace">加载中</span></p></li>
+                                    <li><p><span class="fontBold">期望职位：</span><span id="ExpectWorkPosition">加载中</span></p></li>
+                                    <li><p><span class="fontBold">期望年薪：</span><span id="ExpectSalary">加载中</span></p></li>
+                                    <li><p><span class="fontBold">其他要求：</span><span id="Other">加载中</span></p></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <span class="col-sm-4" style="border-top:1px dashed #999;margin-top: 15px;"></span>
+                                <span class="col-sm-1"></span>
+                                <span class="col-sm-2 text-center" style="background: #eee;border-radius: 10px;font-size:18px;color:#555;padding-top:4px;padding-bottom: 4px;">其他信息</span>
+                                <span class="col-sm-1"></span>
+                                <span class="col-sm-4" style="border-top:1px dashed #999;margin-top: 15px;"></span>
+                                <ul class="col-sm-12" style="padding-left:57px;margin-top: 20px;margin-bottom: 20px;">
+                                    <li><p><span class="fontBold">工作经历：</span><span id="WorkExperience">加载中</span></p></li>
+                                    <li><p><span class="fontBold">教育背景：</span><span id="EducationBackground">加载中</span></p></li>
+                                    <li><p><span class="fontBold">培训经历：</span><span id="TrainingBackground">加载中</span></p></li>
+                                </ul>
+                            </div>
+                            <div class="text-center">
+                                <a href="../talent/reviseResume.html" class="btn btn-success col-sm-12" style="margin-bottom: 20px;" >修改简历</a>
+                            </div>
+                        </div>
+                        <div id="noUpResume" class="col-sm-12" >
+                            <p style="padding-left: 40px;margin-bottom:20px;"> *尚未上传简历附件。<a id="upLoadResume" style="cursor: pointer;"><span class="glyphicon glyphicon-upload"></span> 立即上传</a></p>
+                        </div>
+                        <div id="UpResume"  class="col-sm-12 hide" style="margin-bottom: 20px;margin-top: 20px;">
+                            <p style="padding-left: 40px;"> 已上传简历附件。&nbsp;&nbsp;
+                                <a style="cursor: pointer;" id="previewResume"><span class="glyphicon glyphicon-camera"></span> 点击预览</a>&nbsp;
+                                <a style="cursor: pointer;" id="refreshResume">&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-repeat"></span> 更新简历</a>
+                                <span style="color:#999;font-size:12px;">*提交后会自动刷新已提交的简历</span></p>
+                        </div>
+                    </div>
+                    <!--<div id="section3">-->
+                    <!--<h1>Section 3</h1>-->
+                    <!--<p>Try to scroll this section and look at the navigation list while scrolling!</p>-->
+                    <!--</div>-->
+                    <!--<div id="section41">-->
+                    <!--<h1>Section 4-1</h1>-->
+                    <!--<p>Try to scroll this section and look at the navigation list while scrolling!</p>-->
+                    <!--</div>-->
+                    <!--<div id="section42">-->
+                    <!--<h1>Section 4-2</h1>-->
+                    <!--<p>Try to scroll this section and look at the navigation list while scrolling!</p>-->
+                    <!--</div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--图片上传-->
+<div id="modalBg" style="left: 0;top: 0;right: 0;bottom: 0;">
+    <div class="container" style="position: fixed;top:-500px;z-index: 10;" id="upImgModal">
+        <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-8">
+                <div class="panel panel-info" id="modalContent">
+                    <div class="panel-heading" style="padding-right: 0;padding-top: 0;">
+                        <h3 class="panel-title" style="padding-top: 10px;"><span >新学说-简历上传 </span><span class="glyphicon glyphicon-remove pull-right" id="closeUpImg"></span></h3>
+                    </div>
+                    <div class="panel-body">
+                        <div id="wrapper">
+                            <div id="container">
+                                <!--头部，相册选择和格式选择-->
+                                <div id="uploader">
+                                    <div class="queueList">
+                                        <div id="dndArea" class="placeholder">
+                                            <div id="filePicker"></div>
+                                            <p>或将文件拖到这里，建议上传pdf格式</p>
+                                            <!--<p>建议尺寸150×150</p>-->
+                                        </div>
+                                    </div>
+                                    <div class="statusBar" style="display:none;">
+                                        <div class="progress">
+                                            <span class="text">0%</span>
+                                            <span class="percentage"></span>
+                                        </div>
+                                        <div class="info"></div>
+                                        <div class="btns">
+                                            <div id="filePicker2"></div><div class="uploadBtn">开始上传</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--自动跳转-->
+<div class="shadowWrap hide" style="position: fixed;width: 100%;height: 100%;left:0;top:0;background: #000;opacity: 0.6;filter:alpha(opacity:0.6);z-index: 5;">
+</div>
+<div class="container hide" id="autoJump" style="position: fixed;left:20%;top:30%;z-index: 10;">
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <div class="panel panel-primary" style="border-radius: 0;">
+                <div class="panel-heading" style="border-radius: 0;">
+                    <h2 class="panel-title text-center">国际学校四库全书</h2>
+                </div>
+                <div class="panel-body text-center">
+                    <p class="h4" style="margin-top:40px;margin-bottom: 20px;">简历提交成功！可在用户中心查看。</p>
+                    <p style="color:#999;padding:20px 0;"><span class="timeNum" style="color: #1E9FFF;">3</span> 秒后自动跳转到<a href="../user/userInfo.html"> 用户中心</a></p>
+                    <a class="btn btn-primary" href="../user/userInfo.html" style="padding:5px 20px;margin-bottom: 20px;border-radius: 2px;box-shadow: 1px 1px 1px rgba(102,102,102,0.6)" >立即返回</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+</div>
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal02" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-hidden="true">×
+                </button>
+                <h4 class="modal-title" id="myModalLabel02">
+                    系统提示
+                </h4>
+            </div>
+            <div class="modal-body">
+                <p>请先填写基本信息。<a href="../talent/createresume.html">立即填写</a></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger"
+                        data-dismiss="modal">关闭
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<!--页脚-->
+<!--#include virtual="../module/footer.html" -->
+<script src="../assets/js/outJS/jquery.js"></script>
+<script src="../assets/js/outJS/webuploader.js"></script>
+
+<script src="../assets/js/jquery-1.11.1.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/jquery.cookie.js"></script>
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/public.js"></script>
+<script src="../assets/js/user/userInfo.js?v=1.0.3"></script>
+<script src="../assets/js/outJS/publicUpFile.js"></script>
+</body>
+</html>

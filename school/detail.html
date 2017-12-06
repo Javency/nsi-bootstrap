@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>国际学校四库全书-详细</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/public.css">
+    <link rel="stylesheet" href="../assets/css/detail.css">
+    <link rel="stylesheet" href="../assets/css/outCSS/webuploader.css">
+    <link rel="stylesheet" href="../assets/css/school/detailUpImg.css">
+</head>
+<body oncontextmenu="return false;">
+<!--头部-->
+<!--#include virtual="../module/nav02.html" -->
+<div class="container-fluid">
+    <ol class="breadcrumb">
+        <li><a href="../other/index.html">首页</a></li>
+        <li><a href="../school/search.html">学校数据库</a></li>
+        <li style="color:#000033">详情</li>
+    </ol>
+</div>
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="schoolName">
+            加载中...
+        </h1>
+        <p>以下是学校的详细信息</p>
+        <p>
+            <a class="btn btn-primary btn-large"  id="backToSearch" href="search.html">返回查询页面</a>
+        </p>
+    </div>
+</div>
+<!--详细信息-->
+<div class="container" style="margin-bottom: 30px;">
+     <div class="col-sm-8 col-md-8 col-lg-8 overAllBox">
+        <p class="titleH3">新学说国际学校数据库 <span class="pull-right mobileID">ID:<span class="headerSchoolID">加载中...</span></span></p>
+        <div class="clearfix detailHeader">
+            <div class="pull-left"><img src="../assets/img/schoolNoPic.png" width="130" height="130" id="School_logo"></div>
+            <div class="pull-left clearfix">
+                <p class="h3 schoolName" id="School_name">加载中... </p>
+                <p>英文名：<span id="School_EnglishName">暂无...</span></p>
+                <div class="clearfix">
+                    <div class="pull-left">
+                        <p><span >类型：<span id="School_properties">暂无...</span></span></p>
+                    </div>
+                    <div class="pull-right">
+                        <p><span class="buildTime moblieOperation">运营状态：<span id="OperationState">暂无...</span></span></p>
+                    </div>
+               </div>
+            </div>
+        </div>
+        <div class="allCourse baseinfo">
+            <h5 class="courseTitle text-center">基本信息</h5>
+            <p>地址：<span id="Areas">加载中...</span>&nbsp;<span id="Areas02">暂无...</span>&nbsp;<span id="Areas03">暂无...</span></p>
+            <p>官网：<a class="Website" target="_blank" href=""><span id="Website">加载中...</span></a></p>
+            <p class="clearfix"><span>建校时间：<span id="Founded_time">加载中...</span>年</span> <!--<span class="pull-right stuLeft mobileTution">最高年级学费：<span id="TuitionHigh">加载中...</span></span>--></p>
+            <p class="clearfix"><span>电话：<span id="Telephone">加载中...</span></span> <span class="pull-right stuLeft mobileSystem" >学制：<span id="School_system">加载中...</span></span></p>
+            <p class="clearfix"><span>幼儿园学费：<span id="Tuition01">加载中...</span></span> <span class="pull-right stuLeft mobileSystem" >小学学费：<span id="Tuition02">加载中...</span></span></p>
+            <p class="clearfix"><span>初中学费：<span id="Tuition03">加载中...</span></span> <span class="pull-right stuLeft mobileSystem" >高中学费：<span id="Tuition04">加载中...</span></span></p>
+        </div>
+        <div class="stuAndTech">
+            <h5 class="stuTitle text-center">课程&学生</h5>
+            <p><span >国际课程认证时间：<span id="Inter_Course_Founded_time">加载中...</span></span><span class="stuLeft pull-right mobileClub" >俱乐部数量：<span id="Club_Num">加载中...</span></span></p>
+            <p><span >参加外部考试与评估：<span id="Course_evaluation">加载中...</span></span><span class="stuLeft pull-right mobileStuInvestment" >生均年投入：<span id="Stu_Year_Investment">加载中...</span></span></p>
+            <p><span >国际课程：<span id="Course">加载中...</span></span><span class="stuLeft pull-right mobileStuCapacity" >总容量（国际部）：<span id="Student_Capacity">加载中...</span></span></p>
+            <p><span >认证：<span id="Authentication">加载中...</span></span><span class="stuLeft pull-right mobileStuGraduated" >毕业班人数（国际部）：<span id="Graduated_Stu_Num">加载中...</span></span></p>
+            <p><span >学生主要国籍：<span id="Stu_Dominant_nationality">加载中...</span></span><span class="stuLeft pull-right mobileStuNum" >在校生总人数（国际部）：<span id="Student_Num_All">加载中...</span></span></p>
+            <p><span >幼儿园学生数：<span id="Student_Num01">加载中...</span></span><span class="stuLeft pull-right mobileStuNum" >小学学生数：<span id="Student_Num02">加载中...</span></span></p>
+            <p><span >初中学生数：<span id="Student_Num03">加载中...</span></span><span class="stuLeft pull-right mobileStuNum" >高中学生数：<span id="Student_Num04">加载中...</span></span></p>
+        </div>
+        <div class="baseInfo">
+            <h5 class="baseTitle text-center">师资力量</h5>
+            <p><span>校长/国际部主任国籍：<span id="President_Country">加载中...</span></span><span class="stuLeft pull-right mobileStaffNum" >总员工数量：<span id="Staff_Num">加载中...</span></span></p>
+            <p><span>教师薪酬（三年经验）：<span id="Teacher_Salary">加载中...</span></span><span class="stuLeft pull-right mobileTeacherNum" >总教师数量：<span id="Teacher_Num">加载中...</span></span></p>
+            <p><span>师均年培训投入：<span id="Teacher_Year_Investment">加载中...</span></span><span class="stuLeft pull-right mobileForeignNum" >外籍教师数量：<span id="Foreign_Teacher_num">加载中...</span></span></p>
+            <p><span>师生比：<span id="Teacher_Stu_ratio">加载中...</span></span><span class="stuLeft pull-right mobileTeacherRetention" >教师流失率：<span id="Teacher_Retention">加载中...</span></span></p>
+        </div>
+        <div class="baseInfo" style="min-height: 80px;">
+            <h5 class="baseTitle text-center">基建&投资</h5>
+            <p><span >占地面积(亩)：<span id="Covered_Area">加载中...</span></span><span class="stuLeft pull-right mobileBuiltArea" >建筑面积（平方米）：<span id="Built_Area">加载中...</span></span></p>
+            <p >硬件设施：<span id="Hardware">加载中...</span></p>
+            <p >投资信息：<span id="Investment">加载中...</span></p>
+            <p >备注：<span id="Remark">加载中...</span></p>
+        </div>
+        <!--<div class="baseInfo" style="min-height: 80px;">-->
+            <!--<h5 class="baseTitle text-center">录入信息</h5>-->
+            <!--<p>录入者：<span id="Load_People">加载中...</span></p>-->
+            <!--<p>录入时间：<span id="Load_Time">加载中...</span></p>-->
+        <!--</div>-->
+     </div>
+<!-- 右侧工具栏 -->
+    <div class="col-sm-4 col-md-4 col-lg-4 sidebar-offcanvas noprint" id="sidebar">
+        <div class="list-group">
+            <a class="list-group-item active">工具栏</a>
+            <a href="javascript:void(0)" class="list-group-item text-center"  id="modifyDetail">修改</a>
+            <!--<a href="javascript:void(0)" class="list-group-item text-center"  id="deleteDetail">删除</a>-->
+            <a href="javascript:void(0)" class="list-group-item text-center" onclick="javascript:window.print()">打印</a>
+            <a href="javascript:void(0)" class="list-group-item text-center" id="upHeadImg">上传logo图片</a>
+            <a href="../other/instruction.html" target="_blank" class="list-group-item text-center" style="color: #1E9FFF;">了解权限</a>
+       </div>
+    </div>
+</div>
+<div class="container">
+    <p style="color: #999;margin-left: 30px;margin-bottom: 30px;">如果您在浏览中发现数据有误，可通过 <a href="../user/feedback.html" target="_blank">意见反馈</a> 提交给我们，我们将及时处理。</p>
+</div>
+<input type="text" class= "everySchoolID"  style="display: none;">
+
+<!--图片上传-->
+<div id="modalBg" style="left: 0;top: 0;right: 0;bottom: 0;">
+<div class="container" style="position: fixed;top:-400px;z-index: 10;" id="upImgModal">
+     <div class="row">
+         <div class="col-lg-4"></div>
+         <div class="col-lg-8">
+             <div class="panel panel-info" id="modalContent">
+                 <div class="panel-heading" style="padding-right: 0;padding-top: 0;">
+                     <h3 class="panel-title" style="padding-top: 10px;"><span >新学说-图片上传 </span><span class="glyphicon glyphicon-remove pull-right" id="closeUpImg"></span></h3>
+                 </div>
+                 <div class="panel-body">
+                     <div id="wrapper">
+                         <div id="container">
+                             <!--头部，相册选择和格式选择-->
+                             <div id="uploader">
+                                 <div class="queueList">
+                                     <div id="dndArea" class="placeholder">
+                                         <div id="filePicker"></div>
+                                         <p>或将照片拖到这里，目前只支持单张图片上传</p>
+                                         <p>建议尺寸150×150</p>
+                                     </div>
+                                 </div>
+                                 <div class="statusBar" style="display:none;">
+                                     <div class="progress">
+                                         <span class="text">0%</span>
+                                         <span class="percentage"></span>
+                                     </div>
+                                     <div class="info"></div>
+                                     <div class="btns">
+                                         <div id="filePicker2"></div><div class="uploadBtn">开始上传</div>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+
+     </div>
+</div>
+</div>
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-hidden="true">×
+                </button>
+                <h4 class="modal-title" id="myModalLabel"  style="font-size:16px;">
+                    系统提示
+                </h4>
+            </div>
+            <div class="modal-body">
+                <p style="margin-bottom: 0px;">如您发现数据有误，可通过 <a href="../user/feedback.html" target="_blank">意见反馈</a> 提交给我们，我们将及时处理，并邮件通知您。</p>
+            </div>
+            <div class="modal-footer">
+                <a href="../other/instruction.html" target="_blank" class="btn btn-primary btn-sm pull-left">了解权限</a>
+                <button type="button" class="btn btn-danger btn-sm"
+                        data-dismiss="modal">关闭
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!--页脚-->
+<!--#include virtual="../module/footer.html" -->
+<!--#include virtual="../module/advice.html" -->
+<script src="../assets/js/outJS/jquery.js"></script>
+<script src="../assets/js/outJS/webuploader.js"></script>
+
+<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/jquery.cookie.js"></script>
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/public.js"></script>
+<script src="../assets/js/school/detail.js?v=1.0.4"></script>
+<script src="../assets/js/outJS/upload.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+.wrap h1{
+    text-align:center;
+    color:#5da4e6;
+    font-weight:bold;
+}
+.header-search{
+    width: 400px;
+    height: 40px;
+    border: 1px solid #3297d8;
+    margin: 20px auto;
+    margin-top:10px;
+    padding:0;
+}
+#search{
+    width: 318px;
+    height:38px;line-height: 38px;float: left;border: 0;outline: none;
+    padding-left: 10px;
+    font-family:'Microsoft YaHei';
+}
+#SearchButton{
+    /*background-image: url(search-button.png);*/
+    width:78px;height:38px;float: right;border:0;
+    line-height:40px;
+    background-color:#5da4e6;
+    color: white;
+    font-size: 16px;
+    font-family:'Microsoft YaHei';
+}
+
+.myBtn{
+    display: inline-block;
+    padding: 5px 10px;
+    font-size:14px;
+    margin-right:20px;
+    margin-bottom:10px;
+    background: #fff;
+    border-radius: 0;
+    color: #333;
+}
+.hotSearch{
+    height:300px;
+    background: #2E2D3C;
+    margin-right:10px;
+}
+/*更多信息*/
+.moreInfo{
+    padding: 20px 40px;
+    font-size:20px;
+}
+
+@media screen and (max-width: 768px){
+    /*搜索框*/
+    .header-search{ width: 334px; height: 40px; border: 1px solid #3297d8;  margin: 20px auto; }
+    #search{width:244px;}
+}
+
+@media screen and (min-width: 769px){
+    .pcPL266{padding-left:266px;}
+}
+
+.caption h3{margin-top:10px;margin-bottom: 15px;}
+.content {text-indent: 2em; min-height:60px;}
+.publishCompany {color:#999;font-size:16px;}
+.publishCompany p {margin-bottom: 0;}
+.linkHref{color: #337ab7;}

@@ -1,0 +1,30 @@
+.detailHeader{padding-top:15px;margin-bottom:20px;}
+.detailHeader p{padding-bottom:10px;margin-left:30px;font-size:16px;font-family: "Microsoft YaHei";}
+#School_name{margin-top:10px;margin-left:30px;color:#1E9FFF;font-size:20px;}
+.buildTime, .buildSite{padding-left:200px;}
+.allCourse, .baseInfo, .stuAndTech{ background: white;box-shadow: 2px 2px 5px grey;margin-bottom:20px;padding-bottom: 10px;}
+.allCourse p, .baseInfo p, .stuAndTech p{font-size:16px;padding-left:20px;}
+.courseTitle, .baseTitle, .stuTitle{color:black;background:#428bca;width:100px;font:16px/24px 'Microsoft YaHei';color:white;}
+.stuLeft{padding-right:60px;}
+.overAllBox{padding:20px;border:2px solid lightgrey;margin-left:30px;background: #F2F2F2;}
+.titleH3{background: #eee;margin-top:0;margin-bottom:0;font-size:18px;}
+/*图片上传*/
+#closeUpImg{cursor: pointer;top:-10px;padding: 11px;}
+#closeUpImg:hover{background: red;color: white;}
+/*工具栏*/
+#sidebar{float:left; width:200px;margin-left:5%;}
+
+@media screen and (max-width: 768px){
+    /*详细信息的样式*/
+    .mobileID{padding-left:20px;}
+    #School_logo{margin-left: 80px;}
+    .overAllBox{margin-left: 0;}
+    .buildTime{padding-left:26px;}
+    .pull-right{float:none!important;}
+    .mobileTution{display:block;float:left!important;padding-top:10px;padding-right:100px;}
+    .mobileSystem,.mobileClub,.mobileStuInvestment,.mobileStuCapacity,.mobileStuGraduated,.mobileStuNum,.mobileStaffNum,.mobileTeacherNum,.mobileForeignNum,.mobileTeacherRetention,.mobileBuiltArea{display:block;padding-top: 7px;}
+    .mobileStuGraduated{padding-right: 40px;}
+    /*工具栏*/
+    #sidebar{margin-left:22%;margin-top:20px;}
+    #closeUpImg{float:right!important;}
+}
