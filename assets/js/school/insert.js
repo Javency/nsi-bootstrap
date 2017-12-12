@@ -241,7 +241,7 @@ function checkStudentNum () {
     }
 }
 
-// //总容量可以为空且为整数验证
+ //总容量可以为空且为整数验证
 function checkStuCapacity () {
     var partt02= /^$|^[1-9]\d*$/
     var StuCapacityValue = $('#Student_Capacity').val()
@@ -330,7 +330,6 @@ function checkAddress(){
 
 //学校名不能为空的验证
 function checkSchoolName(){
-    // var checkSchoolNameResult = null;
     if($('#School_name').val() ==''){
         $('.hasError').eq(0).addClass('has-error')
         $('.hasError:eq(0) span').removeClass('hide')
@@ -383,7 +382,6 @@ function checkRepeatSchool() {
 //成立时间验证 （匹配4位整数或者空）
 function checkFoundTime() {
     var partt01= /^$|^\d{4}$/
-    // var checkFoundTimeResult = null;
     var foundTimeValue = $('#Founded_time').val()
 
     if(!partt01.test(foundTimeValue)){
@@ -446,8 +444,6 @@ function checkInt(idName,className,num) {
        checkIntResult = true
     }
 }
-
-
 
 
 //匹配浮点数
