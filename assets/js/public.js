@@ -300,7 +300,7 @@ $(function () {
 //过滤函数（如果为零，自动补暂无）
 function zeroToEmpty( str ) {
     var strFilter = null;
-    return strFilter = (str == 0)? '暂无' : str;
+    return strFilter = (str == 0)? '  ' : str;
 }
 
 

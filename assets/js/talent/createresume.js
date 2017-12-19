@@ -98,19 +98,22 @@ function checkNowWorkplace(){
     }
 }
 
-//工作年限不能为空的验证
+//工作年限为整数的验证
 function checkWorkYear(){
-    if($('#WorkYear').val() ==''){
+    var partt02= /^[1-9]\d*$/
+    var foundTimeValue = $('#WorkYear').val()
+    if(!partt02.test(foundTimeValue)){
         $('.hasError').eq(7).addClass('has-error')
         $('.hasError:eq(7) span').removeClass('hide')
-        $('.WorkYearCheck').text('*工作年限不能为空')
+        $('.WorkYearCheck').text('*必须为整数')
         $('.WorkYearCheck').css('color','red')
-        checkWorkYearResult = false;
+        checkWorkYearResult = false
     }else{
         $('.WorkYearCheck').text('')
+        $('.WorkYearCheck').css('color','#999')
         $('.hasError').eq(7).removeClass('has-error')
         $('.hasError:eq(7) span').addClass('hide')
-        checkWorkYearResult = true;
+        checkWorkYearResult = true
     }
 }
 

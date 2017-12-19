@@ -32,7 +32,7 @@ function createProject(msg) {
             '<div class="thumbnail">'+
                '<a href="./detailProject.html?School_name='+msg[i].Id+'&whereFrom=search" class="linkHref"><img src="../assets/img/project.jpg" alt="新学说"></a>'+
                '<div class="caption">'+
-               '<h3>'+msg[i].SubjectName+'</h3>'+
+               '<h3 class="projectName">'+msg[i].SubjectName+'</h3>'+
                '<p class="content"><a href="./detailProject.html?School_name='+msg[i].Id+'&whereFrom=search" class="linkHref">'+SubjectIntroduction+'</a></p>'+
                '<div class="clearfix publishCompany"><p class="pull-right">发布单位：<span>'+msg[i].Company+'</span></p></div>'+
                '</div>'+
@@ -69,7 +69,7 @@ function generalSearch() {
                     skin: '#5FB878', //自定义选中色值
                     //,skip: true //开启跳页
                     jump: function(obj, first){
-                        $('#innerWrap').html('')
+                        $('#outerWrap').html('')
                         $('#loadgif').show()
                         $('#floatLayer').show()//遮罩层
                         var passVal = $('#searchContent').val()
@@ -127,7 +127,7 @@ function accessData( fn) {
             'OnePageNum':20
         }
         $('#searchContent').val(datailSchool)
-        $('#innerWrap').html('')
+        $('#outerWrap').html('')
         myAjax(data01,'http://'+changeUrl.address+'/Subject_api?whereFrom=search',fn)
     }
 }

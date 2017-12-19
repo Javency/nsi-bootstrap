@@ -32,7 +32,7 @@ function getResumeInfo() {
         async: false,
         traditional: true,
         data: {
-            UserMail:$.cookie('username')
+            Id:$.cookie('username')
         },//提交的参数
         url: 'http://' + changeUrl.address + '/talent_api?whereFrom=detail',
         dataType: "jsonp",//数据类型为jsonp  

@@ -138,65 +138,10 @@ function accessControl02(msg) {
     }
 }
 
-
-//二级权限，搜索20条,分页不可用
-function generalSearch02() {
-    var passVal = $('#searchContent').val()
-    var data01 ={
-    'School_searchKey':passVal ,
-    'pageNum': 1,
-    'OnePageNum':20
-     }
-    $.ajax({
-        type : "get",
-        async:true,
-        traditional :true,
-        data: {
-            'School_searchKey':passVal,
-            'pageNum':1,
-            'OnePageNum':20
-        },//提交的参数
-        url:"http://"+changeUrl.address+"/School_api?whereFrom=count",//获取搜索的总条数
-        dataType:"jsonp",//数据类型为jsonp  
-        jsonp: "Callback",//服务端用于接收callback调用的function名的参数  
-        success : function(data){
-            // console.log(data.countAllRS)
-            if(data.countAllRS != 0){
-                myAjax(data01,"http://"+changeUrl.address+"/School_api?whereFrom=search",accessControl02)
-            }else {
-                $('#loadgif').hide()
-                $('#floatLayer').hide()//遮罩层
-            }
-            var totalPages = Math.ceil((data.countAllRS/20));
-            //分页
-            layui.use(['layer', 'laypage', 'element'],function () {
-                var layer = layui.layer,laypage = layui.laypage,element = layui.element();
-                laypage({
-                    cont: 'pageDemo01', //分页容器的id
-                    pages: totalPages,//总页数
-                    skin: '#5FB878', //自定义选中色值
-                    //,skip: true //开启跳页
-                    jump: function(obj, first){
-                        if(!first){
-                            $('#myModal').modal({
-                                keyboard: true
-                            })
-                        }
-                    }
-                });
-            })
-            $('.gengeralSearchNum').text(data.countAllRS)
-            $('.noData').css('display','none')
-            $('.generalSearchResult').css('display','block')
-        },
-        error:function(){
-            alert('请求数据失败！');
-        }
-    });
-}
 //三级权限，搜索20条,分页可用
 function generalSearch03() {
     var passVal = $('#searchContent').val()
+    // console.log(passVal)
     $.ajax({
         type : "get",
         async:true,

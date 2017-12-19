@@ -16,9 +16,9 @@
         // 机构库分享
         var page3 = $("#Service");
         // 人才库分享
-        // var page4 = $("#School_name");
+        var page4 = $("#talentShare");
         // 项目库分享
-        var page5 = $(".SubjectIntroductione");
+        var page5 = $(".SubjectIntroduction");
 
   // 官网咨询页面
         if(page1.length >0){
@@ -49,11 +49,17 @@
         // 机构库分享
         }else if(page3.length >0){
 
-            title = $("#instutionName").html()+'  新学说四库全书-机构库';
+            title = $(".instutionName").html()+'  新学说四库全书-机构库';
             imgUrl = $("#institutionLogo").attr("src");
             if(imgUrl == '../assets/img/schoolNoPic.png') imgUrl = 'http://data.xinxueshuo.cn/nsi/assets/img/schoolNoPic.png';
             desc = '类型：'+$("#companyType").html()+'  标签：'+$("#instutionLable").html()+'   机构简介：'+$("#Service").html();
 
+        // 人才库分享
+        }else if(page4.length >0){
+            title = '新学说人才推荐:' +$('#name').text()
+            imgUrl = $("#userLogo").attr("src");
+            if(imgUrl == '../assets/img/userLogo.jpg') imgUrl = 'http://data.xinxueshuo.cn/nsi/assets/img/userLogo.jpg';
+             desc = '教育背景：'+$('#educationalBackground').text()
         // 项目库分享
         }else if(page5.length >0){
 
@@ -62,9 +68,6 @@
             desc = '项目简介：'+$(".SubjectIntroduction").html();
 
         }
-
-
-
         
         console.log(href)
         $.ajax({

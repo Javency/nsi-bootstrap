@@ -11,12 +11,7 @@
     margin-top:10px;
     padding:0;
 }
-#search{
-    width: 318px;
-    height:38px;line-height: 38px;float: left;border: 0;outline: none;
-    padding-left: 10px;
-    font-family:'Microsoft YaHei';
-}
+
 #SearchButton{
     /*background-image: url(search-button.png);*/
     width:78px;height:38px;float: right;border:0;
@@ -41,3 +36,191 @@
 @media screen and (min-width: 769px){
     .pcPL170{padding-left:170px;}
 }
+
+
+/*zhang wen jia*/
+
+.dib {
+    display: inline-block;
+}
+
+/* 加入新学说数据库&发布招聘需求 */
+.talentBtn {
+    padding-bottom: 65px;
+    border-bottom: 2px solid #DDD;
+}
+
+.talentBtn>.col-md-6>a {
+    display: inline-block;
+    position: relative;
+    font-size: 22px;
+    text-decoration: none;
+    color: #000;
+}
+
+.talentBtn>.col-md-6>a::before {
+    display: inline-block;
+    content: "";
+    width: 66px;
+    height: 66px;
+    position: absolute;
+    left: -76px;
+    top: -10px;
+}
+
+.talentBtn>.col-md-6>a::after {
+    display: inline-block;
+    content: "";
+    /* width: 100px; */
+    /* height: 30px; */
+    position: absolute;
+    /* background: #000; */
+    left: 0;
+    bottom: -13px;
+    font-size: 12px;
+    color: #888;
+    text-align: left;
+}
+
+.join,
+.release {
+    padding-top: 20px;
+}
+
+.talentBtn>.col-md-6>a#join::before {
+    background: url("../../img/talent/joinTalent.gif")
+}
+
+.talentBtn>.col-md-6>a#release::before {
+    background: url("../../img/talent/goToTalent.gif")
+}
+
+.talentBtn>.col-md-6>a#join::after {
+    content: "获众多人才认可信赖"
+}
+
+.talentBtn>.col-md-6>a#release::after {
+    content: "更加专业的团队在我们这里，期待你的加入"
+}
+
+#release {
+    width: 228px;
+    text-align: left;
+}
+
+@media (min-width:1199px) {
+    .join {
+        padding-left: 200px;
+    }
+    .release {
+        padding-right: 200px;
+    }
+}
+
+@media (max-width:992px) {
+    .talentBtn {
+        padding-bottom: 30px;
+    }
+    .join {
+        padding-left: 0;
+        padding-right: 10px;
+        margin-bottom: 30px;
+    }
+    .release {
+        padding-left: 0;
+        padding-right: 0;
+        padding-bottom: 10px;
+    }
+}
+
+/* 搜索框 */
+
+.searchPart {
+    padding-top: 60px;
+}
+
+.searchPart .btns {
+    margin-bottom: 0;
+}
+
+.btns li input {
+    border: none;
+    background: none;
+    color: #3297d8;
+    font-size: 18px;
+    padding-left: 10px;
+    outline: none;
+    padding: 0 15px;
+    line-height: 2;
+}
+
+.btns li input.active {
+    background: #3297d8;
+    color: #FFF;
+}
+
+.btns li input:hover {
+    background: #3297d8;
+    color: #FFF;
+}
+
+.searchForm {
+    padding-left: 232px;
+}
+
+.search_box {
+    padding-right: 0;
+}
+
+.search {
+    width: 100%;
+    border: 2px solid #3297d8;
+    line-height: 48px;
+    padding-left: 12px;
+    outline: none;
+}
+
+.sub {
+    width: 82px;
+    line-height: 52px;
+    background: #3297d8;
+    color: #FFF;
+    border: none;
+    outline: none;
+}
+
+
+/* 热门搜索 */
+
+.hotSearch {
+    margin: 30px 0;
+    padding-left: 143px;
+    font-size: 15px;
+    position: relative;
+}
+
+.hotSearch::before {
+    display: inline-block;
+    content: "";
+    width: 22px;
+    height: 16px;
+    /*background: url("../../img/talent/cursor.gif");*/
+    position: absolute;
+    left: 115px;
+    top: 6px;
+}
+
+.hotSearch>a {
+    display: inline-block;
+    padding: 3px 5px;
+    border: 1px solid #215089;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.hotSearch>a:hover {
+    background: #215089;
+    color: #FFF;
+}
+
+
