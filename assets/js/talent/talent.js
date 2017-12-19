@@ -91,3 +91,14 @@ $(function () {
 $(function () {
     $('#userLevel').text('Lv'+$.cookie('usertitle'))
 })
+
+
+//zwj
+$(function() {
+    // 人才库&招聘需求
+    $(".btns li").on("click", function() {
+        $(this).children("input").addClass("active").parent().siblings().children("input").removeClass("active");
+    })
+})
+
+
