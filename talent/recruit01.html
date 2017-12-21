@@ -11,7 +11,7 @@
         .recruit li {text-indent: 1em;}
     </style>
 </head>
-<body style="background: #f7f7f7;">
+<body style="background: #f7f7f7;" id="recruitShare">
 <!--头部-->
 <!--#include virtual="../module/nav02.html" -->
 <div class="container-fluid" style="margin-top:10px;">
@@ -25,12 +25,12 @@
 <div class="container" style="margin-bottom: 10px;">
    <div class="row" style="background: #fff;margin-top:20px;padding-top:15px;padding-bottom:15px;">
        <div class="col-lg-4">
-           <img src="../assets/img/recruit/recruit01.jpg" alt="重庆德普" class="img-responsive">
+           <img src="../assets/img/recruit/recruit01.jpg" alt="重庆德普" class="img-responsive" id="shareImg">
        </div>
        <div class="col-lg-8">
-           <h3 class="text-center" style="font-weight: bold;margin-top:10px;">重庆德普外国语学校</h3>
+           <h3 class="text-center" style="font-weight: bold;margin-top:10px;" id="shareName">重庆德普外国语学校</h3>
            <p style="text-indent: 2em;"><strong>遇见德普，颠覆你对职业的定义。</strong></p>
-           <p style="text-indent: 2em;line-height: 1.5;">重庆德普外国语学校，是一所集双语幼儿园、双语寄宿小学、小班初中、双语初中、国际高中于一体的一流国际化学校。
+           <p style="text-indent: 2em;line-height: 1.5;" id="shareIntro">重庆德普外国语学校，是一所集双语幼儿园、双语寄宿小学、小班初中、双语初中、国际高中于一体的一流国际化学校。
                学校硬件设施一流，沿用欧洲现代简约风格，巨资打造数字化功能室，配备室内恒温游泳馆、篮球馆、击剑馆、壁球馆、攀岩、影院等场所以供学生学习体验。
            </p>
            <p style="text-indent: 2em;"> 37名外籍学生，北上广深转校生，1500人校区即将满员。</p>
@@ -121,9 +121,12 @@
 
 <!--页脚-->
 <!--#include virtual="../module/footer.html" -->
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 <script src="../assets/js/jquery-1.11.1.js"></script>
 <script src="../assets/js/bootstrap.min.js"></script>
 <script src="../assets/js/jquery.cookie.js"></script>
 <script src="../assets/js/talent/talent.js"></script>
+<script src="../assets/js/WechatShare.js?v=1.0.2"></script>
+
 </body>
 </html>
