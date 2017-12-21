@@ -6,7 +6,7 @@ function getResumeInfo() {
         async: false,
         traditional: true,
         data: {
-            UserMail:$.cookie('username')
+            Id:$.cookie('username')
         },//提交的参数
         url: 'http://' + changeUrl.address + '/talent_api?whereFrom=detail',
         dataType: "jsonp",//数据类型为jsonp  
@@ -56,7 +56,7 @@ function autoAddZero( str ) {
 var checkNameResult = null;
 var checkPhoneResult = null;
 var checkMailResult =null;
-var checkMajorResult = null;
+var checkEducationResult = null;
 var checkNowWorkplaceResult = null;
 var checkWorkYearResult = null;
 
@@ -195,7 +195,7 @@ function formSubmit() {
     var Sex = $('#Sex input:radio:checked').val()
     var Public = $('#Public input:radio:checked').val()
     var UserMail= $.cookie('username')
-    if (  checkNameResult == true && checkPhoneResult == true && checkMailResult == true && checkEducationResult == true && checkMajorResult == true && checkNowWorkplaceResult == true && checkWorkYearResult == true ) {
+    if (  checkNameResult == true && checkPhoneResult == true && checkMailResult == true && checkEducationResult == true  && checkNowWorkplaceResult == true && checkWorkYearResult == true ) {
         var insertData = {
             'Name': autoAddZero($('#Name').val()),
             'Sex': Sex,
