@@ -17,6 +17,8 @@
         var page3 = $("#Service");
         // 人才库分享
         var page4 = $("#talentShare");
+        // 招聘单位分享
+        var pageRecruit = $('#recruitShare')
         // 项目库分享
         var page5 = $(".SubjectIntroduction");
 
@@ -60,7 +62,14 @@
             imgUrl = $("#userLogo").attr("src");
             if(imgUrl == '../assets/img/userLogo.jpg') imgUrl = 'http://data.xinxueshuo.cn/nsi/assets/img/userLogo.jpg';
              desc = '教育背景：'+$('#educationalBackground').text()
-        // 项目库分享
+        // 招聘单位分享
+        }else if(pageRecruit.length >0){
+            title =  '新学说招聘单位推荐:' +$('#shareName').text()
+            imgUrl = 'http://data.xinxueshuo.cn/nsi'+$("#shareImg").attr("src").substr(2);
+            // if(imgUrl == '../assets/img/userLogo.jpg') imgUrl = 'http://data.xinxueshuo.cn/nsi/assets/img/userLogo.jpg';
+            desc = '简介：'+$('#shareIntro').text()
+
+            // 项目库分享
         }else if(page5.length >0){
 
             title = $(".projectName").html()+'  新学说四库全书-项目库';
