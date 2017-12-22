@@ -33,6 +33,8 @@
 .form-horizontal .form-group .control-label {
     text-align: left;
 }
+
+
 /* logoBox */
 
 .logoBox {
@@ -47,6 +49,8 @@
     display: inline-block;
     margin: 0 auto;
 }
+
+
 /* input_file样式 */
 
 .logo_btn {
@@ -64,6 +68,8 @@
     top: 0;
     opacity: 0;
 }
+
+
 /* 企业简介 */
 
 #corporateProfile {
@@ -83,6 +89,8 @@
     box-sizing: border-box;
     border-radius: 4px;
 }
+
+
 /* 模态框 */
 
 @media (min-width: 1200px) {
@@ -98,6 +106,8 @@
         margin: 30px auto;
     }
 }
+
+
 /* 选择上传图片*/
 
 .modal_row {
@@ -161,6 +171,8 @@
     filter: alpha(opacity=0);
     z-index: 2;
 }
+
+
 /* 预览图片 */
 
 .previewLogo {
@@ -170,6 +182,7 @@
     border-radius: 4px;
     background: #ddd;
     position: relative;
+    margin-left: 5px;
 }
 
 #preview {
@@ -207,24 +220,40 @@
     border-radius: 4px;
 }
 
-@media (max-width:415px) {
+@media (max-width:567px) {
     .previewLogo ::before {
-        left: 35px;
-        top: 48px;
+        left: 43%;
+        top: 17px;
     }
     .previewLogo {
         padding: 0 7px;
+        width: 100%;
+        margin-left: 0;
+        margin-top: 80px;
     }
     #preview {
-        margin: 100px auto;
-        height: 119px;
+        margin: 50px auto;
+        height: 200px;
+        width: 200px;
+    }
+    .selectUpLoadLogo {
+        width: 100%;
+        margin-bottom: 5px;
+        height: 280px;
+    }
+    .modal-body {
+        padding: 5px 15px;
     }
 }
+
+
 /* 工作城市 */
 
 .cityName {
     padding-top: 7px;
 }
+
+
 /* 职位描述 */
 
 #jobDes,
@@ -233,6 +262,8 @@
     width: 100%;
     border-radius: 4px;
 }
+
+
 /* 月薪 */
 
 .salary input[type=text] {
@@ -246,6 +277,8 @@
 #jobManage_tab2 {
     display: none;
 }
+
+
 /* 剪裁图片 */
 
 #cropperPic {
@@ -253,7 +286,10 @@
     border-radius: 4px;
     overflow: hidden;
 }
+
+
 /*上传成功*/
+
 #box {
     width: 100px;
     height: 40px;
