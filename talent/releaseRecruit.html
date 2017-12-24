@@ -211,14 +211,14 @@
                             <div class="form-group">
                                 <label for="workYear" class="col-sm-2 control-label"><span class="star">*</span>工作年限:</label>
                                 <div class="col-sm-10">
-                                    <label for="oneToThree">1-3年</label>
                                     <input type="radio" name="workLimit" id="oneToThree">
-                                    <label for="threeToFive">3-5年</label>
+                                    <label for="oneToThree">1-3年</label>
                                     <input type="radio" name="workLimit" id="threeToFive">
-                                    <label for="FiveToTen">5-10年</label>
+                                    <label for="threeToFive">3-5年</label>
                                     <input type="radio" name="workLimit" id="FiveToTen">
-                                    <label for="ten">10年以上</label>
+                                    <label for="FiveToTen">5-10年</label>
                                     <input type="radio" name="workLimit" id="ten">
+                                    <label for="ten">10年以上</label>
                                 </div>
                             </div>
                             <!-- 招聘人数 -->
@@ -232,13 +232,14 @@
                             <div class="form-group">
                                 <label for="cityName" class="col-sm-2 control-label"><span class="star">*</span>工作城市:</label>
                                 <div class="col-sm-10  cityName">
-                                    省份：
-                                    <select name="" id="workProvince">
-                                    <option value="">请选择</option>
-                                </select> 城市：
-                                    <select name="" id="workCity">
-                                    <option value="">请选择</option>
-                                </select>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <select name="" id="selProvince1" onchange="provinceChange();" class="form-control"></select>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 city">
+                                            <select name="" id="selCity1" class="form-control"></select>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <!-- 工作地点 -->

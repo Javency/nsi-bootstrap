@@ -51,14 +51,16 @@
  function setProvince() {
      //给省份下拉列表赋值
      var option, modelVal;
-     var $sel = $("#selProvince");
-     //获取对应省份城市
+     var $sel = $("#selProvince"),
+         $sel1 = $("#selProvince1")
+         //获取对应省份城市
      for (var i = 0, len = province.length; i < len; i++) {
          modelVal = province[i];
          option = "<option value='" + modelVal + "'>" + modelVal + "</option>";
 
          //添加到 select 元素中
          $sel.append(option);
+         $sel1.append(option);
      }
      //调用change事件，初始城市信息
      provinceChange();
@@ -68,6 +70,7 @@
  //根据选中的省份获取对应的城市
  function setCity(provinec) {
      var $city = $("#selCity");
+     var $city1 = $("#selCity1");
      var proCity = [],
          option, modelVal;
      //通过省份名称，获取省份对应城市的数组名
@@ -181,12 +184,14 @@
 
      // //先清空之前绑定的值
      $city.empty("").val("请选择城市");
+     $city1.empty("").val("请选择城市");
      //设置对应省份的城市
      for (var i = 0, len = proCity.length; i < len; i++) {
          modelVal = proCity[i];
          option = "<option value='" + modelVal + "'>" + modelVal + "</option>";
          //添加
          $city.append(option);
+         $city1.append(option);
      }
  }
 
@@ -194,5 +199,7 @@
  //省份选中事件
  function provinceChange() {
      var $pro = $("#selProvince");
+     var $pro1 = $("#selProvince1");
      setCity($pro.val());
+     setCity($pro1.val());
  }
