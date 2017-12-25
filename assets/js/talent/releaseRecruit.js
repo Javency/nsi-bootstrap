@@ -29,4 +29,12 @@ $(function() {
             alert('发生错误，请求数据失败！');
         }
     });
+
+    //监听用户输入字数
+    $("#corporateProfile").keyup(function() {
+        var wordTotal = 100,
+            userWordCount = $("#corporateProfile").val().length,
+            differences = wordTotal - userWordCount;
+        $("#userWord").text(differences)
+    })
 })
