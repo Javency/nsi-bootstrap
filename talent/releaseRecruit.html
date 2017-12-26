@@ -111,6 +111,13 @@
                                     </span>
                                 </div>
                             </div>
+                            <!-- 一句话简介 -->
+                            <div class="form-group">
+                                <label for="oneSentence" class="col-sm-2 control-label"><span class="star">*</span>介绍:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="oneSentence" placeholder="企业的一句话介绍（20字以内）" maxlength="20" name="oneSentence">
+                                </div>
+                            </div>
                             <!-- 工作城市 -->
                             <div class="form-group">
                                 <label for="cityName" class="col-sm-2 control-label"><span class="star">*</span>所在城市:</label>
@@ -132,14 +139,6 @@
                                     <input type="text" class="form-control" id="workSpot" placeholder="例：北京市xx区xx街xx楼xx室。" name="workSpot">
                                 </div>
                             </div>
-                            <!-- 一句话简介 -->
-                            <div class="form-group">
-                                <label for="oneSentence" class="col-sm-2 control-label"><span class="star">*</span>介绍:</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="oneSentence" placeholder="企业的一句话介绍（20字以内）" maxlength="20" name="oneSentence">
-                                </div>
-                            </div>
-
                         </div>
                     </div>
                     <div class="panel panel-primary">
@@ -171,13 +170,13 @@
                             </div>
                         </div>
                     </div>
-                    <input type="submit" value="下一步：职位管理" class="btn btn-primary center-block" id="next">
+                    <input type="submit" value="下一步：职位管理" class="btn btn-primary center-block" id="next" onclick="return false;">
                 </div>
                 <!-- 公司信息_展示end -->
             </form>
 
             <!-- 职位管理 -->
-            <form action="" method="post" class="form-horizontal" role="form" id="jobManage_tab2">
+            <form method="post" class="form-horizontal" role="form" id="jobManage_tab2">
                 <div class="col-md-9">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
@@ -321,7 +320,7 @@
     <script src="../assets/js/config.js"></script>
     <script src="../assets/js/talent/talent.js"></script>
     <!--<script src="../assets/js/outJS/uploadRecruit.js"></script>-->
-    <!-- <script src="../assets/js/talent/releaseRecruit.js"></script> -->
+    <script src="../assets/js/talent/releaseRecruit.js"></script>
     <script src="../assets/js/validator/bootstrapValidator.js"></script>
     <script src="../assets/js/validator/validatorDetail.js"></script>
     <script src="../assets/js/cropper/cropper.min.js"></script>
