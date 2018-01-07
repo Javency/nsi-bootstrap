@@ -83,7 +83,7 @@
                             <div class="form-group hasError">
                                 <label class="col-lg-2 control-label errColor"><em class="glyphicon glyphicon-exclamation-sign"></em> 所在地区</label>
                                 <div class="col-lg-2">
-                                    <select class="form-control" id="selProvince" onchange="provinceChange();checkAddress()"></select>
+                                    <select class="form-control" id="selProvince" onchange='provinceChange("#selProvince","#selCity");checkAddress()'></select>
                                 </div>
                                 <div class="col-lg-3 mobileMT15">
                                     <select class="form-control" id="selCity" onchange="checkAddress()"></select>

@@ -1,5 +1,5 @@
 
-// 获取cookie
+// 获取url参数
 var args =getQueryStringArgs();
 var datailSchool = decodeURIComponent(args['School_name'])
 
@@ -43,13 +43,9 @@ $(function () {
             $('.Phone').text(zeroToEmpty(msg[0].Phone))
             $('.Mail').text(zeroToEmpty(msg[0].Mail))
 
-
-
         },
         error:function(){
             alert('发生错误，请求数据失败！');
         }
     });
-
-
 })

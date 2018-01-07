@@ -116,7 +116,7 @@ $('#nextStep02').click(function () {
     var email = $('#EmailID').val()
     var writePwd = $('#writePassword').val()
     var confirmPwd = $('#confirmPassword').val()
-    if(writePwd == confirmPwd ){
+    if(writePwd == confirmPwd && writePwd !=''&& confirmPwd !=''){
         $.ajax({
             type : "get",
             async:true,

@@ -1,39 +1,68 @@
-.wrap h1{
-    text-align:center;
-    color:#5da4e6;
-    font-weight:bold;
+.wrap h1 {
+    text-align: center;
+    color: #5da4e6;
+    font-weight: bold;
 }
-.header-search{
+
+.header-search {
     width: 400px;
     height: 40px;
     border: 1px solid #3297d8;
     margin: 20px auto;
-    margin-top:10px;
-    padding:0;
+    margin-top: 10px;
+    padding: 0;
 }
 
-#SearchButton{
+#SearchButton {
     /*background-image: url(search-button.png);*/
-    width:78px;height:38px;float: right;border:0;
-    line-height:40px;
-    background-color:#5da4e6;
+    width: 78px;
+    height: 38px;
+    float: right;
+    border: 0;
+    line-height: 40px;
+    background-color: #5da4e6;
     color: white;
     font-size: 16px;
-    font-family:'Microsoft YaHei';
+    font-family: 'Microsoft YaHei';
 }
 
+.myBtn {
+    display: inline-block;
+    padding: 14px 30px 16px 30px;
+    margin: 50px 0;
+    font-size: 30px;
+    font-weight: bold;
+    background: rgb(33, 80, 137);
+    border: 0;
+}
 
-.myBtn{  display: inline-block; padding:14px 30px 16px 30px;margin:50px 0;font-size: 30px;font-weight: bold;background: rgb(33,80,137);border:0;}
-.myLable{ background: transparent;color: #0C0C0C;padding: 5px 10px;font-size: 14px;border-radius: 0;margin-right: 20px;}
-.content{text-indent: 2em}
+.myLable {
+    background: transparent;
+    color: #0C0C0C;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 0;
+    margin-right: 20px;
+}
 
-@media screen and (max-width: 768px){
+.content {
+    text-indent: 2em
+}
+
+@media screen and (max-width: 768px) {
     /*搜索框*/
-    .header-search{ width: 334px; height: 40px; border: 1px solid #3297d8;  margin: 20px auto; }
+    .header-search {
+        width: 334px;
+        height: 40px;
+        border: 1px solid #3297d8;
+        margin: 20px auto;
+    }
 }
 
-@media screen and (min-width: 769px){
-    .pcPL170{padding-left:170px;}
+@media screen and (min-width: 769px) {
+    .pcPL170 {
+        padding-left: 170px;
+    }
 }
 
 
@@ -43,7 +72,9 @@
     display: inline-block;
 }
 
+
 /* 加入新学说数据库&发布招聘需求 */
+
 .talentBtn {
     padding-bottom: 65px;
     border-bottom: 2px solid #DDD;
@@ -133,6 +164,7 @@
         padding-bottom: 10px;
     }
 }
+
 
 /* 搜索框 */
 
@@ -224,7 +256,6 @@
     color: #FFF;
 }
 
-
 @media (max-width:997px) {
     .searchForm {
         padding-left: 90px;
@@ -275,6 +306,6 @@
         width: 30px;
         height: 30px;
         left: -34px;
-        top: 8px
+        top: 4px
     }
 }
