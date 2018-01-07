@@ -216,6 +216,7 @@
 
 .sub {
     width: 82px;
+    font-size: 18px;
     line-height: 52px;
     background: #3297d8;
     color: #FFF;
@@ -293,6 +294,16 @@
     }
     .hotSearch>a {
         margin: 0
+    }
+    .search,
+    .sub,
+    .rck {
+        font-size: 15px;
+        height: 35px;
+        line-height: 35px;
+    }
+    .btns .dib .rck {
+        font-size: 15px;
     }
 }
 
