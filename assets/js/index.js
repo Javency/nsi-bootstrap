@@ -1,6 +1,6 @@
 
 
-//搜索功能
+//搜索功能123
 $('#SearchButton').click(function () {
     var searchVal = $('#search').val()
     window.location.href='../school/search.html?whereFrom='+searchVal
