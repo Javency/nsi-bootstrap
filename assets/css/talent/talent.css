@@ -1,40 +1,68 @@
-.wrap h1{
-    text-align:center;
-    color:#5da4e6;
-    font-weight:bold;
+.wrap h1 {
+    text-align: center;
+    color: #5da4e6;
+    font-weight: bold;
 }
-.header-search{
+
+.header-search {
     width: 400px;
     height: 40px;
     border: 1px solid #3297d8;
     margin: 20px auto;
-    margin-top:10px;
-    padding:0;
+    margin-top: 10px;
+    padding: 0;
 }
 
-#SearchButton{
+#SearchButton {
     /*background-image: url(search-button.png);*/
-    width:78px;height:38px;float: right;border:0;
-    line-height:40px;
-    background-color:#5da4e6;
+    width: 78px;
+    height: 38px;
+    float: right;
+    border: 0;
+    line-height: 40px;
+    background-color: #5da4e6;
     color: white;
     font-size: 16px;
-    font-family:'Microsoft YaHei';
+    font-family: 'Microsoft YaHei';
 }
 
+.myBtn {
+    display: inline-block;
+    padding: 14px 30px 16px 30px;
+    margin: 50px 0;
+    font-size: 30px;
+    font-weight: bold;
+    background: rgb(33, 80, 137);
+    border: 0;
+}
 
-.myBtn{  display: inline-block; padding:14px 30px 16px 30px;margin:50px 0;font-size: 30px;font-weight: bold;background: rgb(33,80,137);border:0;}
-.myLable{ background: transparent;color: #0C0C0C;padding: 5px 10px;font-size: 14px;border-radius: 0;margin-right: 20px;}
-.content{text-indent: 2em}
+.myLable {
+    background: transparent;
+    color: #0C0C0C;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 0;
+    margin-right: 20px;
+}
 
-@media screen and (max-width: 768px){
+.content {
+    text-indent: 2em
+}
+
+@media screen and (max-width: 768px) {
     /*搜索框*/
-    .header-search{ width: 334px; height: 40px; border: 1px solid #3297d8;  margin: 20px auto; }
-    #search{width:244px;}
+    .header-search {
+        width: 334px;
+        height: 40px;
+        border: 1px solid #3297d8;
+        margin: 20px auto;
+    }
 }
 
-@media screen and (min-width: 769px){
-    .pcPL170{padding-left:170px;}
+@media screen and (min-width: 769px) {
+    .pcPL170 {
+        padding-left: 170px;
+    }
 }
 
 
@@ -44,7 +72,9 @@
     display: inline-block;
 }
 
+
 /* 加入新学说数据库&发布招聘需求 */
+
 .talentBtn {
     padding-bottom: 65px;
     border-bottom: 2px solid #DDD;
@@ -68,7 +98,7 @@
     top: -10px;
 }
 
-.talentBtn>.col-md-6>a::after {
+.talentBtn>.col-md-6>a.title_desc>span {
     display: inline-block;
     content: "";
     /* width: 100px; */
@@ -76,7 +106,7 @@
     position: absolute;
     /* background: #000; */
     left: 0;
-    bottom: -13px;
+    bottom: -25px;
     font-size: 12px;
     color: #888;
     text-align: left;
@@ -88,20 +118,23 @@
 }
 
 .talentBtn>.col-md-6>a#join::before {
-    background: url("../../img/talent/joinTalent.gif")
+    background: url("../../img/talent/joinTalent.gif");
+    background-size: 100% 100%;
 }
 
 .talentBtn>.col-md-6>a#release::before {
-    background: url("../../img/talent/goToTalent.gif")
+    background: url("../../img/talent/goToTalent.gif");
+    background-size: 100% 100%;
 }
 
-.talentBtn>.col-md-6>a#join::after {
+
+/* .talentBtn>.col-md-6>a#join::after {
     content: "获众多人才认可信赖"
 }
 
 .talentBtn>.col-md-6>a#release::after {
     content: "更加专业的团队在我们这里，期待你的加入"
-}
+} */
 
 #release {
     width: 228px;
@@ -132,6 +165,7 @@
         padding-bottom: 10px;
     }
 }
+
 
 /* 搜索框 */
 
@@ -182,6 +216,7 @@
 
 .sub {
     width: 82px;
+    font-size: 18px;
     line-height: 52px;
     background: #3297d8;
     color: #FFF;
@@ -204,7 +239,7 @@
     content: "";
     width: 22px;
     height: 16px;
-    /*background: url("../../img/talent/cursor.gif");*/
+    background: url("../../img/talent/cursor.gif");
     position: absolute;
     left: 115px;
     top: 6px;
@@ -223,4 +258,66 @@
     color: #FFF;
 }
 
+@media (max-width:997px) {
+    .searchForm {
+        padding-left: 90px;
+    }
+    .hotSearch {
+        padding-left: 122px;
+    }
+    .hotSearch::before {
+        left: 92px;
+    }
+}
 
+@media (max-width:768px) {
+    .searchForm {
+        padding-left: 64px;
+    }
+    .hotSearch {
+        padding-left: 97px;
+    }
+    .hotSearch::before {
+        left: 66px;
+    }
+}
+
+@media (max-width:579px) {
+    .searchForm {
+        padding-left: 0;
+    }
+    .hotSearch {
+        padding-left: 30px;
+    }
+    .hotSearch::before {
+        left: 1px;
+    }
+    .hotSearch>a {
+        margin: 0
+    }
+    .search,
+    .sub,
+    .rck {
+        font-size: 15px;
+        height: 35px;
+        line-height: 35px;
+    }
+    .btns .dib .rck {
+        font-size: 15px;
+    }
+}
+
+@media (max-width:376px) {
+    .sub {
+        width: 60px;
+    }
+    .hotSearch>a {
+        padding: 3px;
+    }
+    .talentBtn>.col-md-6>a::before {
+        width: 30px;
+        height: 30px;
+        left: -34px;
+        top: 4px
+    }
+}
