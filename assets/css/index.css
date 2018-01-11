@@ -1,113 +1,444 @@
-
-
-.wrap h1{
-   text-align:center;
-    color:#5da4e6;
-   font-weight:bold;
+.mt20 {
+    margin-top: 20px;
 }
-.hotContent{
+
+.mt40 {
+    margin-top: 40px;
+}
+
+.mb20 {
+    margin-bottom: 20px;
+}
+
+.mb40 {
+    margin-bottom: 40px;
+}
+
+.mb80 {
+    margin-bottom: 80px;
+}
+
+.mt100 {
+    margin-top: 100px;
+}
+
+.mb120 {
+    margin-bottom: 120px;
+}
+
+.ml5 {
+    margin-left: 5px;
+}
+
+.ml10 {
+    margin-left: 10px;
+}
+
+.ml70 {
+    margin-left: 70px;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.wrap h1 {
+    text-align: center;
+    color: #000;
+    font-size: 30px;
+    /* font-weight: bold; */
+}
+
+.hotContent {
     /*width:700px;*/
-    margin:0 auto;
-    text-align:center;
+    margin: 0 auto;
+    text-align: center;
 }
+
 .hotContent a {
-    display:inline-block;
-    font-size:16px;
-    color:steelblue;
-    padding:5px 3px;
+    display: inline-block;
+    font-size: 16px;
+    color: steelblue;
+    padding: 5px 3px;
 }
-.header-search{
+
+.header-search {
     width: 536px;
     height: 40px;
     border: 1px solid #3297d8;
     margin: 30px auto;
+    border-radius: 4px;
 }
-#search{
+
+#search {
     width: 318px;
-    height:38px;line-height: 38px;float: left;border: 0;outline: none;
+    height: 38px;
+    line-height: 38px;
+    float: left;
+    border: 0;
+    outline: none;
     padding-left: 10px;
-    font-family:'Microsoft YaHei';
+    font-family: 'Microsoft YaHei';
+    border-radius: 4px;
 }
-#SearchButton{
+
+#SearchButton {
     /*background-image: url(search-button.png);*/
-    width:78px;height:38px;float: right;border:0;
-    line-height:40px;
-    background-color:#5da4e6;
+    width: 78px;
+    height: 38px;
+    float: right;
+    border: 0;
+    line-height: 40px;
+    background-color: #5da4e6;
     color: white;
     font-size: 16px;
-    font-family:'Microsoft YaHei';
+    font-family: 'Microsoft YaHei';
 }
+
 
 /*主题内容*/
-.list-group p {
-    background: #ccc;
+
+.productList {
+    box-shadow: 0 0 10px #d8ecff;
+    padding: 40px 0;
+    max-width: 285px;
+    max-height: 370px;
+    color: #2c3039;
+    transition: all .5s;
+}
+
+.productList:hover {
+    box-shadow: 0 0 20px #7cb6ec;
+}
+
+.productDesc {
+    padding: 0 30px;
+    line-height: 2;
+}
+
+.line {
+    display: inline-block;
+    width: 310px;
+    height: 4px;
+    background-color: #d0e8ff;
+    position: relative;
+}
+
+.line:first-of-type {
+    margin-right: 68px;
+}
+
+.line:last-of-type {
+    margin-left: 68px;
+}
+
+.line::before {
+    display: block;
+    width: 12px;
+    height: 12px;
+    background: #215088;
+    content: "";
+    position: absolute;
+    right: 0;
+    top: -15px;
+}
+
+.line:last-of-type::before {
+    left: 0;
+}
+
+.fourBaseBook_logo {
+    height: 100px;
+    transition: all .5s
+}
+
+.fourBaseBook_logo>span {
+    font-size: 45px;
+    border: 2px solid #858585;
+    border-radius: 50%;
+    padding: 15px;
+}
+
+.fourBaseBook {
+    position: relative;
+}
+
+.fourBaseBook .more {
+    font-size: 12px;
+    color: #215088;
+    text-decoration: none;
+    position: absolute;
+    right: 110px;
+}
+
+
+/* 学校库 */
+
+.media-left {
+    padding-right: 0
+}
+
+.schoolBase {
+    position: relative;
+    border-radius: 4px;
+    box-shadow: 0 0 10px #666;
+    transition: all .5s;
+}
+
+.schoolBase:hover {
+    box-shadow: 0 0 20px rgb(68, 67, 67);
+}
+
+.schoolBase_logo {
+    position: absolute;
+    z-index: 999;
+    left: 125px;
+    top: -60px;
+}
+
+.bg_content {
+    position: relative;
+    z-index: 1;
+    width: 370px;
+    height: 165px;
+    box-shadow: 0 0 10px #ccc;
+    border-radius: 4px;
+    background-image: url("../img/index/school_pic.jpg");
+    -webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -o-filter: blur(2px);
+    -ms-filter: blur(2px);
+    filter: blur(2px);
+}
+
+.schoolBase_content {
+    position: absolute;
+    background-color: rgba(204, 204, 204, .5);
+    width: 100%;
+    height: 165px;
+    z-index: 99;
+    padding: 50px 10px 5px;
+    font-weight: 800;
+}
+
+.schoolBase_content>p {
+    margin-bottom: 3px;
+    color: #222;
+}
+
+.schoolBase_content>.schoolID {
+    color: #214f8a;
+}
+
+.schoolBase_content>.schoolName {
+    color: #000;
+}
+
+.dynamic {
+    margin-top: 40px;
+}
+
+.dynamicTitle {
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 26px;
+}
+
+.dynamicTitle>span {
+    color: #214f8a;
+}
+
+.dynamicContent {
+    min-height: 400px;
+    border-radius: 4px;
+}
+
+.dynamicContent>h5 {
     font-size: 16px;
-    font-weight: bold;
-    margin-top:15px;
-    color:#4682b4;
+    background-color: #2b323c;
+    color: #FFF;
+    font-weight: 500;
+    padding: 10px 10px;
+    border-radius: 5px 5px 0 0;
+    margin-bottom: 0;
 }
-.list-group p a {
-    color:#4682b4;
+
+.dynamicList {
+    border: 1px solid #2b323c;
+    min-height: 378px;
+    border-radius: 0 0 5px 5px;
 }
-.list-group a {
-    color:#0C0C0C;
-    border-top-width:0;
-    border-bottom-width:0;
+
+.dynamicList>ul {
+    padding: 20px 0 0 30px;
+    line-height: 2;
+    color: #214f8a;
 }
-.list-group a:last-child {
-    border-bottom-width:1px;
-}
-.list-group a:hover {
-    color:#003bb3;
-}
-.badge{
-    margin-right:10px;
+
+.dynamicList>ul>li>a {
+    color: #214f8a;
 }
 
 
-/*4个图标*/
-.nsiFadeOut{
-    width: 50%;
-    margin-right: 80px;
-}
-.nsiSlideUp{
-    width: 50%;
-    height:0px;
-    opacity:0;
+/* 机构库 */
+
+.institutionsBox {
+    width: 100%;
+    list-style: none;
     overflow: hidden;
-    display: none;
 }
 
-.nsiTool01, .nsiTool02, .nsiTool03, .nsiTool04{
-    height:200px;
-    padding-bottom:25px;
+.institutionsBox>li {
+    width: 280px;
+    height: 200px;
+    float: left;
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-left: 6px;
 }
 
-.nsiFadeOut h3{
-    margin-top:10px;
+.institutionsBox>li:first-of-type {
+    margin-left: 0;
 }
-.nsiFadeOut p{
-    font-size: 16px;
-    margin-top:20px;
-    line-height: 1.5;
+
+.institutionsBox>li>.institutions_bg {
+    position: relative;
+    height: 100%;
+    z-index: 1;
+    /* background-image: url("../img/index/institutionsBase01.png") */
 }
-.nsiSlideUp{
-    text-indent: 2em;line-height: 1.5;margin-right: 80px;margin-top: 0px;font-size: 16px;
+
+.institutionsBox>li>.institutions_content {
+    position: absolute;
+    z-index: 99;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 10px;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(51, 51, 51, .8);
+    font-weight: 600;
+    color: #FFF;
+}
+
+
+/* 人才库 */
+
+.talentBox {
+    list-style: none;
+}
+
+.talentBox>li {
+    padding: 5px;
+    float: left;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    transition: all .5s;
+    margin-left: 10px;
+}
+
+.talentBox>li:first-of-type {
+    margin-left: 0;
+}
+
+.talentBox>li:hover {
+    box-shadow: 0 0 20px rgb(148, 146, 146);
+}
+
+.talentName {
+    padding-top: 15px;
+    height: 30px;
+    line-height: 30px;
+    font-weight: 600;
+}
+
+
+/* 机构库 */
+
+.projectList {
+    list-style: none;
+}
+
+.projectList>li {
+    display: inline-block;
+    width: 420px;
+    padding: 5px;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgb(139, 138, 138);
+    margin: 0 -25px;
+    position: relative;
+    z-index: 1;
+    background-color: #d6d7d9
+}
+
+.productList>li.activeFront {
+    z-index: 999;
+    background-color: #FFF;
+}
+
+.projectList>li>h4 {
+    padding-bottom: 20px;
+}
+
+.projectList_desc {
+    text-indent: 20px;
+    color: #858585;
+}
+
+.projectList>li>.from {
+    color: #1f508a;
 }
 
 
 /*头部导航*/
+
 @media screen and (max-width:768px) {
     /*4个图标*/
-    .nsiLable img{width:100px;height:100px;}
-    .nsiLable .nsiFadeOut{height:150px;}
+    .nsiLable img {
+        width: 100px;
+        height: 100px;
+    }
+    .nsiLable .nsiFadeOut {
+        height: 150px;
+    }
     /*搜索框*/
-    .header-search{ width: 334px; height: 40px; border: 1px solid #3297d8;  margin: 20px auto; }
-    #search{width:244px;}
-    .nsiSlideUp{margin-right: 10px;font-size: 14px;}
-    .nsiFadeOut h3{   font-size: 16px;font-weight: bold;}
-    .nsiFadeOut {  font-size: 14px;  margin-top:0px;  margin-right: 20px; line-height: 1.5; }
-    .nsiFadeOut p {font-size: 14px;margin-top: 10px;}
-
-    .mobileMT0{margin-top: 0;font-size:28px;margin-bottom: 30px;}
+    .header-search {
+        width: 334px;
+        height: 40px;
+        border: 1px solid #3297d8;
+        margin: 20px auto;
+    }
+    #search {
+        width: 244px;
+    }
+    .nsiSlideUp {
+        margin-right: 10px;
+        font-size: 14px;
+    }
+    .nsiFadeOut h3 {
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .nsiFadeOut {
+        font-size: 14px;
+        margin-top: 0px;
+        margin-right: 20px;
+        line-height: 1.5;
+    }
+    .nsiFadeOut p {
+        font-size: 14px;
+        margin-top: 10px;
+    }
+    .mobileMT0 {
+        margin-top: 0;
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
 }

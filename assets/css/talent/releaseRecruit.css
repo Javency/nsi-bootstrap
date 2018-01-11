@@ -178,11 +178,15 @@
 .previewLogo {
     width: 37%;
     height: 300px;
-    padding: 50px 23px 0;
+    padding: 30px 23px 0;
     border-radius: 4px;
     background: #ddd;
     position: relative;
     margin-left: 5px;
+}
+
+.img-preview {
+    position: relative;
 }
 
 #preview {
@@ -195,12 +199,9 @@
     border-radius: 4px;
 }
 
-.previewLogo ::before {
+.img-preview .preview-pic {
     display: block;
-    position: absolute;
-    content: "预览图片";
-    left: 85px;
-    top: 15px;
+    margin-bottom: 10px;
     letter-spacing: 2px;
     font-family: "Microsoft YaHei"
 }
@@ -221,9 +222,8 @@
 }
 
 @media (max-width:567px) {
-    .previewLogo ::before {
-        left: 43%;
-        top: 17px;
+    .img-preview .preview-pic {
+        padding-top: 20px;
     }
     .previewLogo {
         padding: 0 7px;
@@ -232,7 +232,7 @@
         margin-top: 80px;
     }
     #preview {
-        margin: 50px auto;
+        margin: 15px auto;
         height: 200px;
         width: 200px;
     }
