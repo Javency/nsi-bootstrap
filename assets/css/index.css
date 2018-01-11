@@ -46,6 +46,18 @@
     float: right;
 }
 
+.clearfix:after {
+    content: '.';
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
 .wrap h1 {
     text-align: center;
     color: #000;
@@ -109,10 +121,50 @@
     max-height: 370px;
     color: #2c3039;
     transition: all .5s;
+    position: relative;
+    overflow: hidden;
+    z-index: 999;
+    border-radius: 4px;
+}
+
+.fourBaseBook_logo,
+.product_title,
+.productDesc {
+    position: relative;
+    z-index: 99;
+}
+
+.productList:before {
+    display: block;
+    content: '';
+    width: 470px;
+    height: 470px;
+    background: #215088;
+    position: absolute;
+    left: -414px;
+    top: 289px;
+    /* transition: all 2s; */
+    transition: all .6s;
+    transform: rotate(45deg);
+    transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+}
+
+.productList:hover::before {
+    transform: rotate(45deg) translate(-10px, -470px);
 }
 
 .productList:hover {
     box-shadow: 0 0 20px #7cb6ec;
+}
+
+.productList:hover .fourBaseBook_logo,
+.productList:hover .product_title,
+.productList:hover .productDesc {
+    color: #FFF;
+}
+
+.productList:hover .fourBaseBook_logo>span {
+    border-color: #FFF;
 }
 
 .productDesc {
@@ -269,14 +321,18 @@
 
 .dynamicList {
     border: 1px solid #2b323c;
-    min-height: 378px;
+    max-height: 378px;
     border-radius: 0 0 5px 5px;
+    padding: 20px 0 0 30px;
+    position: relative;
+    overflow: hidden;
 }
 
 .dynamicList>ul {
-    padding: 20px 0 0 30px;
     line-height: 2;
     color: #214f8a;
+    position: relative;
+    margin-bottom: 0;
 }
 
 .dynamicList>ul>li>a {
@@ -289,6 +345,7 @@
 .institutionsBox {
     width: 100%;
     list-style: none;
+    padding: 10px 0;
     overflow: hidden;
 }
 
@@ -300,6 +357,7 @@
     border-radius: 4px;
     overflow: hidden;
     margin-left: 6px;
+    box-shadow: 0 0 10px rgb(128, 126, 126);
 }
 
 .institutionsBox>li:first-of-type {
@@ -341,6 +399,7 @@
     border-radius: 4px;
     transition: all .5s;
     margin-left: 10px;
+    box-shadow: 0 0 10px #ccc;
 }
 
 .talentBox>li:first-of-type {
@@ -375,15 +434,17 @@
     margin: 0 -25px;
     position: relative;
     z-index: 1;
-    background-color: #d6d7d9
+    background-color: #d6d7d9;
+    transition: all .5s;
 }
 
-.productList>li.activeFront {
+.projectList>li.activeFront {
     z-index: 999;
+    box-shadow: 0 0 20px #666;
     background-color: #FFF;
 }
 
-.projectList>li>h4 {
+.projectList>li>a>h4 {
     padding-bottom: 20px;
 }
 
@@ -392,7 +453,7 @@
     color: #858585;
 }
 
-.projectList>li>.from {
+.projectList>li>a>.from {
     color: #1f508a;
 }
 
