@@ -118,6 +118,7 @@
     box-shadow: 0 0 10px #d8ecff;
     padding: 40px 0;
     max-width: 285px;
+    min-height: 370px;
     max-height: 370px;
     color: #2c3039;
     transition: all .5s;
@@ -210,7 +211,7 @@
 
 .fourBaseBook_logo>span {
     font-size: 45px;
-    border: 2px solid #858585;
+    border: 2px solid #215089;
     border-radius: 50%;
     padding: 15px;
 }
@@ -237,7 +238,8 @@
 .schoolBase {
     position: relative;
     border-radius: 4px;
-    box-shadow: 0 0 10px #666;
+    /* box-shadow: 0 0 10px #666; */
+    -webkit-transition: all .5;
     transition: all .5s;
 }
 
@@ -257,37 +259,72 @@
     z-index: 1;
     width: 370px;
     height: 165px;
-    box-shadow: 0 0 10px #ccc;
+    /* box-shadow: 0 0 10px #ccc; */
     border-radius: 4px;
     background-image: url("../img/index/school_pic.jpg");
-    -webkit-filter: blur(2px);
-    -moz-filter: blur(2px);
-    -o-filter: blur(2px);
-    -ms-filter: blur(2px);
-    filter: blur(2px);
+    background-position: center;
+    background-size: 100%;
+    -webkit-transition: all .5;
+    transition: all .5s;
+    -webkit-filter: blur(1px);
+    -moz-filter: blur(1px);
+    -o-filter: blur(1px);
+    -ms-filter: blur(1px);
+    filter: blur(1px);
+}
+
+.schoolBase:hover .bg_content {
+    background-position: center;
+    background-size: 110%;
 }
 
 .schoolBase_content {
     position: absolute;
-    background-color: rgba(204, 204, 204, .5);
+    background-color: rgba(255, 255, 255, .2);
     width: 100%;
     height: 165px;
     z-index: 99;
-    padding: 50px 10px 5px;
+    padding: 45px 10px 5px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px #727a88;
+    overflow: hidden;
+}
+
+.upBox {
+    position: relative;
+    top: 80px;
+    transition: all .5s ease-in-out;
+}
+
+.schoolBase:hover .upBox {
+    top: 0;
+}
+
+.schoolBase_content>.upBox>p {
+    margin-bottom: 6px;
+    color: #f7f4f4;
+    letter-spacing: 1px;
+    /* font-weight: 600; */
+    font-size: 15px;
+}
+
+
+/* .schoolBase_content>.schoolID {
+    color: #56a2ff;
+} */
+
+.schoolBase_content>.upBox>.schoolName {
+    color: #f7f4f4;
+    font-size: 25px;
     font-weight: 800;
+    letter-spacing: 2px;
 }
 
-.schoolBase_content>p {
-    margin-bottom: 3px;
-    color: #222;
-}
-
-.schoolBase_content>.schoolID {
-    color: #214f8a;
-}
-
-.schoolBase_content>.schoolName {
-    color: #000;
+.schoolName>span {
+    font-weight: normal;
+    font-size: 15px;
+    letter-spacing: 0;
+    margin-top: 14px;
 }
 
 .dynamic {
@@ -307,11 +344,12 @@
 .dynamicContent {
     min-height: 400px;
     border-radius: 4px;
+    box-shadow: 0 0 3px #215089;
 }
 
 .dynamicContent>h5 {
     font-size: 16px;
-    background-color: #2b323c;
+    background-color: rgb(33, 80, 137);
     color: #FFF;
     font-weight: 500;
     padding: 10px 10px;
@@ -320,10 +358,10 @@
 }
 
 .dynamicList {
-    border: 1px solid #2b323c;
-    max-height: 378px;
+    border: 2px solid #215089;
+    height: 378px;
     border-radius: 0 0 5px 5px;
-    padding: 20px 0 0 30px;
+    padding: 10px 0 0 30px;
     position: relative;
     overflow: hidden;
 }
@@ -335,6 +373,11 @@
     margin-bottom: 0;
 }
 
+.dynamicList>ul>li {
+    height: 37.8px;
+    line-height: 37.8px;
+}
+
 .dynamicList>ul>li>a {
     color: #214f8a;
 }
@@ -342,11 +385,19 @@
 
 /* 机构库 */
 
+.institutionsBase {
+    width: 1140px;
+    height: 210px;
+    overflow: hidden;
+}
+
 .institutionsBox {
-    width: 100%;
+    /* width: 100%; */
+    width: 2282px;
     list-style: none;
     padding: 10px 0;
     overflow: hidden;
+    position: relative;
 }
 
 .institutionsBox>li {
@@ -364,14 +415,14 @@
     margin-left: 0;
 }
 
-.institutionsBox>li>.institutions_bg {
+.institutionsBox>li>a>.institutions_bg {
     position: relative;
     height: 100%;
     z-index: 1;
     /* background-image: url("../img/index/institutionsBase01.png") */
 }
 
-.institutionsBox>li>.institutions_content {
+.institutionsBox>li>a>.institutions_content {
     position: absolute;
     z-index: 99;
     width: 100%;
@@ -402,12 +453,18 @@
     box-shadow: 0 0 10px #ccc;
 }
 
+.talentBox>li>img {
+    display: inline-block;
+    width: 360px;
+    height: 186px;
+}
+
 .talentBox>li:first-of-type {
     margin-left: 0;
 }
 
 .talentBox>li:hover {
-    box-shadow: 0 0 20px rgb(148, 146, 146);
+    box-shadow: 0 8px 16px 0 rgba(7, 17, 27, 0.2);
 }
 
 .talentName {
@@ -426,6 +483,7 @@
 
 .projectList>li {
     display: inline-block;
+    min-height: 500px;
     width: 420px;
     padding: 5px;
     border-radius: 4px;
@@ -451,6 +509,7 @@
 .projectList_desc {
     text-indent: 20px;
     color: #858585;
+    padding-left: 10px;
 }
 
 .projectList>li>a>.from {

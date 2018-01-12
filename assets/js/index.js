@@ -187,24 +187,90 @@ browserRedirect('http://data.xinxueshuo.cn/wap')
 console.log('2017-11-21-10:14')
 
 // 改换首页 2018.01.10
+
+// 学校数据库信息列表滚动
 $(function() {
     // autoRoll
     function autoRoll() {
         var speed = 0,
+            timer = null,
             $box = $(".scrollBox"),
             $liHeight = $box.children().height(),
+            $dynamicList = $(".dynamicList"),
             $clone = $(".scrollBox_clone");
-        console.log($liHeight)
         $box.children().clone(true).appendTo($clone)
 
         function auto() {
             speed++;
-            if (speed >= $box.height() - $liHeight) {
+            if (speed >= $box.height()) {
                 speed = 0;
             }
             $box.css({ top: -speed + "px" })
         }
+
         timer = setInterval(auto, 50);
+
+        $dynamicList.hover(function() {
+            clearInterval(timer);
+        }, function() {
+            clearInterval(timer);
+            timer = setInterval(auto, 50);
+        })
     }
     autoRoll()
+})
+
+$(function() {
+    var $scrollBox = $(".scrollBox");
+    $.ajax({
+        type: "POST",
+        async: true,
+        traditional: true,
+        dataType: 'jsonp',
+        data: {
+            'School_searchKey': "",
+            'pageNum': 1,
+            'OnePageNum': 10
+        },
+        jsonp: 'Callback',
+        url: 'http://' + changeUrl.address + '/School_api?whereFrom=search',
+        success: function(msg) {
+            // console.log(msg[0].School_name)
+            for (var i = 0; i < msg.length; i++) {
+                $scrollBox.append(
+                    `<li><a href="javascript:;">${msg[i].School_name}</a></li>`
+                )
+            }
+        },
+        error: function(msg) {
+            console.log(msg)
+        }
+    })
+})
+
+// 机构库
+$(function() {
+    function autoLeft() {
+        var $box = $(".institutionsBox"),
+            $boxWidth = $box.width(),
+            timer = null,
+            $institutionsBase = $(".institutionsBase");
+        timer = setInterval(auto, 2000);
+
+        function auto() {
+            if ($box.offset().left < 0) {
+                $box.css({ left: 0 })
+            } else {
+                $box.animate({ left: -$boxWidth / 2 - 3 }, 600)
+            }
+        }
+
+        $institutionsBase.hover(function() {
+            clearInterval(timer)
+        }, function() {
+            clearInterval(timer);
+            timer = setInterval(auto, 2000);
+        })
+    }
+    autoLeft();
 })
