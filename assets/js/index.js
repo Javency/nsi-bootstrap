@@ -235,10 +235,9 @@ $(function() {
         jsonp: 'Callback',
         url: 'http://' + changeUrl.address + '/School_api?whereFrom=search',
         success: function(msg) {
-            // console.log(msg[0].School_name)
             for (var i = 0; i < msg.length; i++) {
                 $scrollBox.append(
-                    `<li><a href="javascript:;">${msg[i].School_name}</a></li>`
+                    `<li><a href="http://data.xinxueshuo.cn/nsi/school/detail.html?whereFrom=search&School_name=${msg[i].Id}">${msg[i].School_name}</a></li>`
                 )
             }
         },
@@ -255,21 +254,22 @@ $(function() {
             $boxWidth = $box.width(),
             timer = null,
             $institutionsBase = $(".institutionsBase");
-        timer = setInterval(auto, 2000);
+
+        timer = setInterval(auto, 3000);
 
         function auto() {
-            if ($box.offset().left < 0) {
+
+            if ($box.offset().left <= (-$boxWidth / 3)) {
                 $box.css({ left: 0 })
-            } else {
-                $box.animate({ left: -$boxWidth / 2 - 3 }, 600)
             }
+            $box.animate({ left: "-=" + ($boxWidth / 3 + 2) }, 600)
         }
 
         $institutionsBase.hover(function() {
             clearInterval(timer)
         }, function() {
             clearInterval(timer);
-            timer = setInterval(auto, 2000);
+            timer = setInterval(auto, 3000);
         })
     }
     autoLeft();

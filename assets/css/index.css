@@ -79,9 +79,9 @@
 }
 
 .header-search {
-    width: 536px;
+    width: 535px;
     height: 40px;
-    border: 1px solid #3297d8;
+    border: 1px solid #215089;
     margin: 30px auto;
     border-radius: 4px;
 }
@@ -101,14 +101,16 @@
 #SearchButton {
     /*background-image: url(search-button.png);*/
     width: 78px;
-    height: 38px;
+    height: 39px;
     float: right;
     border: 0;
     line-height: 40px;
-    background-color: #5da4e6;
+    background-color: #215089;
     color: white;
     font-size: 16px;
     font-family: 'Microsoft YaHei';
+    border-radius: 0 4px 4px 0;
+    margin-top: -1px;
 }
 
 
@@ -144,7 +146,6 @@
     position: absolute;
     left: -414px;
     top: 289px;
-    /* transition: all 2s; */
     transition: all .6s;
     transform: rotate(45deg);
     transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
@@ -252,6 +253,15 @@
     z-index: 999;
     left: 125px;
     top: -60px;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.schoolBase_logo>img {
+    width: 110px;
+    height: 110px;
 }
 
 .bg_content {
@@ -324,7 +334,7 @@
     font-weight: normal;
     font-size: 15px;
     letter-spacing: 0;
-    margin-top: 14px;
+    margin-top: 12px;
 }
 
 .dynamic {
@@ -387,13 +397,14 @@
 
 .institutionsBase {
     width: 1140px;
-    height: 210px;
+    height: 215px;
+    /* padding-left: 2px; */
     overflow: hidden;
 }
 
 .institutionsBox {
     /* width: 100%; */
-    width: 2282px;
+    width: 3426px;
     list-style: none;
     padding: 10px 0;
     overflow: hidden;
@@ -477,29 +488,170 @@
 
 /* 机构库 */
 
+.projectBase {
+    transition: all .5s;
+    position: relative;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    transform-origin: center;
+    perspective: 800px;
+}
+
 .projectList {
+    min-height: 500px;
     list-style: none;
+    transition: all .5s;
 }
 
 .projectList>li {
-    display: inline-block;
+    float: left;
     min-height: 500px;
-    width: 420px;
+    width: 380px;
     padding: 5px;
     border-radius: 4px;
     overflow: hidden;
     box-shadow: 0 0 10px rgb(139, 138, 138);
-    margin: 0 -25px;
+    /* margin: 0 -25px; */
     position: relative;
-    z-index: 1;
     background-color: #d6d7d9;
     transition: all .5s;
 }
 
+.projectList>li:first-of-type {
+    transform: rotateY(15deg);
+    box-shadow: -8px 5px 10px #b7babe;
+    animation: autoMove01 10s infinite;
+}
+
+.projectList>li:nth-of-type(2) {
+    animation: autoMove02 10s infinite;
+}
+
+.projectList>li:last-of-type {
+    transform: rotateY(-15deg);
+    box-shadow: 8px 5px 10px #b7babe;
+    animation: autoMove03 10s infinite;
+}
+
+@keyframes autoMove01 {
+    0% {
+        transform: rotateY(15deg);
+        box-shadow: -8px 5px 10px #b7babe;
+    }
+    15% {
+        transform: rotateY(15deg);
+        box-shadow: -8px 5px 10px #b7babe;
+    }
+    30% {
+        transform: translateX(760px) rotateY(-15deg);
+        box-shadow: 8px 5px 10px #b7babe;
+        background-color: #d6d7d9;
+    }
+    45% {
+        transform: translateX(760px) rotateY(-15deg);
+        box-shadow: 8px 5px 10px #b7babe;
+        background-color: #d6d7d9;
+    }
+    60% {
+        transform: translate3d(380px, 0, 45px) rotateY(0);
+        box-shadow: 0 0 10px rgb(139, 138, 138);
+        background: #FFF;
+    }
+    75% {
+        transform: translate3d(380px, 0, 45px) rotateY(0);
+        box-shadow: 0 0 10px rgb(139, 138, 138);
+        background: #FFF;
+    }
+    100% {
+        transform: translateX(0) rotateY(15deg);
+        box-shadow: -8px 5px 10px #b7babe;
+    }
+}
+
+@keyframes autoMove02 {
+    0% {
+        transform: translateZ(45px);
+        background: #FFF;
+        box-shadow: 0 0 10px rgb(139, 138, 138);
+    }
+    15% {
+        transform: translateZ(45px);
+        background: #FFF;
+        box-shadow: 0 0 10px rgb(139, 138, 138);
+    }
+    30% {
+        transform: translate3d(-380px, 0, 0) rotateY(15deg);
+        background-color: #d6d7d9;
+        box-shadow: -8px 5px 10px #b7babe;
+    }
+    45% {
+        transform: translate3d(-380px, 0, 0) rotateY(15deg);
+        background-color: #d6d7d9;
+        box-shadow: -8px 5px 10px #b7babe;
+    }
+    60% {
+        transform: translate3d(380px, 0, 0) rotateY(-15deg);
+        background-color: #d6d7d9;
+        box-shadow: 8px 5px 10px #b7babe;
+    }
+    75% {
+        transform: translate3d(380px, 0, 0) rotateY(-15deg);
+        background-color: #d6d7d9;
+        box-shadow: 8px 5px 10px #b7babe;
+    }
+    100% {
+        transform: translateZ(45px);
+        background: #FFF;
+    }
+}
+
+@keyframes autoMove03 {
+    0% {
+        transform: rotateY(-15deg);
+        background-color: #d6d7d9;
+        box-shadow: 8px 5px 10px #b7babe;
+    }
+    15% {
+        transform: rotateY(-15deg);
+        background-color: #d6d7d9;
+        box-shadow: 8px 5px 10px #b7babe;
+    }
+    30% {
+        transform: translate3d(-380px, 0, 45px) rotateY(0);
+        background-color: #FFF;
+        box-shadow: 0 0 10px rgb(139, 138, 138);
+    }
+    45% {
+        transform: translate3d(-380px, 0, 45px) rotateY(0);
+        background-color: #FFF;
+        box-shadow: 0 0 10px rgb(139, 138, 138);
+    }
+    60% {
+        transform: translate3d(-760px, 0, 0) rotateY(15deg);
+        background-color: #d6d7d9;
+        box-shadow: -8px 5px 10px #b7babe;
+    }
+    75% {
+        transform: translate3d(-760px, 0, 0) rotateY(15deg);
+        background-color: #d6d7d9;
+        box-shadow: -8px 5px 10px #b7babe;
+    }
+    100% {
+        transform: rotateY(-15deg);
+        box-shadow: 8px 5px 10px #b7babe;
+    }
+}
+
+.projectList>li>a>img {
+    display: table-cell;
+    height: auto;
+    max-width: 100%;
+    border-radius: 4px;
+}
+
 .projectList>li.activeFront {
-    z-index: 999;
-    box-shadow: 0 0 20px #666;
-    background-color: #FFF;
+    /* transform: translateZ(45px); */
+    background: #FFF;
 }
 
 .projectList>li>a>h4 {
@@ -513,6 +665,8 @@
 }
 
 .projectList>li>a>.from {
+    padding-top: 15px;
+    padding-right: 5px;
     color: #1f508a;
 }
 
