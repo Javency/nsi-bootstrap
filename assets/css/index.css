@@ -527,9 +527,14 @@
 .projectBase {
     transition: all .5s;
     position: relative;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
     transform-origin: center;
+    -moz-perspective: 800px;
+    -ms-perspective: 800px;
+    -webkit-perspective: 800px;
     perspective: 800px;
 }
 
