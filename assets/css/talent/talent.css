@@ -129,7 +129,7 @@
 }
 
 .talentBtn>.col-md-6>a#release::before {
-    background: url("../../img/talent/goTo.png");
+    background: url("../../img/talent/goto.png");
     background-size: 100% 100%;
 }
 

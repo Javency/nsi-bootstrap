@@ -554,6 +554,9 @@
 }
 
 .projectList>li:first-of-type {
+    -moz-transform: rotateY(15deg);
+    -ms-transform: rotateY(15deg);
+    -webkit-transform: rotateY(15deg);
     transform: rotateY(15deg);
     box-shadow: -8px 5px 10px #b7babe;
     animation: autoMove01 10s infinite;
@@ -564,6 +567,9 @@
 }
 
 .projectList>li:last-of-type {
+    -moz-transform: rotateY(-15deg);
+    -ms-transform: rotateY(-15deg);
+    -webkit-transform: rotateY(-15deg);
     transform: rotateY(-15deg);
     box-shadow: 8px 5px 10px #b7babe;
     animation: autoMove03 10s infinite;
@@ -571,34 +577,55 @@
 
 @keyframes autoMove01 {
     0% {
+        -moz-transform: rotateY(15deg);
+        -ms-transform: rotateY(15deg);
+        -webkit-transform: rotateY(15deg);
         transform: rotateY(15deg);
         box-shadow: -8px 5px 10px #b7babe;
     }
     15% {
+        -moz-transform: rotateY(15deg);
+        -ms-transform: rotateY(15deg);
+        -webkit-transform: rotateY(15deg);
         transform: rotateY(15deg);
         box-shadow: -8px 5px 10px #b7babe;
     }
     30% {
+        -moz-transform: translateX(760px) rotateY(-15deg);
+        -ms-transform: translateX(760px) rotateY(-15deg);
+        -webkit-transform: translateX(760px) rotateY(-15deg);
         transform: translateX(760px) rotateY(-15deg);
         box-shadow: 8px 5px 10px #b7babe;
         background-color: #d6d7d9;
     }
     45% {
+        -moz-transform: translateX(760px) rotateY(-15deg);
+        -ms-transform: translateX(760px) rotateY(-15deg);
+        -webkit-transform: translateX(760px) rotateY(-15deg);
         transform: translateX(760px) rotateY(-15deg);
         box-shadow: 8px 5px 10px #b7babe;
         background-color: #d6d7d9;
     }
     60% {
+        -moz-transform: translate3d(380px, 0, 45px) rotateY(0);
+        -ms-transform: translate3d(380px, 0, 45px) rotateY(0);
+        -webkit-transform: translate3d(380px, 0, 45px) rotateY(0);
         transform: translate3d(380px, 0, 45px) rotateY(0);
         box-shadow: 0 0 10px rgb(139, 138, 138);
         background: #FFF;
     }
     75% {
+        -moz-transform: translate3d(380px, 0, 45px) rotateY(0);
+        -ms-transform: translate3d(380px, 0, 45px) rotateY(0);
+        -webkit-transform: translate3d(380px, 0, 45px) rotateY(0);
         transform: translate3d(380px, 0, 45px) rotateY(0);
         box-shadow: 0 0 10px rgb(139, 138, 138);
         background: #FFF;
     }
     100% {
+        -moz-transform: rotateY(15deg);
+        -ms-transform: rotateY(15deg);
+        -webkit-transform: rotateY(15deg);
         transform: translateX(0) rotateY(15deg);
         box-shadow: -8px 5px 10px #b7babe;
     }
