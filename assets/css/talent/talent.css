@@ -76,26 +76,30 @@
 /* 加入新学说数据库&发布招聘需求 */
 
 .talentBtn {
-    padding-bottom: 65px;
-    border-bottom: 2px solid #DDD;
+    padding-top: 20px;
+    padding-bottom: 45px;
 }
 
 .talentBtn>.col-md-6>a {
     display: inline-block;
     position: relative;
-    font-size: 22px;
+    font-size: 20px;
     text-decoration: none;
     color: #000;
+    padding: 10px 10px 10px 40px;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 6px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 
 .talentBtn>.col-md-6>a::before {
     display: inline-block;
     content: "";
-    width: 66px;
-    height: 66px;
+    width: 30px;
+    height: 30px;
     position: absolute;
-    left: -76px;
-    top: -10px;
+    left: 7px;
+    top: 10px;
+    transition: all .5s;
 }
 
 .talentBtn>.col-md-6>a.title_desc>span {
@@ -110,6 +114,8 @@
     font-size: 12px;
     color: #888;
     text-align: left;
+    font-size: 15px;
+    text-indent: 6px;
 }
 
 .join,
@@ -118,12 +124,12 @@
 }
 
 .talentBtn>.col-md-6>a#join::before {
-    background: url("../../img/talent/joinTalent.gif");
+    background: url("../../img/talent/join.png");
     background-size: 100% 100%;
 }
 
 .talentBtn>.col-md-6>a#release::before {
-    background: url("../../img/talent/goToTalent.gif");
+    background: url("../../img/talent/goTo.png");
     background-size: 100% 100%;
 }
 
@@ -137,8 +143,11 @@
 } */
 
 #release {
-    width: 228px;
     text-align: left;
+}
+
+#release span {
+    width: 300px;
 }
 
 @media (min-width:1199px) {
@@ -156,12 +165,12 @@
     }
     .join {
         padding-left: 0;
-        padding-right: 10px;
+        padding-right: 29px;
         margin-bottom: 30px;
     }
     .release {
         padding-left: 0;
-        padding-right: 0;
+        padding-right: 108px;
         padding-bottom: 10px;
     }
 }
@@ -313,11 +322,5 @@
     }
     .hotSearch>a {
         padding: 3px;
-    }
-    .talentBtn>.col-md-6>a::before {
-        width: 30px;
-        height: 30px;
-        left: -34px;
-        top: 4px
     }
 }

@@ -1,30 +1,29 @@
-
 // 获取cookie
-var args =getQueryStringArgs();
+var args = getQueryStringArgs();
 var datailSchool = decodeURIComponent(args['School_name'])
 
 //过滤函数（如果为零，自动补空，地址用）
-function zeroToAddress( str ) {
+function zeroToAddress(str) {
     var strFilter = null;
-    return strFilter = (str == 0)? '' : str;
+    return strFilter = (str == 0) ? '' : str;
 }
 
-$(function () {
+$(function() {
     getCookie();
     $.ajax({
-        type:"get",
-        async:false,
-        traditional :true,
+        type: "get",
+        async: false,
+        traditional: true,
         data: {
             'Id': datailSchool
-        },//提交的参数
-        url:'http://'+changeUrl.address+'/School_api?whereFrom=detail',
-        dataType : "jsonp",//数据类型为jsonp  
-        jsonp: "Callback",//服务端用于接收callback调用的function名的参数  
-        success : function(msg){
+        }, //提交的参数
+        url: 'http://' + changeUrl.address + '/School_api?whereFrom=detail',
+        dataType :   "jsonp", //数据类型为jsonp  
+        jsonp:   "Callback", //服务端用于接收callback调用的function名的参数  
+        success :   function(msg) {
             console.log(msg)
-            var imgSrc = msg[0].School_logo ? 'http://'+changeUrl.imgAddress+msg[0].School_logo : '../assets/img/schoolNoPic.png';
-            $('#School_logo').attr('src',imgSrc)
+            var imgSrc = msg[0].School_logo ? 'http://' + changeUrl.imgAddress + msg[0].School_logo : '../assets/img/schoolNoPic.png';
+            $('#School_logo').attr('src', imgSrc)
             $('#School_name').text(zeroToEmpty(msg[0].School_name))
             $('#School_EnglishName').text(zeroToEmpty(msg[0].School_EnglishName))
             $('#School_properties').text(zeroToEmpty(msg[0].School_properties))
@@ -80,17 +79,17 @@ $(function () {
 
             // 学校名
             $('.schoolName').text(msg[0].School_name)
-            //学校网址(先判断是否只有http或https)
-            // website = msg[0].Website.substr(0,7).toLowerCase() == "http://" ? msg[0].Website : "http://" + msg[0].Website;
+                //学校网址(先判断是否只有http或https)
+                // website = msg[0].Website.substr(0,7).toLowerCase() == "http://" ? msg[0].Website : "http://" + msg[0].Website;
 
-            if(msg[0].Website.substr(0,7).toLowerCase() == "http://"){
-                website=msg[0].Website
-            }else if (msg[0].Website.substr(0,7).toLowerCase() == "https:/"){
-                website=msg[0].Website
-            }else {
-                website="http://" + msg[0].Website;
+            if (msg[0].Website.substr(0, 7).toLowerCase() == "http://") {
+                website = msg[0].Website
+            } else if (msg[0].Website.substr(0, 7).toLowerCase() == "https:/") {
+                website = msg[0].Website
+            } else {
+                website = "http://" + msg[0].Website;
             }
-            $('.Website').attr('href',website)
+            $('.Website').attr('href', website)
 
             //学校ID
             $('.everySchoolID').val(msg[0].Id)
@@ -98,7 +97,7 @@ $(function () {
             accsessControl()
 
         },
-        error:function(){
+        error: function() {
             alert('发生错误，请求数据失败！');
         }
     });
@@ -107,102 +106,96 @@ $(function () {
 
 
 //点击显示图片上传模态框（自制）
-$('#upHeadImg').click(function () {
+$('#upHeadImg').click(function() {
     $('#upImgModal').animate({
-        top:100
-    },500)
-    $('#modalBg').css({'background':'rgba(153,153,153,.8)','position':'fixed','z-index':5})
-    uploadIMG()  //图片上传
+        top: 100
+    }, 500)
+    $('#modalBg').css({ 'background': 'rgba(153,153,153,.8)', 'position': 'fixed', 'z-index': 5 })
+    uploadIMG() //图片上传
 })
-$('#closeUpImg').click(function () {
+$('#closeUpImg').click(function() {
     $('#upImgModal').animate({
-        top:-500
-    },500)
-    $('#modalBg').css({'background':'','position':'','z-index':''})
+        top: -500
+    }, 500)
+    $('#modalBg').css({ 'background': '', 'position': '', 'z-index': '' })
 })
 
 
 
 // 权限管理
 function accsessControl() {
-    console.log( $.cookie('usertitle'))
+    console.log($.cookie('usertitle'))
     var num = $.cookie('usertitle');
-    if(num == undefined){
+    if (num == undefined) {
         //导航条登录显示控制
         //   alert(-2)
-        $('.rightNav li').eq(0).css('display','block')
-        $('.rightNav li').eq(1).css('display','block')
-        $('.rightNav li').eq(2).css('display','none')
-        $('.rightNav li').eq(3).css('display','none')
+        $('.rightNav li').eq(0).css('display', 'block')
+        $('.rightNav li').eq(1).css('display', 'block')
+        $('.rightNav li').eq(2).css('display', 'none')
+        $('.rightNav li').eq(3).css('display', 'none')
+            //详情页面删除按钮
+        $('#deleteDetail').click(function() {
+                $('#myModal').modal({
+                    keyboard: true
+                })
+            })
+            //详情页面修改按钮
+        $('#modifyDetail').click(function() {
+            $('#myModal').modal({
+                keyboard: true
+            })
+        })
+    } else if (num == 1) {
         //详情页面删除按钮
-        $('#deleteDetail').click(function () {
+        $('#deleteDetail').click(function() {
+                $('#myModal').modal({
+                    keyboard: true
+                })
+            })
+            //详情页面修改按钮
+        $('#modifyDetail').click(function() {
             $('#myModal').modal({
                 keyboard: true
             })
         })
-        //详情页面修改按钮
-        $('#modifyDetail').click(function () {
-            $('#myModal').modal({
-                keyboard: true
-            })
-        })
-    }else if( num ==1 ){
+        $('#Inter_Course_Founded_time,#Student_Num01,#Student_Num02,#Student_Num03,#Student_Num04,#Authentication,#Course_evaluation,#Student_Num_All,#Student_Capacity,#Graduated_Stu_Num,#Stu_Dominant_nationality,#Stu_Year_Investment,#Club_Num,#President_Country,#Staff_Num,#Teacher_Num,#Foreign_Teacher_num,#Teacher_Year_Investment,#Teacher_Retention,#Teacher_Salary,#Teacher_Stu_ratio,#Covered_Area,#Built_Area,#Investment,#Remark').text('权限不足').css({ 'color': '#CCCCCC', 'fontSize': '14px' })
+    } else if (num == 2) {
         //详情页面删除按钮
-        $('#deleteDetail').click(function () {
+        $('#deleteDetail').click(function() {
+                $('#myModal').modal({
+                    keyboard: true
+                })
+            })
+            //详情页面修改按钮
+        $('#modifyDetail').click(function() {
             $('#myModal').modal({
                 keyboard: true
             })
         })
-        //详情页面修改按钮
-        $('#modifyDetail').click(function () {
-            $('#myModal').modal({
-                keyboard: true
-            })
-        })
-        $('#Inter_Course_Founded_time,#Student_Num01,#Student_Num02,#Student_Num03,#Student_Num04,#Authentication,#Course_evaluation,#Student_Num_All,#Student_Capacity,#Graduated_Stu_Num,#Stu_Dominant_nationality,#Stu_Year_Investment,#Club_Num,#President_Country,#Staff_Num,#Teacher_Num,#Foreign_Teacher_num,#Teacher_Year_Investment,#Teacher_Retention,#Teacher_Salary,#Teacher_Stu_ratio,#Covered_Area,#Built_Area,#Investment,#Remark').text('权限不足').css({'color':'#CCCCCC','fontSize':'14px'})
-    }else if(num ==2){
-        //详情页面删除按钮
-        $('#deleteDetail').click(function () {
-            $('#myModal').modal({
-                keyboard: true
-            })
-        })
-        //详情页面修改按钮
-        $('#modifyDetail').click(function () {
-            $('#myModal').modal({
-                keyboard: true
-            })
-        })
-        $('#Teacher_Num,#Student_Capacity,#Stu_Year_Investment,#Foreign_Teacher_num,#Teacher_Year_Investment,#Teacher_Retention,#Teacher_Salary,#Investment,#Remark').text('权限不足').css({'color':'#CCCCCC','fontSize':'14px'})
+        $('#Teacher_Num,#Student_Capacity,#Stu_Year_Investment,#Foreign_Teacher_num,#Teacher_Year_Investment,#Teacher_Retention,#Teacher_Salary,#Investment,#Remark').text('权限不足').css({ 'color': '#CCCCCC', 'fontSize': '14px' })
 
-    }else if(num ==3){
+    } else if (num == 3) {
         //详情页面删除按钮
-        $('#deleteDetail').click(function () {
+        $('#deleteDetail').click(function() {
+                $('#myModal').modal({
+                    keyboard: true
+                })
+            })
+            //详情页面修改按钮
+        $('#modifyDetail').click(function() {
             $('#myModal').modal({
                 keyboard: true
             })
         })
-        //详情页面修改按钮
-        $('#modifyDetail').click(function () {
-            $('#myModal').modal({
-                keyboard: true
-            })
-        })
-        $('#Investment').text('权限不足').css({'color':'#CCCCCC','fontSize':'14px'})
-    }else{
+        $('#Investment').text('权限不足').css({ 'color': '#CCCCCC', 'fontSize': '14px' })
+    } else {
         //详情页面删除按钮
-        $('#deleteDetail').click(function () {
-            ConfirmDelete();
-        })
-        //修改
-        $('#modifyDetail').click(function () {
-            window.location.href = './alert.html?School_name='+datailSchool
+        $('#deleteDetail').click(function() {
+                ConfirmDelete();
+            })
+            //修改
+        $('#modifyDetail').click(function() {
+            window.location.href = './alert.html?School_name=' + datailSchool
         })
     }
 }
-
-
-
-
-
-

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            width: 600px;
+            margin: 100px auto;
+            transition: all 05;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            perspective: 800px;
+            perspective-origin: center;
+            position: relative;
+        }
+        
+        .clearfix:after {
+            content: '.';
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+        
+        .clearfix {
+            *zoom: 1;
+        }
+        
+        .box {
+            cursor: pointer;
+            width: 200px;
+            height: 150px;
+            float: left;
+            box-shadow: 0 0 10px #222;
+            border-radius: 4px;
+            transition: all .5s;
+            /* position: absolute; */
+        }
+        
+        .box1 {
+            background: lightcoral;
+        }
+        
+        .box2 {
+            background: lightblue;
+        }
+        
+        .box3 {
+            background: lightgreen;
+        }
+        
+        .active {
+            transform: translateZ(90px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container clearfix">
+        <div class="box box1"></div>
+        <div class="box box2 active"></div>
+        <div class="box box3"></div>
+    </div>
+</body>
+
+</html>
+<script src="../assets/js/jquery-1.11.1.js"></script>
+<script>
+    $(function() {
+        aBox = $(".box")
+        aBox.on("click", function() {
+            $(this).addClass("active").siblings().removeClass("active")
+        })
+    })
+</script>
