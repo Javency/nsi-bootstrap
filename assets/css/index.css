@@ -400,12 +400,11 @@
     position: absolute;
     width: 110%;
     height: 100%;
-    background-color: #215089;
     left: -111%;
     top: 0;
     z-index: 1;
     border-radius: 0 15px 15px 0;
-    transition: all .5s;
+    transition: all .8s;
     transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
 }
 
@@ -419,6 +418,7 @@
 
 .dynamicList>ul>li:hover::before {
     left: 0;
+    background-color: #215089;
 }
 
 .dynamicList>ul>li>a {
@@ -690,7 +690,6 @@
 }
 
 .projectList>li.activeFront {
-    /* transform: translateZ(45px); */
     background: #FFF;
 }
 
