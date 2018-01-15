@@ -75,10 +75,11 @@
 
 /* 加入新学说数据库&发布招聘需求 */
 
-.talentBtn {
+
+/* .talentBtn {
     padding-top: 20px;
     padding-bottom: 45px;
-}
+} */
 
 .talentBtn>.col-md-6>a {
     display: inline-block;
@@ -88,7 +89,8 @@
     color: #000;
     padding: 10px 10px 10px 40px;
     border-radius: 4px;
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 6px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    /* box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 6px, rgba(0, 0, 0, 0.24) 0px 1px 2px; */
+    box-shadow: 0 0 10px #215089;
 }
 
 .talentBtn>.col-md-6>a::before {
