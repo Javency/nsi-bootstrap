@@ -258,3 +258,78 @@ $(function() {
     }
     autoLeft();
 })
+
+// 搜索Tab
+$(function() {
+    var oUl = $("#searchTab"),
+        aLi = oUl.children(),
+        aHotSearch = $(".hotContent");
+    aLi.on("click", function() {
+        var searchVal = $("#search").val(),
+            searchBtn = $("#SearchButton");
+        $(this).addClass("activeTab").siblings().removeClass("activeTab");
+        aHotSearch.eq($(this).index()).fadeIn(100).siblings().fadeOut(100);
+        switch ($(this).index()) {
+            case 0:
+                searchBtn.click(function() {
+                    var searchVal = $("#search").val(),
+                        searchBtn = $("#SearchButton");
+                    window.location.href = '../detail.html?School_name=100139&whereFrom=' + searchVal
+                })
+                searchBtn.keydown(function(e) {
+                    var searchVal = $("#search").val(),
+                        searchBtn = $("#SearchButton"),
+                        curkey = e.which
+                    if (curkey === 13) {
+                        window.location.href = '../detail.html?School_name=100139&whereFrom=' + searchVal
+                    }
+                })
+                break;
+            case 1:
+                searchBtn.click(function() {
+                    var searchVal = $("#search").val(),
+                        searchBtn = $("#SearchButton");
+                    window.location.href = '../company/searchCompany.html?whereFrom=' + searchVal
+                })
+                searchBtn.keydown(function(e) {
+                    var searchVal = $("#search").val(),
+                        searchBtn = $("#SearchButton"),
+                        curkey = e.which
+                    if (curkey === 13) {
+                        window.location.href = '../company/searchCompany.html?whereFrom=' + searchVal
+                    }
+                })
+                break;
+            case 2:
+                searchBtn.click(function() {
+                    var searchVal = $("#search").val(),
+                        searchBtn = $("#SearchButton");
+                    window.location.href = '../talent/searchTalent.html?whereFrom=' + searchVal
+                })
+                searchBtn.keydown(function(e) {
+                    var searchVal = $("#search").val(),
+                        searchBtn = $("#SearchButton"),
+                        curkey = e.which
+                    if (curkey === 13) {
+                        window.location.href = '../talent/searchTalent.html?whereFrom=' + searchVal
+                    }
+                })
+                break;
+            case 3:
+                searchBtn.click(function() {
+                    var searchVal = $("#search").val(),
+                        searchBtn = $("#SearchButton");
+                    window.location.href = '../project/searchProject.html?whereFrom=' + searchVal
+                })
+                searchBtn.keydown(function(e) {
+                    var searchVal = $("#search").val(),
+                        searchBtn = $("#SearchButton"),
+                        curkey = e.which
+                    if (curkey === 13) {
+                        window.location.href = '../project/searchProject.html?whereFrom=' + searchVal
+                    }
+                })
+                break;
+        }
+    })
+})

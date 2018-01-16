@@ -87,7 +87,7 @@
     font-size: 20px;
     text-decoration: none;
     color: #000;
-    padding: 10px 10px 10px 40px;
+    padding: 10px 10px 10px 41px;
     border-radius: 4px;
     /* box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 6px, rgba(0, 0, 0, 0.24) 0px 1px 2px; */
     box-shadow: 0 0 10px #215089;
@@ -99,7 +99,7 @@
     width: 30px;
     height: 30px;
     position: absolute;
-    left: 7px;
+    left: 8px;
     top: 10px;
     transition: all .5s;
 }

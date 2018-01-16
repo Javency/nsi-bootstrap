@@ -256,4 +256,5 @@ body {
 
 .schoolName a:hover {
     color: #1E9FFF;
+    text-decoration: none;
 }
