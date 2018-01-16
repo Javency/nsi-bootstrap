@@ -137,7 +137,7 @@ $(function() {
         success: function(msg) {
             for (var i = 0; i < msg.length; i++) {
                 $scrollBox.append(
-                    '<li><a class="white" href="http://data.xinxueshuo.cn/nsi/school/detail.html?whereFrom=search&School_name="' + msg[i].Id + '>' + msg[i].School_name + '</a></li>'
+                    '<li><a class="white" href="http://data.xinxueshuo.cn/nsi/school/detail.html?whereFrom=search&School_name="' + msg[i].Id + '>• &nbsp;' + msg[i].School_name + '</a></li>'
                 )
             }
         },
