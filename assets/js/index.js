@@ -178,24 +178,25 @@ $(function() {
 // 搜索Tab
 $(function() {
     //默认学校搜索
-    // $('#SearchButton').click(function() {
-    //     var searchVal = $('#search').val()
-    //     window.location.href = '../school/search.html?whereFrom=' + searchVal
-    // })
+    $('#SearchButton').click(function() {
+        var searchVal = $('#search').val()
+        window.location.href = '../school/search.html?whereFrom=' + searchVal
+    })
 
-    // $('#search').keydown(function(e) {
-    //     var curKey = e.which; //兼容火狐
-    //     if (curKey == 13) {
-    //         var searchVal = $('#search').val()
-    //         window.location.href = '../school/search.html?whereFrom=' + searchVal
-    //     }
-    // })
+    $('#search').keydown(function(e) {
+        var curKey = e.which; //兼容火狐
+        if (curKey == 13) {
+            var searchVal = $('#search').val()
+            window.location.href = '../school/search.html?whereFrom=' + searchVal
+        }
+    })
 
     var oUl = $("#searchTab"),
         aLi = oUl.children(),
         aHotSearch = $(".hotContent");
     aLi.on("click", function() {
-        var searchVal = $("#search").val(),
+        var search = $("#search"),
+            searchVal = $("#search").val(),
             searchBtn = $("#SearchButton");
         $(this).addClass("activeTab").siblings().removeClass("activeTab");
         aHotSearch.eq($(this).index()).fadeIn(100).siblings().fadeOut(100);
@@ -205,7 +206,8 @@ $(function() {
                     var searchVal = $("#search").val();
                     window.location.href = '../school/search.html?whereFrom=' + searchVal
                 })
-                searchBtn.keydown(function(e) {
+                search.keydown(function(e) {
+                    console.log(1)
                     var searchVal = $("#search").val();
                     e = e || window.event;
                     var curkey = e.which;
@@ -219,7 +221,7 @@ $(function() {
                     var searchVal = $("#search").val();
                     window.location.href = '../company/searchCompany.html?whereFrom=' + searchVal
                 })
-                searchBtn.keydown(function(e) {
+                search.keydown(function(e) {
                     var searchVal = $("#search").val();
                     e = e || window.event;
                     var curkey = e.which;
@@ -233,7 +235,7 @@ $(function() {
                     var searchVal = $("#search").val();
                     window.location.href = '../talent/searchTalent.html?whereFrom=' + searchVal
                 })
-                searchBtn.keydown(function(e) {
+                search.keydown(function(e) {
                     var searchVal = $("#search").val();
                     e = e || window.event;
                     var curkey = e.which;
@@ -247,7 +249,7 @@ $(function() {
                     var searchVal = $("#search").val();
                     window.location.href = '../project/searchProject.html?whereFrom=' + searchVal
                 })
-                searchBtn.keydown(function(e) {
+                search.keydown(function(e) {
                     var searchVal = $("#search").val();
                     e = e || window.event;
                     var curkey = e.which;

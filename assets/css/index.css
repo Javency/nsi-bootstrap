@@ -114,6 +114,7 @@
     margin-right: 2px;
     cursor: pointer;
     font-weight: 700;
+    transition: all .3s;
 }
 
 .searchTab li:hover {
@@ -127,7 +128,7 @@
 }
 
 .header-search {
-    width: 535px;
+    width: 534px;
     height: 40px;
     border: 2px solid #215089;
     margin: 0 auto 40px;
@@ -135,15 +136,16 @@
 }
 
 #search {
-    width: 318px;
-    height: 36px;
-    line-height: 36px;
+    width: 450px;
+    height: 35px;
+    line-height: 35px;
     float: left;
     border: 0;
     outline: none;
     padding-left: 10px;
     font-family: 'Microsoft YaHei';
     border-radius: 4px;
+    margin-left: 1px;
 }
 
 #SearchButton {
@@ -152,7 +154,7 @@
     height: 39px;
     float: right;
     border: 0;
-    line-height: 40px;
+    line-height: 39px;
     background-color: #215089;
     color: white;
     font-size: 16px;
@@ -388,10 +390,11 @@
 }
 
 .dynamic {
-    margin-top: 40px;
+    margin-top: 86px;
 }
 
-.dynamicTitle {
+
+/* .dynamicTitle {
     font-weight: 800;
     letter-spacing: 1px;
     margin-bottom: 26px;
@@ -399,7 +402,7 @@
 
 .dynamicTitle>span {
     color: #214f8a;
-}
+} */
 
 .dynamicContent {
     min-height: 400px;
