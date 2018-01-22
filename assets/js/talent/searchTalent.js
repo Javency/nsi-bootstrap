@@ -1,21 +1,21 @@
 //封装ajax
-function myAjax( data,url,success) {
+function myAjax(data, url, success) {
     $.ajax({
-        type : "get",
-        async:true,
-        traditional :true,
-        data: data,//提交的参数
-        url:url,
-        dataType : "jsonp",//数据类型为jsonp  
-        jsonp: "Callback",//服务端用于接收callback调用的function名的参数  
-        success : function(msg){
+        type :   "get",
+        async: true,
+        traditional: true,
+        data: data, //提交的参数
+        url: url,
+        dataType :   "jsonp", //数据类型为jsonp  
+        jsonp:   "Callback", //服务端用于接收callback调用的function名的参数  
+        success :   function(msg) {
             console.log(msg);
             success(msg);
             $('#loadgif').hide()
-            $('#floatLayer').hide()//遮罩层
-            $("html,body").animate({scrollTop:0}, 0);
+            $('#floatLayer').hide() //遮罩层
+            $("html,body").animate({ scrollTop: 0 }, 0);
         },
-        error:function(){
+        error: function() {
             alert('发生错误，请求数据失败！');
         }
     });
@@ -45,29 +45,29 @@ function getQueryStringArgs() {
 function createList(msg) {
     for (var i = 0; i < msg.length; i++) {
         $("#result").append(
-            '<div class="container result">'+
-               '<div class="row">'+
-                   '<div class="result_pic col-md-2 col-sm-12 col-xs-12"><img src="" alt="" class="iconfont icon-ren1"></div> '+
-                   '<div class="row result_body col-md-10 col-sm-12 col-xs-12">'+
-                        '<p class="col-md-12 col-sm-12 col-xs-12 name"><a href="./detailTalent.html?ID='+msg[i].Id+'" id="talent${i}">'+msg[i].Name+'</a></p>'+
-                        '<p class="col-md-6 col-sm-6 col-xs-6">'+
-                        '工作年限：'+
-                        '<span>'+msg[i].WorkYear+'</span>'+
-                        '</p>'+
-                        '<p class="col-md-6 col-sm-6 col-xs-6">'+
-                        '期望工作职位：'+
-                        '<span>'+msg[i].ExpectWorkPosition+'</span>'+
-                        '</p>'+
-                        '<p class="col-md-6 col-sm-6 col-xs-6">'+
-                        '专业：'+
-                          '<span>'+msg[i].Major+'</span>'+
-                        '</p>'+
-                        '<p class="col-md-6 col-sm-6 col-xs-6">'+
-                        '期望工作城市：'+
-                        '<span>'+msg[i].ExpectWorkPlace+'</span>'+
-                        '</p>'+
-                  '</div>'+
-               '</div>'+
+            '<div class="container result">' +
+            '<div class="row">' +
+            '<div class="result_pic col-md-2 col-sm-12 col-xs-12"><i class="iconfont icon-ren1"></i></div> ' +
+            '<div class="row result_body col-md-10 col-sm-12 col-xs-12">' +
+            '<p class="col-md-12 col-sm-12 col-xs-12 name"><a href="./detailTalent.html?ID=' + msg[i].Id + '" id="talent${i}">' + msg[i].Name + '</a></p>' +
+            '<p class="col-md-6 col-sm-6 col-xs-6">' +
+            '工作年限：' +
+            '<span>' + msg[i].WorkYear + '</span>' +
+            '</p>' +
+            '<p class="col-md-6 col-sm-6 col-xs-6">' +
+            '期望工作职位：' +
+            '<span>' + msg[i].ExpectWorkPosition + '</span>' +
+            '</p>' +
+            '<p class="col-md-6 col-sm-6 col-xs-6">' +
+            '专业：' +
+            '<span>' + msg[i].Major + '</span>' +
+            '</p>' +
+            '<p class="col-md-6 col-sm-6 col-xs-6">' +
+            '期望工作城市：' +
+            '<span>' + msg[i].ExpectWorkPlace + '</span>' +
+            '</p>' +
+            '</div>' +
+            '</div>' +
             ' </div>'
         )
     }
@@ -191,7 +191,7 @@ function generalSearch() {
     var passVal = $('#searchKey').val()
     console.log(passVal);
     $.ajax({
-        type:"get",
+        type: "get",
         async: true,
         traditional: true,
         data: {
@@ -201,7 +201,7 @@ function generalSearch() {
         dataType: "jsonp", //数据类型为jsonp  
         jsonp:   "Callback", //服务端用于接收callback调用的function名的参数  
         success :   function(data) {
-            console.log(data.countAllRS)
+            console.log(data)
             var totalPages = Math.ceil((data.countAllRS / 20));
             //分页
             layui.use(['layer', 'laypage', 'element'], function() {
@@ -224,7 +224,7 @@ function generalSearch() {
                             'OnePageNum': 40
                         }
                         if (data.countAllRS != 0) {
-                            myAjax(data01,"http://"+changeUrl.address+"/talent_api?whereFrom=search",createList)
+                            myAjax(data01, "http://" + changeUrl.address + "/talent_api?whereFrom=search", createList)
                         } else {
                             $('#loadgif').hide()
                             $('#floatLayer').hide() //遮罩层
@@ -241,28 +241,28 @@ function generalSearch() {
 }
 
 //外部页面跳转过来，如果为空，执行空搜，否则执行一次带参数的搜索
-function initLoad( fn) {
-    var args =getQueryStringArgs();
-    if(jQuery.isEmptyObject(args)){
-        var data02 ={
-            'talent_searchKey':'',
+function initLoad(fn) {
+    var args = getQueryStringArgs();
+    if (jQuery.isEmptyObject(args)) {
+        var data02 = {
+            'talent_searchKey': '',
             'pageNum': 1,
-            'OnePageNum':40
+            'OnePageNum': 40
         }
-        myAjax(data02,'http://'+changeUrl.address+'/talent_api?whereFrom=search',fn)
-    }else{
+        myAjax(data02, 'http://' + changeUrl.address + '/talent_api?whereFrom=search', fn)
+    } else {
         var datailSchool = decodeURIComponent(args['whereFrom'])
         var data01 = {
-            'talent_searchKey':datailSchool,
+            'talent_searchKey': datailSchool,
             'pageNum': 1,
-            'OnePageNum':40
+            'OnePageNum': 40
         }
         $('#searchKey').val(datailSchool)
         $('#result').html('')
-        myAjax(data01,'http://'+changeUrl.address+'/talent_api?whereFrom=search',fn)
+        myAjax(data01, 'http://' + changeUrl.address + '/talent_api?whereFrom=search', fn)
     }
 }
 //初始数据加载
-$(function () {
+$(function() {
     initLoad(generalSearch)
 })

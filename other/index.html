@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="//at.alicdn.com/t/font_538304_dqjbwbmbe9jp2e29.css">
     <link rel="stylesheet" href="../assets/css/public.css">
-    <link rel="stylesheet" href="../assets/css/index.css">
+    <link rel="stylesheet" href="../assets/css/index.css?v=01171054">
     <script>
         //判断是否移动端，如果是则跳转到指定的URL地址
         function browserRedirect(url) {
@@ -42,26 +42,56 @@
     <br>
     <div class="container wrap text-center" style="margin-top:20px;">
         <h1 class="mobileMT0">新学说国际学校行业数据库</h1>
+        <ul class="searchTab clearfix" id="searchTab">
+            <li class="fl activeTab">学校库</li>
+            <li class="fl">机构库</li>
+            <li class="fl">人才库</li>
+            <li class="fl">项目库</li>
+        </ul>
         <div class="header-search">
             <div role="search" name="myform">
                 <div class="clearfix">
-                    <input type="text" id="search" name="School_name" placeholder="请输入学校名或其他关键字" />
+                    <input type="text" id="search" name="School_name" placeholder="请输入关键字" />
                     <button id="SearchButton" type="submit">搜 索</button>
                 </div>
             </div>
         </div>
         <!--热词推荐-->
-        <div class="hotContent">
-            <a href="../school/detail.html?School_name=100184&whereFrom=search">北京王府学校</a>
-            <a href="../school/detail.html?School_name=100139&whereFrom=search">北京京西学校</a>
-            <a href="../school/detail.html?School_name=100048&whereFrom=search">北京乐成国际学校</a>
-            <a href="../school/detail.html?School_name=100047&whereFrom=search">北京BISS国际学校</a>
-            <a href="../school/detail.html?School_name=100495&whereFrom=search">上海哈罗国际学校</a>
-            <br>
-            <a href="../school/detail.html?School_name=100122&whereFrom=search">上海世界外国语中学</a>
-            <a href="../school/detail.html?School_name=100109&whereFrom=search">上海中学国际部</a>
-            <a href="../school/detail.html?School_name=100065&whereFrom=search">成都美视国际学校</a>
-            <a href="../school/detail.html?School_name=100192&whereFrom=search">深圳国际交流学院</a>
+        <div class="hotSearch">
+            <div class="hotContent hotSearchOfSchool">
+                <a href="../school/detail.html?School_name=100184&whereFrom=search">北京王府学校</a>
+                <a href="../school/detail.html?School_name=100139&whereFrom=search">北京京西学校</a>
+                <a href="../school/detail.html?School_name=100048&whereFrom=search">北京乐成国际学校</a>
+                <a href="../school/detail.html?School_name=100047&whereFrom=search">北京BISS国际学校</a>
+                <a href="../school/detail.html?School_name=100495&whereFrom=search">上海哈罗国际学校</a>
+                <br>
+                <a href="../school/detail.html?School_name=100122&whereFrom=search">上海世界外国语中学</a>
+                <a href="../school/detail.html?School_name=100109&whereFrom=search">上海中学国际部</a>
+                <a href="../school/detail.html?School_name=100065&whereFrom=search">成都美视国际学校</a>
+                <a href="../school/detail.html?School_name=100192&whereFrom=search">深圳国际交流学院</a>
+            </div>
+            <div class="hotContent hotsearchOfCompany">
+                <a href="../company/detailCompany.html?School_name=100043&whereFrom=search">起点校车</a>
+                <a href="../company/detailCompany.html?School_name=100127&whereFrom=search">大风车教育集团</a>
+                <a href="../company/detailCompany.html?School_name=100046&whereFrom=search">校宝智慧校园</a>
+                <a href="../company/detailCompany.html?School_name=100163&whereFrom=search">北京汉通文化有限责任公司</a>
+                <a href="../company/detailCompany.html?School_name=100181&whereFrom=search">卡西欧（中国）贸易有限公司</a>
+                <a href="../company/detailCompany.html?School_name=100099&whereFrom=search">博实乐教育集团</a>
+                <a href="../company/detailCompany.html?School_name=100106&whereFrom=search">DDC天乐勤教育</a>
+                <a href="../company/detailCompany.html?School_name=100165&whereFrom=search">ManageBac</a>
+            </div>
+            <div class="hotContent hotsearchOfTalent">
+                <a href="../talent/recruit01.html">重庆德普外国语学校</a>
+                <a href="../talent/recruit02.html">北大附属实验学校</a>
+                <a href="../talent/recruit03.html">北京新东方外国语学校</a>
+                <a href="../talent/recruit04.html">Ulink教育集团</a>
+                <a href="../talent/recruit05.html">雅力教育集团</a>
+                <a href="../talent/recruit06.html">美中国际学校 Griffin International Academy</a>
+            </div>
+            <div class="hotContent hotsearchOfProject">
+                <a href="../project/detailProject.html?School_name=10004&whereFrom=search">济南章丘 | 寻求与优质国际学校运营管理方合作办学</a>
+                <a href="../project/detailProject.html?School_name=10004&whereFrom=search">湖北襄阳 | 希望名校加入合作办学，校方负责教学管理</a>
+            </div>
         </div>
     </div>
     <br>
@@ -149,16 +179,16 @@
                         <div class="bg_content"></div>
                     </div>
                 </a>
-                <a href="http://data.xinxueshuo.cn/nsi/school/detail.html?School_name=100137&whereFrom=search">
+                <a href="http://localhost/nsi-bootstrap/school/detail.html?School_name=100105&whereFrom=search">
                     <div class="schoolBase fl">
-                        <div class="schoolBase_logo"><img src="http://data.xinxueshuo.cn/upImage/upSchoolImg/101030/101030-logo.jpg" alt=""></div>
+                        <div class="schoolBase_logo"><img src="http://data.xinxueshuo.cn/upImage/upSchoolImg/100105/100105-logo.jpg" alt=""></div>
                         <div class="schoolBase_content">
                             <!-- <p class="schoolID">ID100874</p> -->
                             <div class="upBox">
-                                <p class="schoolName">上海铭远双语中学<span class="fr">ID101030</span></p>
-                                <p><span>民办</span> | <span>建校时间：2014</span><span class="fr">上海</span></p>
+                                <p class="schoolName">上海美国学校<span class="fr">ID100105</span></p>
+                                <p><span>外籍</span> | <span>建校时间：1912</span><span class="fr">上海</span></p>
                                 <p>学制：高中</p>
-                                <p>课程：IBDP;加拿大课程</p>
+                                <p>课程：IBDP；AP；</p>
                             </div>
                         </div>
                         <div class="bg_content"></div>
@@ -181,9 +211,9 @@
                 </a>
             </div>
             <div class="col-md-3 dynamic">
-                <h4 class="dynamicTitle">新学说<span>动态</span></h4>
+                <!-- <h4 class="dynamicTitle">新学说<span>动态</span></h4> -->
                 <div class="dynamicContent">
-                    <h5>学校数据库动态</h5>
+                    <h5>学校数据库最近更新</h5>
                     <div class="dynamicList">
                         <ul class="scrollBox" id="scrollBox"></ul>
                         <ul class="scrollBox scrollBox_clone"></ul>
@@ -344,7 +374,7 @@
     <script src="../assets/js/bootstrap.min.js"></script>
     <script src="../assets/js/jquery.cookie.js"></script>
     <script src="../assets/js/config.js"></script>
-    <script src="../assets/js/index.js"></script>
+    <script src="../assets/js/index.js?v=01171054"></script>
 </body>
 
 </html>

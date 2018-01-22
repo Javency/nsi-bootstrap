@@ -1,9 +1,10 @@
-*{ padding:0;margin:0;}
+﻿*{ padding:0;margin:0;}
 body{ font-family:"Microsoft YaHei";}
 li{list-style: none;}
 .clearfix{zoom:1;}
 .clearfix:after{ content:'';display:block;clear:both;}
-
+a:hover{text-decoration: none !important}
+h3{color:#111}
 /*头部样式*/
 .site-header{height:50px;background: rgb(33,80,137);box-shadow: 0 4px 8px rgba(0,0,0,.28);;border-bottom-width:0;}
 .renavbar-default .renavbar-brand {padding-top:8px;}

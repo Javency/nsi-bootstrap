@@ -18,7 +18,9 @@
     text-align: center;
 }
 
-.result_pic>img {
+.result_pic>i {
+    width: 50px;
+    height: 54px;
     font-size: 50px;
     display: inline-block;
     color: #FFF;
@@ -37,10 +39,10 @@
     padding-left: 50px;
 }
 
-.name a{
-  font-weight: bold;
-  color: #00b7ee;
-  font-size: 18px;
+.name a {
+    font-weight: bold;
+    color: #00b7ee;
+    font-size: 18px;
 }
 
 @media (max-width:997px) {

@@ -1,87 +1,3 @@
-//搜索功能123
-$('#SearchButton').click(function() {
-    var searchVal = $('#search').val()
-    window.location.href = '../school/search.html?whereFrom=' + searchVal
-})
-$('#search').keydown(function(e) {
-    var curKey = e.which; //兼容火狐
-    if (curKey == 13) {
-        var searchVal = $('#search').val()
-        window.location.href = '../school/search.html?whereFrom=' + searchVal
-    }
-})
-
-
-$('.nsiTool01').hover(function() {
-    $('.nsiTool01 img').attr('src', '../assets/img/index/nsi-img2.png')
-    $('.nsiTool01 .nsiFadeOut').stop().fadeOut().hide()
-    $('.nsiTool01 .nsiSlideUp').stop().animate({
-            opacity: 1,
-            height: 200
-        }, 1000, 'linear').show()
-        // $('.nsiTool01 .nsiFadeOut').css('display','none')
-        // $('.nsiTool01 .nsiSlideUp').css('display','block')
-}, function() {
-    $('.nsiTool01 img').attr('src', '../assets/img/index/nsi-img02.png')
-    $('.nsiTool01 .nsiFadeOut').stop().fadeIn().show()
-    $('.nsiTool01 .nsiSlideUp').stop().animate({
-            opacity: 0,
-            height: 0
-        }, 100).hide()
-        // $('.nsiTool01 .nsiFadeOut').css('display','block')
-        // $('.nsiTool01 .nsiSlideUp').css('display','none')
-})
-
-$('.nsiTool02').hover(function() {
-    $('.nsiTool02 img').attr('src', '../assets/img/index/nsi-img4.png')
-    $('.nsiTool02 .nsiFadeOut').stop().fadeOut().hide()
-        // $('.nsiTool02 .nsiFadeOut').hide()
-    $('.nsiTool02 .nsiSlideUp').stop().animate({
-        opacity: 1,
-        height: 200
-    }, 1000, 'linear').show()
-}, function() {
-    $('.nsiTool02 img').attr('src', '../assets/img/index/nsi-img04.png')
-    $('.nsiTool02 .nsiFadeOut').stop().fadeIn().show()
-    $('.nsiTool02 .nsiSlideUp').stop().animate({
-        opacity: 0,
-        height: 0
-    }, 100).hide()
-})
-
-$('.nsiTool03').hover(function() {
-    $('.nsiTool03 img').attr('src', '../assets/img/index/nsi-img3.png')
-    $('.nsiTool03 .nsiFadeOut').stop().fadeOut().hide()
-    $('.nsiTool03 .nsiSlideUp').stop().animate({
-        opacity: 1,
-        height: 200
-    }, 1000, 'linear').show()
-}, function() {
-    $('.nsiTool03 img').attr('src', '../assets/img/index/nsi-img03.png')
-    $('.nsiTool03 .nsiFadeOut').stop().fadeIn().show()
-    $('.nsiTool03 .nsiSlideUp').stop().animate({
-        opacity: 0,
-        height: 0
-    }, 100).hide()
-})
-
-$('.nsiTool04').hover(function() {
-    $('.nsiTool04 img').attr('src', '../assets/img/index/nsi-img1.png')
-    $('.nsiTool04 .nsiFadeOut').stop().fadeOut().hide()
-    $('.nsiTool04 .nsiSlideUp').stop().animate({
-        opacity: 1,
-        height: 200
-    }, 1000, 'linear').show()
-}, function() {
-    $('.nsiTool04 img').attr('src', '../assets/img/index/nsi-img01.png')
-    $('.nsiTool04 .nsiFadeOut').stop().fadeIn().show()
-    $('.nsiTool04 .nsiSlideUp').stop().animate({
-        opacity: 0,
-        height: 0
-    }, 100).hide()
-})
-
-
 //登录后的导航条状态
 $(function() {
     // alert(0)
@@ -143,28 +59,28 @@ $(function() {
 })
 
 //学校数量
-$(function() {
-    $.ajax({
-        type :   "get",
-        async: true,
-        traditional: true,
-        data: {
-            'School_searchKey': '',
-            'pageNum': 1,
-            'OnePageNum': 10
-        }, //提交的参数
-        url: "http://" + changeUrl.address + "/School_api?whereFrom=count",
-        dataType :   "jsonp", //数据类型为jsonp  
-        jsonp:   "Callback", //服务端用于接收callback调用的function名的参数  
-        success :   function(msg) {
-            // console.log(msg)
-            $('.schoolNum').text(msg.countAllRS)
-        },
-        error: function() {
-            // alert('发生错误，请求数据失败！');
-        }
-    });
-})
+// $(function() {
+//     $.ajax({
+//         type :   "get",
+//         async: true,
+//         traditional: true,
+//         data: {
+//             'School_searchKey': '',
+//             'pageNum': 1,
+//             'OnePageNum': 10
+//         }, //提交的参数
+//         url: "http://" + changeUrl.address + "/School_api?whereFrom=count",
+//         dataType :   "jsonp", //数据类型为jsonp  
+//         jsonp:   "Callback", //服务端用于接收callback调用的function名的参数  
+//         success :   function(msg) {
+//             // console.log(msg)
+//             $('.schoolNum').text(msg.countAllRS)
+//         },
+//         error: function() {
+//             // alert('发生错误，请求数据失败！');
+//         }
+//     });
+// })
 
 
 
@@ -221,7 +137,7 @@ $(function() {
         success: function(msg) {
             for (var i = 0; i < msg.length; i++) {
                 $scrollBox.append(
-                    `<li><a class="white" href="http://data.xinxueshuo.cn/nsi/school/detail.html?whereFrom=search&School_name=${msg[i].Id}">${msg[i].School_name}</a></li>`
+                    '<li><a class="white" href="http://data.xinxueshuo.cn/nsi/school/detail.html?whereFrom=search&School_name=' + msg[i].Id + '">• &nbsp;' + msg[i].School_name + '</a></li>'
                 )
             }
         },
@@ -257,4 +173,91 @@ $(function() {
         })
     }
     autoLeft();
+})
+
+// 搜索Tab
+$(function() {
+    //默认学校搜索
+    $('#SearchButton').click(function() {
+        var searchVal = $('#search').val()
+        window.location.href = '../school/search.html?whereFrom=' + searchVal
+    })
+
+    $('#search').keydown(function(e) {
+        var curKey = e.which; //兼容火狐
+        if (curKey == 13) {
+            var searchVal = $('#search').val()
+            window.location.href = '../school/search.html?whereFrom=' + searchVal
+        }
+    })
+
+    var oUl = $("#searchTab"),
+        aLi = oUl.children(),
+        aHotSearch = $(".hotContent");
+    aLi.on("click", function() {
+        var search = $("#search"),
+            searchVal = $("#search").val(),
+            searchBtn = $("#SearchButton");
+        $(this).addClass("activeTab").siblings().removeClass("activeTab");
+        aHotSearch.eq($(this).index()).fadeIn(100).siblings().fadeOut(100);
+        switch ($(this).index()) {
+            case 0:
+                searchBtn.click(function() {
+                    var searchVal = $("#search").val();
+                    window.location.href = '../school/search.html?whereFrom=' + searchVal
+                })
+                search.keydown(function(e) {
+                    console.log(1)
+                    var searchVal = $("#search").val();
+                    e = e || window.event;
+                    var curkey = e.which;
+                    if (curkey == 13) {
+                        window.location.href = '../school/search.html?whereFrom=' + searchVal
+                    }
+                })
+                break;
+            case 1:
+                searchBtn.click(function() {
+                    var searchVal = $("#search").val();
+                    window.location.href = '../company/searchCompany.html?whereFrom=' + searchVal
+                })
+                search.keydown(function(e) {
+                    var searchVal = $("#search").val();
+                    e = e || window.event;
+                    var curkey = e.which;
+                    if (curkey === 13) {
+                        window.location.href = '../company/searchCompany.html?whereFrom=' + searchVal
+                    }
+                })
+                break;
+            case 2:
+                searchBtn.click(function() {
+                    var searchVal = $("#search").val();
+                    window.location.href = '../talent/searchTalent.html?whereFrom=' + searchVal
+                })
+                search.keydown(function(e) {
+                    var searchVal = $("#search").val();
+                    e = e || window.event;
+                    var curkey = e.which;
+                    if (curkey === 13) {
+                        window.location.href = '../talent/searchTalent.html?whereFrom=' + searchVal
+                    }
+                })
+                break;
+            case 3:
+                searchBtn.click(function() {
+                    var searchVal = $("#search").val();
+                    window.location.href = '../project/searchProject.html?whereFrom=' + searchVal
+                })
+                search.keydown(function(e) {
+                    var searchVal = $("#search").val();
+                    e = e || window.event;
+                    var curkey = e.which;
+                    if (curkey === 13) {
+                        window.location.href = '../project/searchProject.html?whereFrom=' + searchVal
+                    }
+                })
+                break;
+        }
+    })
 })
