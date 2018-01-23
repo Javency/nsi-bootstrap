@@ -58,33 +58,10 @@ $(function() {
     }
 })
 
-//学校数量
-// $(function() {
-//     $.ajax({
-//         type :   "get",
-//         async: true,
-//         traditional: true,
-//         data: {
-//             'School_searchKey': '',
-//             'pageNum': 1,
-//             'OnePageNum': 10
-//         }, //提交的参数
-//         url: "http://" + changeUrl.address + "/School_api?whereFrom=count",
-//         dataType :   "jsonp", //数据类型为jsonp  
-//         jsonp:   "Callback", //服务端用于接收callback调用的function名的参数  
-//         success :   function(msg) {
-//             // console.log(msg)
-//             $('.schoolNum').text(msg.countAllRS)
-//         },
-//         error: function() {
-//             // alert('发生错误，请求数据失败！');
-//         }
-//     });
-// })
 
 
 
-console.log('2017-11-21-10:14')
+console.log('2018-01-23-11:30')
 
 // 改换首页 2018.01.10
 

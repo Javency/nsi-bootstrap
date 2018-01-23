@@ -8,6 +8,14 @@ function zeroToAddress(str) {
     return strFilter = (str == 0) ? '' : str;
 }
 
+//过滤函数“其他”
+function filter( str) {
+    var result = null;
+    return result = (str == "其他") ? '' : str
+}
+
+
+
 $(function() {
     getCookie();
     $.ajax({
@@ -29,8 +37,8 @@ $(function() {
             $('#School_properties').text(zeroToEmpty(msg[0].School_properties))
             $('#OperationState').text(zeroToEmpty(msg[0].OperationState))
 
-            $('#Areas').text(zeroToEmpty(msg[0].Areas))
-            $('#Areas02').text(zeroToAddress(msg[0].Areas02))
+            $('#Areas').text(filter(msg[0].Areas))
+            $('#Areas02').text(filter(msg[0].Areas02))
             $('#Areas03').text(zeroToAddress(msg[0].Areas03))
             $('#Website').text(zeroToEmpty(msg[0].Website))
             $('#Telephone').text(zeroToEmpty(msg[0].Telephone))
