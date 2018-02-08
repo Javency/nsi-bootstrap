@@ -38,7 +38,7 @@
             }else{
                 imgUrl ='http://www.xinxueshuo.cn'+$(".xqy_bot  img").attr("src");
             }           
-            desc = trim(($(".xqy_bot p")[2]).text());
+            desc = trim($(".xqy_bot p").eq(2).text());
             console.log("文章摘要："+desc);  
 
             // 学校库分享
