@@ -238,3 +238,12 @@ $(function() {
         }
     })
 })
+
+
+$('.hoverClose').on('click',function () {
+    $('#toMobile').addClass('hide')
+})
+
+
+
+
