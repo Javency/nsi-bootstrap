@@ -15,6 +15,7 @@ var jobCheckResult = null;
 var telCheckResult = null;
 var pwdCheckResult = null;
 var pwdSameCheckResult = null;
+var slideVerifyResult = null;
 
 //邮箱校验
 function mailCheck(){
@@ -212,13 +213,81 @@ $('#submitFromID').click(function () {
     telCheck()
     pwdCheck()
     pwdSameCheck()
-    if( checkMailResult ==true &&  nameCheckResult ==true && instutionCheckResult ==true && jobCheckResult ==true && telCheckResult ==true && pwdCheckResult ==true && pwdSameCheckResult ==true ){
+    if( checkMailResult ==true &&  nameCheckResult ==true && instutionCheckResult ==true && jobCheckResult ==true && telCheckResult ==true && pwdCheckResult ==true && pwdSameCheckResult ==true && slideVerifyResult == true ){
+        $.each(hash,function (index,value) {
+            var email = $('#EmailID').val()
+            var suffix = email.split('@')[1]
+            if(index == suffix){
+                console.log(index,value)
+                $('#toVerify').attr('href',value)
+            }
+        })
         nextStep01()
     }
 })
 
+//图形验证码
+$('#mpanel4').slideVerify({
+    type : 2,		//类型
+    vOffset : 5,	//误差量，根据需求自行调整
+    vSpace : 5,	//间隔
+    imgUrl:'../assets/img/outImg/',
+    imgName : ['1.jpg', '2.jpg'],
+    imgSize : {
+        width: '400px',
+        height: '200px',
+    },
+    blockSize : {
+        width: '40px',
+        height: '40px',
+    },
+    barSize : {
+        width : '400px',
+        height : '40px',
+    },
+    ready : function() {
+    },
+    success : function() {
+        alert('验证成功')
+        slideVerifyResult = true
+        console.log('成功')
+    },
+    error : function() {
+//		        	alert('验证失败！');
+    }
+});
 
+//邮箱跳转
+var hash={
+    'qq.com':'http://mail.qq.com',
+    'gmail.com': 'http://mail.google.com',
+    'sina.com': 'http://mail.sina.com.cn',
+    '163.com': 'http://mail.163.com',
+    '126.com': 'http://mail.126.com',
+    'yeah.net': 'http://www.yeah.net/',
+    'sohu.com': 'http://mail.sohu.com/',
+    'tom.com': 'http://mail.tom.com/',
+    'sogou.com': 'http://mail.sogou.com/',
+    '139.com': 'http://mail.10086.cn/',
+    'hotmail.com': 'http://www.hotmail.com',
+    'live.com': 'http://login.live.com/',
+    'live.cn': 'http://login.live.cn/',
+    'live.com.cn': 'http://login.live.com.cn',
+    '189.com': 'http://webmail16.189.cn/webmail/',
+    'yahoo.com.cn': 'http://mail.cn.yahoo.com/',
+    'yahoo.cn': 'http://mail.cn.yahoo.com/',
+    'eyou.com': 'http://www.eyou.com/',
+    '21cn.com': 'http://mail.21cn.com/',
+    '188.com': 'http://www.188.com/',
+    'foxmail.coom': 'http://www.foxmail.com'
+};
 
+$('#toVerify').on('click',function () {
+    if ( $(this).attr('href') == ''){
+        alert('无法匹配该邮箱，请手动登录！')
+        return false;
+    }
+})
 
 
 

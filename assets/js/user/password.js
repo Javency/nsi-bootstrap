@@ -12,34 +12,59 @@ initPreventNext();
 
 //邮箱验证
 var pattern = /\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/
+var time = 60
+var onOff = true
+
+function autoDecrease() {
+    var str = '（'+ time +'）'+'后重新发送'
+    $('#sendVerifyCode').text(str) // 4  3  2
+    time--;
+}
 
 //点击验证码 （步骤一）
-$('#sendVerifyCode').click(function () {
-    var data01 = $('#EmailID').val()
-    if(pattern.test(data01) == true){
-        $.ajax({
-            type : "get",
-            async:true,
-            traditional :true,
-            data: {
-                'mail':data01
-            },//提交的参数
-            url:'http://'+changeUrl.address+'/User_api?whereFrom=forgetPW',
-            dataType : "jsonp",//数据类型为jsonp  
-            jsonp: "Callback",//服务端用于接收callback调用的function名的参数  
-            success : function(msg){
-                console.log(msg)
-                $('.emailErr').css('visibility','hidden')
-            },
-            error:function(){
-                alert('发生错误，请求数据失败！');
+    $('#sendVerifyCode').click(function () {
+        var data01 = $('#EmailID').val()
+        if(pattern.test(data01) == true){
+            if(onOff){
+                onOff = false;
+                $('#sendVerifyCode').addClass('disabled')
+                var timer = setInterval(function () {
+                    autoDecrease()
+                    if(time == -1){
+                        onOff = true
+                        clearInterval(timer)
+                        $('#sendVerifyCode').removeClass('disabled')
+                        $('#sendVerifyCode').text('发送验证码')
+                        time = 60 ;
+                    }
+                },1000)
+                $.ajax({
+                    type : "get",
+                    async:true,
+                    traditional :true,
+                    data: {
+                        'mail':data01
+                    },//提交的参数
+                    url:'http://'+changeUrl.address+'/User_api?whereFrom=forgetPW',
+                    dataType : "jsonp",//数据类型为jsonp  
+                    jsonp: "Callback",//服务端用于接收callback调用的function名的参数  
+                    success : function(msg){
+                        console.log(msg)
+                        $('.emailErr').css('visibility','hidden')
+                    },
+                    error:function(){
+                        alert('发生错误，请求数据失败！');
+                    }
+                });
             }
-        });
-    }else{
-        $('.emailErr').css('visibility','visible')
-    }
 
-})
+        }else{
+            $('.emailErr').css('visibility','visible')
+        }
+
+    })
+
+
 
 //判断第一个下一步按钮是否可用
 $('#verifyCode,#EmailID').blur(function () {
