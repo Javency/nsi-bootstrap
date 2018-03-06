@@ -248,7 +248,6 @@ $('#mpanel4').slideVerify({
     ready : function() {
     },
     success : function() {
-        alert('验证成功')
         slideVerifyResult = true
         console.log('成功')
     },
