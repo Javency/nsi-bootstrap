@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
     <title>国际学校四库全书-登录</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" >
-    <link rel="stylesheet" href="../assets/css/public.css">
+    <link rel="stylesheet" href="../assets/css/public.css?v=1.0.2">
+    <link rel="stylesheet" href="../assets/css/outCSS/verify.css">
 </head>
 <body>
 <!--头部导航-->
@@ -39,12 +40,15 @@
                         <span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;&nbsp;<label >密&nbsp;&nbsp;码</label>
                         <input name="pwd" type="password" class="form-control" id="password" placeholder="请输入密码"/>
                     </div>
-                    <div style="margin-bottom:15px;">
-                        <label style="font-size:15px;color:#555;font-weight:normal;cursor: pointer;margin-bottom: 0px;">
-                            <input type="checkbox" value="remember-me"> 记住密码
-                        </label>
+                    <!--<div style="margin-bottom:15px;">-->
+                        <!--<label style="font-size:15px;color:#555;font-weight:normal;cursor: pointer;margin-bottom: 0px;">-->
+                            <!--<input type="checkbox" value="remember-me"> 记住密码-->
+                        <!--</label>-->
+                    <!--</div>-->
+                    <div class="form-group">
+                        <div  id="mpanel4" class="hide">
+                        </div>
                     </div>
-                    <!-- type 不能为submit ,会重复提交表单 （js） -->
                     <div class="form-group">
                        <p style="color: red;display:none;" id="isCookie">* 您的浏览器Cookie被禁用，将无法登陆，请检查您的浏览器设置</p>
                     </div>
@@ -155,6 +159,7 @@
 </div><!-- /.modal -->
 <script src="../assets/js/jquery-1.11.1.js"></script>
 <script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/outJS/verify.min.js"></script>
 <script src="../assets/js/jquery.cookie.js"></script>
 <script src="../assets/js/config.js"></script>
 <script src="../assets/js/public.js"></script>

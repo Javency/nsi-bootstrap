@@ -1,5 +1,5 @@
 
-
+var slideVerifyResult=null;
 function userLogin() {
     var username = $('#username').val()
     var password = $('#password').val()
@@ -7,44 +7,49 @@ function userLogin() {
         'username':username,
         'pwd':password
     }
-    $.ajax({
-        type:"get",
-        async:false,
-        traditional :true,
-        data: data,//提交的参数
-        url: 'http://'+changeUrl.address+'/User_api?whereFrom=login',
-        dataType : "jsonp",//数据类型为jsonp  
-        jsonp: "Callback",//服务端用于接收callback调用的function名的参数  
-        success : function(msg){
-            console.log(msg);
-            if(msg.member_sign > 0){
-                $.cookie('usertitle', msg.member_sign , { expires: 1, path: '/' });
-                $.cookie('username', msg.username , { expires: 1 ,path: '/'});
-                $.cookie('User_TureName', msg.User_TureName , { expires: 1 ,path: '/'});
-                $.cookie('userVerifyCode', msg.UserVerifyCode , { expires: 1 ,path: '/'});
-                console.log( $.cookie('usertitle'))
-                console.log( $.cookie('username'))  //邮箱地址
-                console.log( $.cookie('userVerifyCode'))
-                console.log( $.cookie('User_TureName'))  //真实姓名
-                window.location.href = "../other/index.html";
-            }else if(msg.member_sign == -2){
-                $('#errPassword').modal({
-                    keyboard: true //用户密码错误
-                })
-            }else if(msg.member_sign == -1){
-                $('#emailNoPass').modal({  //邮箱没有激活
-                    keyboard: true
-                })
-            }else if(msg.member_sign == 0){
-                $('#waitForPass').modal({   //账号没有审核
-                    keyboard: true
-                })
+    if(slideVerifyResult == true){
+        $.ajax({
+            type:"get",
+            async:false,
+            traditional :true,
+            data: data,//提交的参数
+            url: 'http://'+changeUrl.address+'/User_api?whereFrom=login',
+            dataType : "jsonp",//数据类型为jsonp  
+            jsonp: "Callback",//服务端用于接收callback调用的function名的参数  
+            success : function(msg){
+                console.log(msg);
+                if(msg.member_sign > 0){
+                    $.cookie('usertitle', msg.member_sign , { expires: 1, path: '/' });
+                    $.cookie('username', msg.username , { expires: 1 ,path: '/'});
+                    $.cookie('User_TureName', msg.User_TureName , { expires: 1 ,path: '/'});
+                    $.cookie('userVerifyCode', msg.UserVerifyCode , { expires: 1 ,path: '/'});
+                    console.log( $.cookie('usertitle'))
+                    console.log( $.cookie('username'))  //邮箱地址
+                    console.log( $.cookie('userVerifyCode'))
+                    console.log( $.cookie('User_TureName'))  //真实姓名
+                    window.location.href = "../other/index.html";
+                }else if(msg.member_sign == -2){
+                    $('#errPassword').modal({
+                        keyboard: true //用户密码错误
+                    })
+                }else if(msg.member_sign == -1){
+                    $('#emailNoPass').modal({  //邮箱没有激活
+                        keyboard: true
+                    })
+                }else if(msg.member_sign == 0){
+                    $('#waitForPass').modal({   //账号没有审核
+                        keyboard: true
+                    })
+                }
+            },
+            error:function(){
+                alert('用户名或密码错误，请求数据失败！');
             }
-        },
-        error:function(){
-            alert('用户名或密码错误，请求数据失败！');
-        }
-    });
+        });
+    }else {
+        alert('请完成图形验证')
+    }
+
 }
 
 $('#login').click(function () {
@@ -71,7 +76,38 @@ $(function () {
     }
 })
 
+//图形验证码
+$('#mpanel4').slideVerify({
+    type : 2,		//类型
+    vOffset : 5,	//误差量，根据需求自行调整
+    vSpace : 5,	//间隔
+    imgUrl:'../assets/img/outImg/',
+    imgName : ['1.jpg', '2.jpg'],
+    imgSize : {
+        width: '232px',
+        height: '120px',
+    },
+    blockSize : {
+        width: '30px',
+        height: '30px',
+    },
+    barSize : {
+        width : '232px',
+        height : '30px',
+    },
+    ready : function() {
+    },
+    success : function() {
+        slideVerifyResult = true
+        console.log('成功')
+    },
+    error : function() {
+//		        	alert('验证失败！');
+    }
+});
 
-
-
+//显示图形验证码
+$('#username,#password').focus(function () {
+    $('#mpanel4').removeClass('hide')
+})
 

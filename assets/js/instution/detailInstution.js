@@ -3,6 +3,13 @@
 var args =getQueryStringArgs();
 var datailSchool = decodeURIComponent(args['School_name'])  //机构Id
 
+//过滤函数“其他”
+function filter( str) {
+    var result = null;
+    return result = (str == "其他") ? '' : str
+}
+
+
 $(function () {
     getCookie();
     $.ajax({
@@ -26,8 +33,8 @@ $(function () {
             $('#instutionLable').text(zeroToEmpty(msg[0].Label))
             $('#companyType').text(zeroToEmpty(msg[0].Type))
 
-            $('#Areas').text(zeroToEmpty(msg[0].Areas))
-            $('#Areas02').text(zeroToAddress(msg[0].Areas02))
+            $('#Areas').text(filter(msg[0].Areas))
+            $('#Areas02').text(filter(msg[0].Areas02))
             $('#Areas03').text(zeroToAddress(msg[0].Areas03))
             $('#Website').text(zeroToEmpty(msg[0].Website))
             $('#Founded_time').text(zeroToEmpty(msg[0].Founded_time))

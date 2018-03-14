@@ -318,4 +318,6 @@ function browserRedirect(url) {
         window.location.replace(url);
     }
 }
+browserRedirect('http://data.xinxueshuo.cn/wap')
+
 
