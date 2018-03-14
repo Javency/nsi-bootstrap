@@ -106,6 +106,9 @@ $(function() {
             $('.headerSchoolID').text(msg[0].Id)
             accsessControl()
 
+
+            var Hardware = $("#Hardware")
+            Hardware.siblings().height(Hardware.height())
         },
         error: function() {
             alert('发生错误，请求数据失败！');
@@ -114,6 +117,9 @@ $(function() {
 
 })
 
+$(function() {
+
+})
 
 //点击显示图片上传模态框（自制）
 $('#upHeadImg').click(function() {
