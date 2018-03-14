@@ -9,7 +9,7 @@ function zeroToAddress(str) {
 }
 
 //过滤函数“其他”
-function filter( str) {
+function filter(str) {
     var result = null;
     return result = (str == "其他") ? '' : str
 }
