@@ -106,9 +106,12 @@ $(function() {
             $('.headerSchoolID').text(msg[0].Id)
             accsessControl()
 
-
+            // 硬件设施
             var Hardware = $("#Hardware")
             Hardware.siblings().height(Hardware.height())
+                // 备注
+            var Remark = $("#Remark")
+            Remark.siblings().height(Remark.height())
         },
         error: function() {
             alert('发生错误，请求数据失败！');
