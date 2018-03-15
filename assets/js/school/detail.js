@@ -108,10 +108,10 @@ $(function() {
 
             // 硬件设施
             var Hardware = $("#Hardware")
-            Hardware.siblings().height(Hardware.height())
+            Hardware.siblings().height(Hardware.height()).css('lineHeight', Hardware.height() + "px")
                 // 备注
             var Remark = $("#Remark")
-            Remark.siblings().height(Remark.height())
+            Remark.siblings().height(Remark.height()).css('lineHeight', Remark.height() - 30 + "px")
         },
         error: function() {
             alert('发生错误，请求数据失败！');
