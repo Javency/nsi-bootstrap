@@ -111,7 +111,7 @@ $(function() {
             Hardware.siblings().height(Hardware.height()).css('lineHeight', Hardware.height() + "px")
                 // 备注
             var Remark = $("#Remark")
-            Remark.siblings().height(Remark.height()).css('lineHeight', Remark.height() - 30 + "px")
+            Remark.siblings().height(Remark.height()).css('lineHeight', Remark.height() + "px")
         },
         error: function() {
             alert('发生错误，请求数据失败！');
