@@ -9,7 +9,7 @@ function zeroToAddress(str) {
 }
 
 //过滤函数“其他”
-function filter( str) {
+function filter(str) {
     var result = null;
     return result = (str == "其他") ? '' : str
 }
@@ -37,10 +37,12 @@ $(function() {
             $('#School_properties').text(zeroToEmpty(msg[0].School_properties))
             $('#OperationState').text(zeroToEmpty(msg[0].OperationState))
 
-            $('#Areas').text(filter(msg[0].Areas))
-            $('#Areas02').text(filter(msg[0].Areas02))
-            $('#Areas03').text(zeroToAddress(msg[0].Areas03))
+            // $('#Areas').text(filter(msg[0].Areas))
+            // $('#Areas02').text(filter(msg[0].Areas02))
+            // $('#Areas03').text(zeroToAddress(msg[0].Areas03))
+            $('#Address').text(filter(msg[0].Areas) + " " + filter(msg[0].Areas02) + " " + zeroToAddress(msg[0].Areas03))
             $('#Website').text(zeroToEmpty(msg[0].Website))
+            $('#Website').attr("href", "http://" + zeroToEmpty(msg[0].Website))
             $('#Telephone').text(zeroToEmpty(msg[0].Telephone))
             $('#School_system').text(zeroToEmpty(msg[0].School_system))
             $('#Founded_time').text(zeroToEmpty(msg[0].Founded_time))
@@ -104,6 +106,12 @@ $(function() {
             $('.headerSchoolID').text(msg[0].Id)
             accsessControl()
 
+            // 硬件设施
+            var Hardware = $("#Hardware")
+            Hardware.siblings().height(Hardware.height()).css('lineHeight', Hardware.height() + "px")
+                // 备注
+            var Remark = $("#Remark")
+            Remark.siblings().height(Remark.height()).css('lineHeight', Remark.height() + "px")
         },
         error: function() {
             alert('发生错误，请求数据失败！');
@@ -112,6 +120,9 @@ $(function() {
 
 })
 
+$(function() {
+
+})
 
 //点击显示图片上传模态框（自制）
 $('#upHeadImg').click(function() {
