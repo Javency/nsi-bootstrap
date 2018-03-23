@@ -23,17 +23,16 @@ body {
 
 
 /*头部样式*/
-
-/*.site-header {*/
-    /*height: 50px;*/
-    /*background: rgb(33, 80, 137);*/
-    /*box-shadow: 0 4px 8px rgba(0, 0, 0, .28);*/
-    /*;*/
-    /*border-bottom-width: 0;*/
-/*}*/
+.site-header {
+    height: 50px;
+    background: rgb(33, 80, 137);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, .28);
+    ;
+    border-bottom-width: 0;
+}
 
 /*新春版*/
-.site-header{height:50px;background: rgb(224,76,87);box-shadow: 0 4px 8px rgba(0,0,0,.28);;border-bottom-width:0;}
+/*.site-header{height:50px;background: rgb(224,76,87);box-shadow: 0 4px 8px rgba(0,0,0,.28);;border-bottom-width:0;}*/
 
 /*.logo{ margin-left:30%;width: 100%;}*/
 
@@ -158,16 +157,16 @@ header {
 
 /*页脚*/
 
-/*#footer-sec {*/
-    /*!*background: #303c42;*!*/
-    /*background: rgb(224,76,87);*/
-    /*color: #DFD1D1;*/
-/*}*/
-/*新春版*/
 #footer-sec {
-    background: rgb(224,76,87);
-    color: #fff;
+    /*background: #303c42;*/
+    background: rgb(33,80,137);
+    color: #DFD1D1;
 }
+/*新春版*/
+/*#footer-sec {*/
+    /*background: rgb(224,76,87);*/
+    /*color: #fff;*/
+/*}*/
 
 #footer-sec h4 {
     font-family: "Microsoft YaHei";

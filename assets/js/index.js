@@ -180,7 +180,7 @@ $(function() {
                     window.location.href = '../school/search.html?whereFrom=' + searchVal
                 })
                 search.keydown(function(e) {
-                    console.log(1)
+                    // console.log(1)
                     var searchVal = $("#search").val();
                     e = e || window.event;
                     var curkey = e.which;

@@ -1,30 +1,5 @@
 
 
-//移动端样式控制（学校名字数控制）
-function mobileStyleCtrl() {
-    $(function () {
-        var screenWidth = $(window).width()
-        if(screenWidth < 768 ){
-            $('.schoolName a').each(function () {
-                var len = $(this).text().length;
-                if(len>=16){
-                    var substrSchoolName=$(this).text().substring(0,16)+'...'
-                    $(this).text(substrSchoolName)
-                }
-            })
-        }
-    })
-}
-//意见反馈移动端消失
-$(function () {
-    var screenWidth = $(window).width()
-    if(screenWidth < 768 ){
-       $('#advice').hide()
-        //页脚样式
-        $('#mobileFooter').addClass('text-center')
-    }
-})
-
 
 //封装ajax
 function myAjax( data,url,success) {
@@ -43,7 +18,6 @@ function myAjax( data,url,success) {
             $('.hiddenBtn02').trigger('click')
             $('#loadgif').hide()
             $('#floatLayer').hide()//遮罩层
-            mobileStyleCtrl() // 控制标题字数（最多32位）
             //未登录用户不可查看详情
             $('.noLogin a').click(function () {
                 $('#myModal02').modal({
@@ -295,6 +269,19 @@ $(function () {
 //用户等级显示
 $(function () {
     $('#userLevel').text('Lv'+$.cookie('usertitle'))
+})
+
+//导航条登录状态显示
+$(function () {
+    var username =  $.cookie('User_TureName')
+    if( username == undefined) {
+        $('.rightNav li').eq(1).css('display','block')
+        $('.rightNav li').eq(2).css('display','block')
+        $('.rightNav li').eq(3).css('display','none')
+        $('.rightNav li').eq(4).css('display','none')
+    }else{
+        $('.loginUser').text(username)
+    }
 })
 
 //过滤函数（如果为零，自动补暂无）

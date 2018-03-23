@@ -40,12 +40,6 @@ $('.form_datetime').datetimepicker({
     showMeridian: 1
 });
 
-//阻止图片轮播
-$('.carousel').carousel({
-    interval: false
-})
-
-
 
 
 

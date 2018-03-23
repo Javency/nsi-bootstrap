@@ -1,39 +1,3 @@
-//搜索页面获取cookie，区别其他页面，未登录也可以开放
-function searchGetCookie() {
-    $(function () {
-        $.ajax({
-            type:"get",
-            async:true,
-            traditional :true,
-            data: {
-                'member_sign':$.cookie('usertitle'),
-                'username':$.cookie('username'),
-                'UserVerifyCode':$.cookie('userVerifyCode')
-            },//提交的参数
-            url:'http://'+changeUrl.address+'/User_api?whereFrom=verify',
-            dataType : "jsonp",//数据类型为jsonp  
-            jsonp: "Callback",//服务端用于接收callback调用的function名的参数  
-            success : function(msg){
-                // alert('成功')
-                console.log(msg.verifyResult);
-                if(msg.verifyResult<0){
-                    console.log($.cookie('usertitle'))
-                    console.log($.cookie('username'))
-                    console.log($.cookie('userVerifyCode'))
-                }else{
-                    $('.loginUser').text( $.cookie('User_TureName'))
-                }
-            },
-            error:function(){
-                alert('发生错误，请求数据失败！');
-            }
-        });
-    })
-}
-//获取cookie
-$(function () {
-    searchGetCookie();
-})
 
 
 //高级搜索 分页可用(权限三的)
@@ -123,15 +87,10 @@ function accessControl02(msg) {
             '<p class="pcHidden">学制：'+zeroToEmpty(msg[i].School_system)+ '</p>'+
             '<p class="pcHidden">课程：'+zeroToEmpty(msg[i].Course)+'</p>'+
             '</div>'+
-            '<div class="pull-right rightInfo mobieHidden">' +
+            '<div class="pull-right rightInfo">' +
             '<p class="clearfix"><span class="glyphicon glyphicon-globe"></span> <span class="schoolSite">'+zeroToEmpty(msg[i].Areas)+'</span></p>' +
             // '<p>提交用户：'+ msg[i].Load_People +'</p>' +
             '<p class="submitTime"><span class="glyphicon glyphicon-time"></span> 提交时间：'+zeroToEmpty( msg[i].Load_Time )+'</p>' +
-            '</div>'+
-            '<div class="text-center pcHidden" style="padding-left:5px;padding-right:5px;">'+
-            '<p style="height:117px;"></p>'+
-            '<span class="glyphicon glyphicon-globe"></span><span class="schoolSite">'+zeroToEmpty( msg[i].Areas )+'</span>'+
-            '<p style="margin-top:2px;"><span class="pull-right"><span class="glyphicon glyphicon-time"></span> <span class="foundedTime"> 提交时间：'+zeroToEmpty(msg[i].Load_Time)+'</span></span></p>'+
             '</div>'+
             '</div>'
         )
@@ -256,14 +215,22 @@ function accessData( fn) {
         $('#generalSearchResult').css('display','none')
     }else{
         var datailSchool = decodeURIComponent(args['whereFrom'])
-        var data01 = {
-            'School_searchKey':datailSchool,
-            'pageNum': 1,
-            'OnePageNum':10
-        }
-        $('#searchContent').val(datailSchool)
-        $('#innerWrap').html('')
-        myAjax(data01,'http://'+changeUrl.address+'/School_api?whereFrom=search',fn)
+        var advanceSearch = decodeURIComponent(args['advanceSearch'])
+        // console.log(datailSchool,advanceSearch)
+            var data01 = {
+                'School_searchKey':datailSchool,
+                'pageNum': 1,
+                'OnePageNum':10
+            }
+            $('#searchContent').val(datailSchool)
+            $('#innerWrap').html('')
+            myAjax(data01,'http://'+changeUrl.address+'/School_api?whereFrom=search',fn)
+          if(advanceSearch == 500){
+              $('#AdvancedSearchID').toggle(500)
+                  window.onload = function () {
+                      $(window).scrollTop(350)
+                  }
+          }
     }
 }
 
