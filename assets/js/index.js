@@ -175,18 +175,93 @@ $(function() {
         aHotSearch.eq($(this).index()).fadeIn(100).siblings().fadeOut(100);
         switch ($(this).index()) {
             case 0:
-                searchBtn.click(function() {
-                    var searchVal = $("#search").val();
-                    window.location.href = '../school/search.html?whereFrom=' + searchVal
+                // searchBtn.click(function() {
+                //     var searchVal = $("#search").val();
+                //     window.location.href = '../school/search.html?whereFrom=' + searchVal
+                // })
+                // search.keydown(function(e) {
+                //     // console.log(1)
+                //     var searchVal = $("#search").val();
+                //     e = e || window.event;
+                //     var curkey = e.which;
+                //     if (curkey == 13) {
+                //         window.location.href = '../school/search.html?whereFrom=' + searchVal
+                //     }
+                // })
+                var searchTips = document.getElementById('serchContent')
+                searchTips.addEventListener("click", function(e) {
+                    // e.stopPropagation()
+                    var target = e.target
+                    $('#search').val(target.innerHTML)
+                    window.location.href = '../school/search.html?whereFrom=' + target.innerHTML
                 })
-                search.keydown(function(e) {
-                    // console.log(1)
-                    var searchVal = $("#search").val();
-                    e = e || window.event;
-                    var curkey = e.which;
-                    if (curkey == 13) {
-                        window.location.href = '../school/search.html?whereFrom=' + searchVal
+
+                //搜索提示
+                $('#search').on('input propertychange', function(e) {
+                        // e.stopPropagation()
+                        $('#serchContent').html('')
+                        var searchVal = $(this).val()
+                        $.ajax({
+                            type: 'get',
+                            url: 'http://' + changeUrl.address + '/School_api?whereFrom=suggestSearch',
+                            data: {
+                                keyword: searchVal
+                            },
+                            success: function(msg) {
+                                if (msg.data.length !== 0) {
+                                    $('#serchContent').removeClass('hide')
+                                    for (var i = 0; i < msg.data.length; i++) {
+                                        $('#serchContent').append(
+                                            '<li>' + msg.data[i] + '</li>'
+                                        )
+                                    }
+                                } else {
+                                    $('#serchContent').addClass('hide')
+                                }
+
+                            },
+                            error: function() {
+                                alert('服务器繁忙，请稍后再试~')
+                            }
+                        })
+                    })
+                    //获取焦点(如果之前输入了值，那么就显示提示)
+                $('#search').focus(function(event) {
+                    // event.stopPropagation()
+                    $('#serchContent').html('')
+                    var searchVal = $(this).val()
+                    if (searchVal !== '') {
+                        $.ajax({
+                            type: 'get',
+                            url: 'http://' + changeUrl.address + '/School_api?whereFrom=suggestSearch',
+                            data: {
+                                keyword: searchVal
+                            },
+                            success: function(msg) {
+                                if (msg.data.length !== 0) {
+                                    $('#serchContent').removeClass('hide')
+                                    for (var i = 0; i < msg.data.length; i++) {
+                                        $('#serchContent').append(
+                                            '<li>' + msg.data[i] + '</li>'
+                                        )
+                                    }
+                                } else {
+                                    $('#serchContent').addClass('hide')
+                                }
+
+                            },
+                            error: function() {
+                                alert('服务器繁忙，请稍后再试~')
+                            }
+                        })
                     }
+                })
+
+                //失去焦点
+                $('#search').blur(function() {
+                    setTimeout(function() {
+                        $('#serchContent').addClass('hide')
+                    }, 300)
                 })
                 break;
             case 1:
@@ -236,10 +311,9 @@ $(function() {
 })
 
 
-$('.hoverClose').on('click',function () {
+$('.hoverClose').on('click', function() {
     $('#toMobile').addClass('hide')
 })
 
 
 console.log('2018-03-06-11:00')
-
