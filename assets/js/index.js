@@ -208,6 +208,7 @@ $(function() {
                                 keyword: searchVal
                             },
                             success: function(msg) {
+                                $('#serchContent').html('')
                                 if (msg.data.length !== 0) {
                                     $('#serchContent').removeClass('hide')
                                     for (var i = 0; i < msg.data.length; i++) {
@@ -238,6 +239,7 @@ $(function() {
                                 keyword: searchVal
                             },
                             success: function(msg) {
+                                $('#serchContent').html('')
                                 if (msg.data.length !== 0) {
                                     $('#serchContent').removeClass('hide')
                                     for (var i = 0; i < msg.data.length; i++) {
