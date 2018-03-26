@@ -120,10 +120,6 @@ $(function() {
 
 })
 
-$(function() {
-
-})
-
 //点击显示图片上传模态框（自制）
 $('#upHeadImg').click(function() {
     $('#upImgModal').animate({
