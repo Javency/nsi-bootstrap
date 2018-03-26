@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,297 +11,193 @@
     <link rel="stylesheet" href="../assets/css/instution/detailInstution.css">
     <link rel="stylesheet" href="../assets/css/outCSS/webuploader.css">
     <link rel="stylesheet" href="../assets/css/school/detailUpImg.css">
+    <!-- animate -->
+    <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/layer/3.1.0/theme/default/layer.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/advice/advice.css">
     <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 </head>
-<body oncontextmenu="return false;" >
-<!--头部-->
-<!--#include virtual="../module/nav02.html" -->
 
-<div class="container-fluid">
-    <ol class="breadcrumb" style="background: transparent;">
-        <li><a href="../other/index.html">首页</a></li>
-        <li><a href="../company/company.html">机构数据库</a></li>
-        <li style="color:#000033">详情</li>
-    </ol>
-</div>
+<body oncontextmenu="return false;">
+    <!--头部-->
+    <!--#include virtual="../module/nav02.html" -->
 
-<div class="container">
-    <div class="jumbotron">
-        <h1 class="instutionName">
-            加载中...
-        </h1>
-        <p>以下是机构的详细信息</p>
-        <p>
-            <a class="btn btn-primary btn-large"  id="backToSearch" href="searchCompany.html">返回机构查询页面</a>
-        </p>
+    <div class="container-fluid">
+        <ol class="breadcrumb" style="background: transparent;">
+            <li><a href="../other/index.html">首页</a></li>
+            <li><a href="../company/company.html">机构数据库</a></li>
+            <li style="color:#000033">详情</li>
+        </ol>
     </div>
-</div>
-<!--<div class="container" style="margin-bottom: 40px;">-->
-    <!--<div class="row">-->
-        <!--<div class="col-sm-12">-->
-            <!--<div class="picMarquee-left">-->
-                <!--<div class="hd">-->
-                    <!--<span  class="instutionName" style="margin-top: 10px;font-weight: bold;font-size:16px;float: left;">卡西欧（中国）贸易有限公司</span>-->
-                    <!--&lt;!&ndash;<span style="margin-top: 10px;color:#999;font-size:12px;float: left;padding-left: 20px;">上传图片，让别人更好的了解你</span>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<span class="btn btn-info">立即上传</span>&ndash;&gt;-->
-                    <!--<a class="next"><span class="glyphicon glyphicon-triangle-right" style="font-size:20px;color: #1E9FFF"></span></a>-->
-                    <!--<a class="prev"><span class="glyphicon glyphicon-triangle-left" style="font-size:20px;color: #1E9FFF"></span></a>-->
-                <!--</div>-->
-                <!--<div class="bd">-->
-                    <!--<ul class="picList">-->
-                        <!--<li>-->
-                            <!--<div class="pic"><a href="http://www.SuperSlide2.com" target="_blank"><img src="../assets/img/companyImg/company01.jpg" /></a></div>-->
-                            <!--&lt;!&ndash;<div class="title"><a href="http://www.SuperSlide2.com" target="_blank">图1</a></div>&ndash;&gt;-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<div class="pic"><a href="http://www.SuperSlide2.com" target="_blank"><img src="../assets/img/companyImg/company02.jpg" /></a></div>-->
-                            <!--&lt;!&ndash;<div class="title"><a href="http://www.SuperSlide2.com" target="_blank">图2</a></div>&ndash;&gt;-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<div class="pic"><a href="http://www.SuperSlide2.com" target="_blank"><img src="../assets/img/companyImg/company03.jpg" /></a></div>-->
-                            <!--&lt;!&ndash;<div class="title"><a href="http://www.SuperSlide2.com" target="_blank">图3</a></div>&ndash;&gt;-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<div class="pic"><a href="http://www.SuperSlide2.com" target="_blank"><img src="../assets/img/companyImg/company04.jpg" /></a></div>-->
-                            <!--&lt;!&ndash;<div class="title"><a href="http://www.SuperSlide2.com" target="_blank">图4</a></div>&ndash;&gt;-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<div class="pic"><a href="http://www.SuperSlide2.com" target="_blank"><img src="../assets/img/companyImg/company05.jpg" /></a></div>-->
-                            <!--&lt;!&ndash;<div class="title"><a href="http://www.SuperSlide2.com" target="_blank">图5</a></div>&ndash;&gt;-->
-                        <!--</li>-->
-                        <!--<li>-->
-                            <!--<div class="pic"><a href="http://www.SuperSlide2.com" target="_blank"><img src="../assets/img/companyImg/company06.jpg" /></a></div>-->
-                            <!--&lt;!&ndash;<div class="title"><a href="http://www.SuperSlide2.com" target="_blank">图6</a></div>&ndash;&gt;-->
-                        <!--</li>-->
-                    <!--</ul>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-         <!--<div class="col-sm-12">-->
-             <!--<p style="padding-top:15px;">您还没有上传展示图片，<a id="upShowImg"><span class="glyphicon glyphicon-open"></span> 立即上传</a></p>-->
-         <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
 
-<!--详细信息-->
-<div class="container" style="margin-bottom: 30px;">
-    <div class="col-lg-8 col-md-8 col-sm-8 overAllBox">
-        <p class="titleH3">新学说机构数据库<span class="pull-right">ID:<span class="headerInstutionID">000001</span></span> </p>
-        <div class="clearfix detailHeader">
-            <div class="pull-left"><img src="../assets/img/schoolNoPic.png" width="130" height="130" id="institutionLogo"></div>
-            <div class="pull-left clearfix">
-                <p class="h3 schoolName" id="Name" style="color: #1E9FFF;font-size: 20px;">加载中...</p>
-                <p>机构标签：<span id="instutionLable">暂无数据</span></p>
-                <div class="clearfix">
-                    <div class="pull-left">
-                        <p><span >类型：<span id="companyType">民办</span></span></p>
-                        <!--<p><span class="School_system">学制：小学；初中；高中；</span></p>-->
-                    </div>
-                    <!--<div class="pull-right">-->
-                        <!--<p><span class="buildTime" >运营状态：<span id="OperationState">运营中</span></span></p>-->
-                    <!--</div>-->
-                </div>
-            </div>
-        </div>
-        <div class="allCourse baseinfo">
-            <h5 class="courseTitle text-center">基本信息</h5>
-            <p>地址：<span id="Areas">暂无数据</span>&nbsp;<span id="Areas02">暂无数据</span>&nbsp;<span id="Areas03">暂无数据</span></p>
-            <p>官网：<a target="_blank" class="Website"><span id="Website">www.xinxueshuo.com</span></a></p>
-            <!--<p class="clearfix"><span class="pull-left" >电话：<span id="Telephone">188888888888</span></span> <span class="pull-right stuLeft" >学制：<span id="School_system">小学；初中；高中</span></span></p>-->
-            <p class="clearfix"><span class="pull-left" >成立时间：<span id="Founded_time">暂无数据</span></span></p>
-            <p>服务简介：<span id="Service"></span></p>
-        </div>
-        <div class="stuAndTech">
-            <h5 class="stuTitle text-center">联系方式</h5>
-            <!--<p><span >国际课程认证时间：<span id="Inter_Course_Founded_time">2015</span></span><span class="stuLeft pull-right" >俱乐部数量：<span id="Club_Num">20</span></span></p>-->
-            <!--<p><span >参加外部考试与评估：<span id="Course_evaluation">IBDP，SAT</span></span><span class="stuLeft pull-right" >生均年投入：<span id="Stu_Year_Investment">10000</span></span></p>-->
-            <!--<p><span >国际课程：<span id="Course">US</span></span><span class="stuLeft pull-right" >总容量（国际部）：<span id="Student_Capacity">2500</span></span></p>-->
-            <!--<p><span >认证：<span id="Authentication">CIE</span></span><span class="stuLeft pull-right" >毕业班人数（国际部）：<span id="Graduated_Stu_Num">2500</span></span></p>-->
-            <!--<p><span >学生主要国籍：<span id="Stu_Dominant_nationality">中国</span></span><span class="stuLeft pull-right" >在校生人数（国际部）：<span id="Student_Num">2000</span></span></p>-->
-            <p>个人姓名：<span id="ContactName">暂无数据</span></p>
-            <p>个人职位：<span id="ContactPosition">暂无数据</span></p>
-            <p>联系电话：<span id="ContactPhone">暂无数据</span></p>
-            <p>联系邮箱：<span id="ContactMail">暂无数据</span></p>
-        </div>
-        <div class="baseInfo" style="padding-right: 20px;">
-            <h5 class="baseTitle text-center">详情&备注</h5>
-            <!--<p><span>校长/国际部主任国籍：<span id="President_Country">美国</span></span><span class="stuLeft pull-right" >总员工数量：<span id="Staff_Num">1500</span></span></p>-->
-            <!--<p><span>教师薪酬（三年经验）：<span id="Teacher_Salary">10000</span></span><span class="stuLeft pull-right" >总教师数量：<span id="Teacher_Num">1500</span></span></p>-->
-            <!--<p><span>师均年培训投入：<span id="Teacher_Year_Investment">10000</span></span><span class="stuLeft pull-right" >外籍教师数量：<span id="Foreign_Teacher_num">1500</span></span></p>-->
-            <!--<p><span>师生比：<span id="Teacher_Stu_ratio">1:5</span></span><span class="stuLeft pull-right" >教师流失率：<span id="Teacher_Retention">5%</span></span></p>-->
-            <p>投资信息：<span id="Investment">暂无数据</span></p>
-            <p>过往服务学校：<span id="ServedSchool">暂无数据</span></p>
-            <p>详细介绍：<span id="Introduction" style="line-height: 1.5;color: #999;"><br>暂无数据</span></p>
-            <p>备注：<span id="Remark" style="line-height: 1.5;color: #0C0C0C;">暂无数据</span></p>
-        </div>
-        <!--<div class="baseInfo" style="min-height: 80px;">-->
-            <!--<h5 class="baseTitle text-center">录入信息</h5>-->
-            <!--<p>录入者：<span id="Load_People">暂无数据</span></p>-->
-            <!--<p>录入时间：<span id="Load_Time">暂无数据</span></p>-->
-        <!--</div>-->
-    </div>
-    <!-- 		右侧工具栏 -->
-    <div class="col-lg-3 col-md-3 col-sm-3 sidebar-offcanvas noprint" id="sidebar" style="float:left; width:200px;margin-left:5%;">
-        <div class="list-group">
-            <a class="list-group-item active">工具栏</a>
-            <a href="javascript:void(0)" class="list-group-item text-center"  id="modifyDetail">修改</a>
-            <!--<a href="javascript:void(0)" class="list-group-item text-center"  id="deleteDetail">删除</a>-->
-            <a href="javascript:void(0)" class="list-group-item text-center" onclick="javascript:window.print()">打印</a>
-            <a href="javascript:void(0)" class="list-group-item text-center" id="upHeadImg">上传logo图片</a>
-            <a href="../other/instruction.html" target="_blank" class="list-group-item text-center" style="color: #1E9FFF;">了解权限</a>
-        </div>
-    </div>
-</div>
 
-<div class="container">
-    <p style="color: #999;margin-left: 30px;margin-bottom: 30px;">如果您在浏览中发现数据有误，可通过 <a href="../user/feedback.html" target="_blank">意见反馈</a> 提交给我们，我们将及时处理。</p>
-</div>
+    <div class="container ptb45">
+        <!-- container -->
+        <div class="row mb30">
+            <div class="col-md-12">
+                <h4 class="school-title">国际学校机构库
+                    <p>ID：<span id="headerInstutionID" class="headerInstutionID"></span></p>
+                </h4>
+                <div class="school-brief clearfix">
+                    <div class="school-brief-img pull-left"><img alt="" id="institutionLogo" width="130" height="130"></div>
+                    <div class="school-brief-content pull-left">
+                        <p class="school-name"><span id="Name"></span></p>
+                        <p>机构标签：<span id="instutionLable"></span></p>
+                        <div class="isP">
+                            <p>类型：<span id="companyType"></span></p>
 
-<div class="container" style="">
-    <div class="row">
-        <div class="col-lg-10 col-md-10 col-sm-10">
-            <h4 style="color:  rgb(33,80,137);margin-bottom: 20px;">参与讨论 <span class="pull-right" style="font-size: 14px;color:#999;">评论内容至少20字，已输入 <span class="characterNum" style="color: #337ab7;font-size: 20px;font-style: italic;">0</span>&nbsp; 字</span></h4>
-            <textarea class="form-control" rows="6" style="border-radius:0;resize: none;" id="textContent" placeholder="您的IP已被记录，请不要做谩骂、恶意中伤、广告等不友好行为"></textarea><br>
-            <p class="pull-left" style="color: #999;font-size: 12px;">*评论在管理员通过后即可显示</p><button class="btn btn-primary pull-right noPass" style="font-size:14px;padding:8px 30px;border-radius: 3px;border-color: transparent;" id="commentSubmitBtn">发布</button>
-        </div>
-        <div class="col-lg-2 col-md-2 col-sm-2"></div>
-    </div>
-</div>
-<br>
-<div class="container">
-    <div class="row">
-        <div class="col-lg-10 col-md-10 col-sm-10" id="outerWrap">
-            <!--<div class="wrapComment">-->
-                <!--<div class="clearfix headerComment">-->
-                    <!--<img src="../assets/img/userLogo.jpg" width="60" height="60" class="pull-left userLogo"/>-->
-                    <!--<div class="pull-left userInfo">-->
-                        <!--<p class="nickName">Tmac-1</p>-->
-                        <!--<p class="userSign">从事教育行业</p>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="commentContent">-->
-                    <!--我觉得很不错-->
-                <!--</div>-->
-                <!--<div  class="clearfix bottomComment">-->
-                    <!--<p class="pull-left">&nbsp;&nbsp;-->
-                        <!--<span id="thumbUp">赞</span><span id="leftBracket">(</span><span id="thumbUpNum">0</span><span id="rightBracket">)</span>&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span> <span class="verticalLine">|</span> <span id="thumbDown">踩</span><span id="leftDownBracket">(</span><span id="thumbDownNum">0</span><span id="rightDownBracket">)</span>&nbsp;<span class="glyphicon glyphicon-thumbs-down" ></span> </p>-->
-                    <!--<p class="pull-right">发表于：2017-09-28</p>-->
-                    <!--<p class="commentId" style="display: block;">12345</p>-->
-                <!--</div>-->
-            <!--</div>-->
-
-            <!--<div class="wrapComment">-->
-                <!--<div class="clearfix" style="border-bottom: 1px dashed #ccc;height: 70px;">-->
-                    <!--<img src="../assets/img/userLogo.jpg" width="60" height="60" class="pull-left userLogo"/>-->
-                    <!--<div class="pull-left userInfo">-->
-                        <!--<p class="nickName">Tmac-1</p>-->
-                        <!--<p class="userSign">从事教育行业</p>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="commentContent">-->
-                    <!--我觉得很不错-->
-                <!--</div>-->
-                <!--<div  class="clearfix bottomComment">-->
-                    <!--<p class="pull-left">&nbsp;&nbsp;<span>赞</span><span>(0)</span>&nbsp;<span class="glyphicon glyphicon-thumbs-up"></span> <span class="verticalLine">|</span> <span>踩</span><span>(0)</span>&nbsp;<span class="glyphicon glyphicon-thumbs-down" ></span> </p>-->
-                    <!--<p class="pull-right">发表于：2017-09-28</p>-->
-                <!--</div>-->
-            <!--</div>-->
-        </div>
-    </div>
-</div>
-
-<input type="text" class= "everyInstutionID"  style="display: none;">
-
-<!--图片上传-->
-<div id="modalBg" style="left: 0;top: 0;right: 0;bottom: 0;">
-    <div class="container" style="position: fixed;top:-400px;z-index: 10;" id="upImgModal">
-        <div class="row">
-            <div class="col-lg-4"></div>
-            <div class="col-lg-8">
-                <div class="panel panel-info" id="modalContent">
-                    <div class="panel-heading" style="padding-right: 0;padding-top: 0;">
-                        <h3 class="panel-title" style="padding-top: 10px;"><span >新学说-图片上传 </span><span class="glyphicon glyphicon-remove pull-right" id="closeUpImg"></span></h3>
-                    </div>
-                    <div class="panel-body">
-                        <div id="wrapper">
-                            <div id="container">
-                                <!--头部，相册选择和格式选择-->
-                                <div id="uploader">
-                                    <div class="queueList">
-                                        <div id="dndArea" class="placeholder">
-                                            <div id="filePicker"></div>
-                                            <p>或将照片拖到这里，目前只支持单张图片上传</p>
-                                            <p>建议尺寸150×150</p>
-                                        </div>
-                                    </div>
-                                    <div class="statusBar" style="display:none;">
-                                        <div class="progress">
-                                            <span class="text">0%</span>
-                                            <span class="percentage"></span>
-                                        </div>
-                                        <div class="info"></div>
-                                        <div class="btns">
-                                            <div id="filePicker2"></div><div class="uploadBtn">开始上传</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
+        <!-- 基本信息 -->
+        <h5 class="baseInfo">基本信息</h5>
+        <div class="baseInfo-desc mb30">
+            <ul class="list clearfix">
+                <li class="clearfix">
+                    <span class="title">成立时间</span>
+                    <span class="content" id="Founded_time"></span>
+                </li>
+                <li class="clearfix">
+                    <span class="title">官网</span>
+                    <span class="content"><a id="Website" target="_"></a></span>
+                </li>
+                <li class="clearfix w100">
+                    <span class="title w15">地址</span>
+                    <span class="content w85" id="Address"></span>
+                </li>
+                <li class="clearfix w100">
+                    <span class="title w15">服务简介</span>
+                    <span class="content w85" id="Service"></span>
+                </li>
+            </ul>
+        </div>
+        <!-- 基本信息 END-->
+
+        <!-- 联系方式 -->
+        <h5 class="baseInfo">联系方式</h5>
+        <div class="baseInfo-desc mb30">
+            <ul class="list clearfix">
+                <li class="clearfix">
+                    <span class="title">个人姓名</span>
+                    <span class="content" id="ContactName"></span>
+                </li>
+                <li class="clearfix">
+                    <span class="title">个人职位</span>
+                    <span class="content" id="ContactPosition"></span>
+                </li>
+                <li class="clearfix">
+                    <span class="title">联系电话</span>
+                    <span class="content" id="ContactPhone"></span>
+                </li>
+                <li class="clearfix">
+                    <span class="title">联系邮箱</span>
+                    <span class="content" id="ContactMail"></span>
+                </li>
+            </ul>
+        </div>
+        <!-- 联系方式 END-->
+
+        <!-- 详情&备注 -->
+        <h5 class="baseInfo">详情&备注</h5>
+        <div class="baseInfo-desc mb30">
+            <ul class="list clearfix">
+                <li class="clearfix w100">
+                    <span class="title w15">投资信息</span>
+                    <span class="content w85" id="Investment"></span>
+                </li>
+                <li class="clearfix w100">
+                    <span class="title w15">过往服务学校</span>
+                    <span class="content w85" id="ServedSchool"></span>
+                </li>
+                <li class="clearfix w100">
+                    <span class="title w15">详细介绍</span>
+                    <span class="content w85" id="Introduction"></span>
+                </li>
+                <li class="clearfix w100">
+                    <span class="title w15">备注</span>
+                    <span class="content w85" id="Remark"></span>
+                </li>
+            </ul>
+        </div>
+        <p class="feedback">如您在浏览过程中发现数据有误，可通过<a href="../user/feedback.html">意见反馈</a>提交给我们，我们将及时处理</p>
+        <!-- 详情&备注 END-->
+        <!-- 评论区 -->
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <h4 style="color:  rgb(33,80,137);margin-bottom: 20px;">参与讨论 <span class="pull-right" style="font-size: 14px;color:#999;">评论内容至少20字，已输入 <span class="characterNum" style="color: #337ab7;font-size: 20px;font-style: italic;">0</span>&nbsp; 字</span>
+                </h4>
+                <textarea class="form-control" rows="6" style="border-radius:0;resize: none;" id="textContent" placeholder="您的IP已被记录，请不要做谩骂、恶意中伤、广告等不友好行为"></textarea><br>
+                <p class="pull-left" style="color: #999;font-size: 12px;">*评论在管理员通过后即可显示</p><button class="btn btn-primary pull-right noPass" style="font-size:14px;padding:8px 30px;border-radius: 3px;border-color: transparent;" id="commentSubmitBtn">发布</button>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2"></div>
         </div>
     </div>
-</div>
+    <!-- container END-->
+    <!--页脚-->
+    <!--#include virtual="../module/footer.html" -->
+    <!--#include virtual="../module/advice.html" -->
+    <!-- 意见弹窗 -->
+    <div class="bg" id="bg">
+        <div class="adviceBox animated" id="adviceBox">
+            <h5 class="adviceBox-title">新学说 - 意见反馈<span class="closeadviceBox" id="closeadviceBox" title="关闭"></span></h5>
+            <form class="details-box">
+                <div class="adviceContent connectUs">
+                    <p>您在浏览网页时遇到什么问题？ （可多选）</p>
+                    <div class="question1">
+                        <input type="checkbox" class="checkbox-primary" id="que1-1" value="性能不好,网页卡慢" name="qusetion">
+                        <label for="que1-1">性能不好,网页卡慢</label><br>
+                        <input type="checkbox" class="checkbox-primary" id="que1-2" value="页面不美观/界面不喜欢" name="qusetion">
+                        <label for="que1-2">页面不美观/界面不喜欢</label><br>
+                        <input type="checkbox" class="checkbox-primary" id="que1-3" value="功能找不到/功能不好用" name="qusetion">
+                        <label for="que1-3">功能找不到/功能不好用</label><br>
+                        <input type="checkbox" class="checkbox-primary" id="que1-4" value="网页在浏览器中显示错乱" name="qusetion">
+                        <label for="que1-4">网页在浏览器中显示错乱</label><br>
+                        <input type="checkbox" class="checkbox-primary" id="que1-5" value="搜索数据不正确" name="qusetion">
+                        <label for="que1-5">搜索数据不正确</label>
+                    </div>
+                    <p class="borderBottomstyle"></p>
+                    <p class="mt15">您对新学说数据库有什么建议？（建议说出具体的问题所在）</p>
+                    <textarea name="" class="advice" id="adviceArea" rows="3" placeholder="新学说团队会不断改进，以带给您更好的用户体验"></textarea>
+                    <p class="borderBottomstyle"></p>
+                    <p class="mt15">请留下您的联系方式，我们将会及时通知您问题处理的进展</p>
+                    <input type="text" class="connect" id="connect" placeholder="请输入联系方式">
+                </div>
+                <div class="text-center">
+                    <input type="button" class="mt15 btn btn-default" value="立即发送" id="send">
+                </div>
+            </form>
+        </div>
+    </div>
 
-
-
-
-
-
-<!-- 模态框（Modal） -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"
-                        aria-hidden="true">×
-                </button>
-                <h4 class="modal-title" id="myModalLabel"  style="font-size:16px;">
-                    系统提示
-                </h4>
-            </div>
-            <div class="modal-body">
-                <p style="margin-bottom: 0px;">如您发现数据有误，可通过 <a href="../user/feedback.html" target="_blank">意见反馈</a> 提交给我们，我们将及时处理，并邮件通知您。</p>
-            </div>
-            <div class="modal-footer">
-                <a href="../other/instruction.html" target="_blank" class="btn btn-primary btn-sm pull-left">了解权限</a>
-                <button type="button" class="btn btn-danger btn-sm"
-                        data-dismiss="modal">关闭
-                </button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<!--页脚-->
-<!--#include virtual="../module/footer.html" -->
-<!--#include virtual="../module/advice.html" -->
-<script src="../assets/js/outJS/jquery.js"></script>
-<script src="../assets/js/outJS/webuploader.js"></script>
-
-<script src="../assets/js/jquery-1.11.1.js"></script>
-<script src="../assets/js/outJS/jquery.SuperSlide.2.1.1.js"></script>
-<script src="../assets/js/bootstrap.min.js"></script>
-<script src="../assets/js/jquery.cookie.js"></script>
-<script src="../assets/js/config.js"></script>
-<script src="../assets/js/instution/publicInstution.js?v=1.0.3"></script>
-<script src="../assets/js/instution/detailInstution.js?v=1.0.6"></script>
-<script src="../assets/js/outJS/uploadInstitutionLogoImg.js"></script>
-
-<!--<script>-->
+    <!-- 意见弹窗 END-->
+    <script src="../assets/js/outJS/jquery.js"></script>
+    <script src="../assets/js/outJS/webuploader.js"></script>
+    <script src="../assets/js/jquery-1.11.1.js"></script>
+    <script src="../assets/js/outJS/jquery.SuperSlide.2.1.1.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/jquery.cookie.js"></script>
+    <script src="../assets/js/config.js"></script>
+    <script src="../assets/js/instution/publicInstution.js?v=1.0.3"></script>
+    <script src="../assets/js/instution/detailInstution.js?v=1.0.6"></script>
+    <script src="../assets/js/outJS/uploadInstitutionLogoImg.js"></script>
+    <script src="https://cdn.bootcss.com/layer/3.1.0/layer.js"></script>
+    <script src="../assets/js/advice/advice.js"></script>
+    <!-- <script src="../assets/js/WechatShare.js"></script> -->
+    <!--<script>-->
     <!--jQuery(".picMarquee-left").slide({mainCell:".bd ul",autoPlay:true,effect:"leftMarquee",vis:3,interTime:50});-->
-<!--</script>-->
+    <!--</script>-->
+    <script>
+        //    var href = window.location.href
+        //    href.replace(/nsi/,'testDevice')
+        //    href.replace(/detailComapny/,'detail')
+        //    console.log(href)
+        //    browserRedirect(href)
+    </script>
+
 
 </body>
+
 </html>
