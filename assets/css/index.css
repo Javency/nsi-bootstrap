@@ -475,6 +475,9 @@
     transition: all .5s;
     position: relative;
     z-index: 99;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .dynamicList>ul>li::before {
