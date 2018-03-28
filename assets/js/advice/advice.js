@@ -7,15 +7,14 @@ $(function() {
         advice = $("#advice").children('a'),
         send = $("#send"),
         windowWidth = $(window).width(),
-        windowHeight = $(window).height(),
-        documentHeight = $(document).height()
+        windowHeight = $(window).height()
 
     adviceBox.click(function(event) {
             event.stopPropagation();
         })
         // 展示
-    advice.click(function() {
-            footerSec.css("padding", 0)
+    $("#advice a,#feedback").click(function() {
+            // footerSec.css("padding", 0)
             adviceBox.removeClass("flipOutY").addClass("flipInY")
             bg.fadeIn(100)
             send.click(function() {
@@ -50,7 +49,11 @@ $(function() {
             })
         })
         // 影藏
-    bg.height(documentHeight).click(function() {
+
+    window.onload=function(){
+        $("#bg").height($(document).height())
+    }
+    bg.click(function() {
         footerSec.css("padding", "30px 0")
         adviceBox.removeClass("flipInY").addClass("flipOutY")
         bg.fadeOut(1000)
