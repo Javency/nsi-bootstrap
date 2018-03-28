@@ -1,8 +1,8 @@
 //登录后的导航条状态
 $(function() {
     // alert(0)
-    console.log($.cookie('usertitle'))
-    console.log($.cookie('username'))
+    // console.log($.cookie('usertitle'))
+    // console.log($.cookie('username'))
     if ($.cookie('usertitle') && $.cookie('username')) {
         //导航条登录显示控制
         // alert(1)
@@ -179,26 +179,6 @@ $(function() {
         switch ($(this).index()) {
             case 0:
                 schoolFlag = true;
-                // searchBtn.click(function() {
-                //     var searchVal = $("#search").val();
-                //     window.location.href = '../school/search.html?whereFrom=' + searchVal
-                // })
-                // search.keydown(function(e) {
-                //     // console.log(1)
-                //     var searchVal = $("#search").val();
-                //     e = e || window.event;
-                //     var curkey = e.which;
-                //     if (curkey == 13) {
-                //         window.location.href = '../school/search.html?whereFrom=' + searchVal
-                //     }
-                // })
-                var searchTips = document.getElementById('serchContent')
-                searchTips.addEventListener("click", function(e) {
-                    // e.stopPropagation()
-                    var target = e.target
-                    $('#search').val(target.innerHTML)
-                    window.location.href = '../school/search.html?whereFrom=' + target.innerHTML
-                })
                 break;
             case 1:
                 schoolFlag = false;
@@ -258,6 +238,14 @@ $('.hoverClose').on('click', function() {
     $('#toMobile').addClass('hide')
 })
 
+
+var searchTips = document.getElementById('serchContent')
+searchTips.addEventListener("click", function(e) {
+    // e.stopPropagation()
+    var target = e.target
+    $('#search').val(target.innerHTML)
+    window.location.href = '../school/search.html?whereFrom=' + target.innerHTML
+})
 
 //搜索提示
 $('#search').on('input propertychange', function(e) {
