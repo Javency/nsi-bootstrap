@@ -1,4 +1,4 @@
-<!-- 省市联动 -->
+// <!-- 省市联动 -->
 //定义数组，存储省份信息
 var province = ["","北京", "上海", "天津", "重庆", "浙江", "江苏", "广东", "福建", "湖南", "湖北", "辽宁",
     "吉林", "黑龙江", "河北", "河南", "山东", "陕西", "甘肃", "新疆", "青海", "山西", "四川",
@@ -362,7 +362,7 @@ function checkRepeatSchool() {
             async : true,
             data: {SchoolName:schoolNameVal},
             success: function(msg) {
-                console.log(msg)
+                // console.log(msg)
                 if(msg.msg == 1){
                     $('.popover-content:eq(0)').css('color','#999')
                     $('.hasError:eq(0)').popover('hide')
@@ -633,6 +633,60 @@ $(function () {
     document.getElementById("School_name").focus()
 })
 
+// 步骤条
+$(function(){
+    var steps=$(".step"),
+        panels=$(".panel"),
+        next=$(".next"),
+        prev=$(".prev")
+
+    // next.click(function(){
+    //     var _index=$(this).index()
+    //     console.log($(this))
+    //     panels.eq(_index).removeClass("show").fadeOut(200)
+    //     panels.eq(_index+1).addClass("show fadeInRight")
+    // })
+    var School_name=$("#School_name"),
+        Areas03=$("#Areas03"),
+        School_system=$("#School_system"),
+        Course=$("#Course")
+
+    $("#School_system,#Areas03,#School_name").on('blur',function(){
+        if(School_name.val()&&Areas03.val()&&School_system.val()){
+            next.eq(0).removeAttr("disabled")
+        }else{
+            next.eq(0).attr("disabled",true)
+        }
+    })
+
+    Course.on("blur",function(){
+        if(Course.val()){
+            next.eq(1).removeAttr("disabled")
+        }
+    })
+
+    next.each(function(i,e){
+        $(this).click(function(){
+            // $('body,html').animate({ scrollTop: 0 }, 500)
+            steps.eq(i).addClass("complete")
+            steps.eq(i+1).addClass("active")
+            panels.eq(i).removeClass("show").fadeOut(200)
+            panels.eq(i+1).addClass("show fadeInRight")
+        })
+    })
+    prev.each(function(i,e){
+        $(this).click(function(){
+            // $('body,html').animate({ scrollTop: 0 }, 500)
+            if(i===0){
+                panels.eq(i+1).removeClass("show").fadeOut(200)
+                panels.eq(i).addClass("show fadeInLeft")
+            }else{
+                panels.eq(i+1).removeClass("show").fadeOut(200)
+                panels.eq(i).removeClass("fadeInRight").addClass("show fadeInLeft")
+            }
+        })
+    })
+})
 
 
 
