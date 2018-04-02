@@ -662,6 +662,8 @@ $(function(){
     Course.on("blur",function(){
         if(Course.val()){
             next.eq(1).removeAttr("disabled")
+        }else{
+            next.eq(1).attr("disabled",true)
         }
     })
 
