@@ -41,6 +41,7 @@ function getQueryStringArgs() {
     return args;
 }
 
+
 //创建列表
 function createList(msg) {
     for (var i = 0; i < msg.length; i++) {
@@ -73,118 +74,8 @@ function createList(msg) {
     }
 }
 
-
-
-// 招聘需求模板
-// function recruitmentTemplatesLoad() {
-//     var val = $("#searchKey").val();
-//     $("#result").html("");
-//     $.ajax({
-//         type: "get",
-//         async: false,
-//         traditional: true,
-//         dataType: "jsonp", //数据类型为jsonp  
-//         jsonp:   "Callback",
-//         data: {
-//             'searchKey': val
-//         }, //提交的参数
-//         url: 'http://' + changeUrl.address + '/talent_api?whereFrom=search',
-//         success: function(msg) {
-//             for (var i = 0; i < msg.length; i++) {
-//                 $("#result").append(
-//                     `
-//                     <div class="container result">
-//                         <div class="row">
-//                             <div class="result_pic col-md-2 col-sm-12 col-xs-12"><img src="" alt=""></div>
-//                             <div class="row result_body col-md-10 col-sm-12 col-xs-12">
-//                                 <p class="col-md-12 col-sm-12 col-xs-12 name"> <a href="#">${msg[i].Id}</a> </p>
-//                                 <p class="col-md-6 col-sm-6 col-xs-6">
-//                                     工作年限：
-//                                     <span>${msg[i].WorkYear}年</span>
-//                                 </p>
-//                                 <p class="col-md-6 col-sm-6 col-xs-6">
-//                                     招聘企业名称：
-//                                     <span>${msg[i].CompanyName}</span>
-//                                 </p>
-//                                 <p class="col-md-6 col-sm-6 col-xs-6">
-//                                     工作地点：
-//                                     <span>${msg[i].WorkPlace}</span>
-//                                 </p>
-//                                 <p class="col-md-6 col-sm-6 col-xs-6">
-//                                     提交时间：
-//                                     <span>${msg[i].UpLoadDate}</span>
-//                                 </p>
-//                             </div>
-//                         </div>
-//                     </div>
-//                 `
-//                 )
-//             }
-//         }
-//     })
-// }
-
-// 点击跳转查询
-// $("#searchKey").on("click", function() {
-//     var val = $("#searchKey").val();
-//     if ($("#rck").is(".active")) {
-//         $("#search").on("click", function() {
-//             // window.location.href = "./search.html?whereFrom=" + val;
-//             talentTemplatesLoad();
-//         })
-//         $("#searchKey").keydown(function(e) {
-//             var curKey = e.which;
-//             if (curKey === 13) {
-//                 // window.location.href = "./search.html?whereFrom=" + val;
-//                 talentTemplatesLoad();
-//                 return false;
-//             }
-//         })
-//     } else {
-//         $("#search").on("click", function() {
-//             // window.location.href = "./zhaopinxinxi.html?whereFrom=" + val;
-//             recruitmentTemplatesLoad();
-//         })
-//         $("#searchKey").keydown(function(e) {
-//             var curKey = e.which;
-//             if (curKey === 13) {
-//                 // window.location.href = "./zhaopinxinxi.html?whereFrom=" + val;
-//                 recruitmentTemplatesLoad();
-//                 return false;
-//             }
-//         })
-//     }
-// })
-
-// 人才搜索
-// $("#search").on("click", function() {
-//     var val = $("#searchKey").val();
-//     if ($("#rck").is(".active")) {
-//         // window.location.href = "./search.html?whereFrom=" + val;
-//         generalSearch()
-//         $("#searchKey").keydown(function(e) {
-//             var curKey = e.which;
-//             if (curKey === 13) {
-//                 // window.location.href = "./search.html?whereFrom=" + val;
-//                 generalSearch();
-//                 return false;
-//             }
-//         })
-//     } else {
-//         // window.location.href = "./zhaopinxinxi.html?whereFrom=" + val;
-//         generalSearch()
-//         $("#searchKey").keydown(function(e) {
-//             var val = $("#searchKey").val(),
-//                 curKey = e.which;
-//             if (curKey === 13) {
-//                 // window.location.href = "./zhaopinxinxi.html?whereFrom=" + val;
-//                 generalSearch();
-//                 return false;
-//             }
-//         })
-//     }
-// })
- $("#search").on("click", function() {
+// 招聘信息
+$("#search").on("click", function() {
     generalSearch()
  })
  $("#searchKey").keydown(function(e) {
@@ -211,7 +102,7 @@ function generalSearch() {
         dataType: "jsonp", //数据类型为jsonp  
         jsonp:   "Callback", //服务端用于接收callback调用的function名的参数  
         success :   function(data) {
-            // console.log(data)
+            console.log(data)
             var totalPages = Math.ceil((data.countAllRS / 20));
             //分页
             layui.use(['layer', 'laypage', 'element'], function() {
