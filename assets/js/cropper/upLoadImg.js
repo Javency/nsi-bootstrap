@@ -1,5 +1,6 @@
 $(function() {
     var $img = $("#image")
+    var dataurl =null;
     $img.cropper({
         aspectRatio: 1 / 1,
         crop: function(data) {
@@ -8,9 +9,8 @@ $(function() {
                 width: 200,
                 height: 200
             })
-            var dataurl = $imgData.toDataURL('image/png');
+             dataurl = $imgData.toDataURL('image/png');
             $("#preview").attr("src", dataurl);
-            $('#getData').val(dataurl)
         }
     })
     //  第一步，将base64转换成二进制图片（Blob）
@@ -30,8 +30,6 @@ $(function() {
 
     function submitImg() {
         //            第二步，构建formData
-        var dataurl = $('#getData').val()
-        // console.log(dataurl)
         var blob = dataURItoBlob(dataurl); // 上一步中的函数
         console.log(blob)
         var canvas = document.createElement('canvas');
@@ -41,31 +39,28 @@ $(function() {
 
         //            第三步，使用AJAX提交
         $.ajax({
-            url: 'http://192.168.0.170:8080/nsi-0.9/Admin_api?whereFrom=GeneralUpImg&UserMai=01&User_TureName=01&FileType=UserPortrait&sql=00',
+            // url: 'http://data.xinxueshuo.cn:80/nsi-0.9/Admin_api?whereFrom=EditorUpImg',
+            url: 'http://' + changeUrl.address + '/Admin_api?whereFrom=OosUpImg',
+            // url: 'http://data.xinxueshuo.cn:80/nsi-0.9/Admin_api?whereFrom=OosUpImg',
             method: 'POST',
             processData: false, //  不会将 data 参数序列化字符串
             contentType: false, //  根据表单 input 提交的数据使用其默认的 contentType
             dataType: 'json',
             data: fd,
             success:function(data) {
-                console.log(data);
+                console.log(data.data[0]);
+                alert('上传成功')
+                $('#Logo').val(data.data[0])
+                $('#myModal').modal('hide')
             }
         });
     }
-    function alertuploadSucccess() {
-        var $width = $(window).width(),
-            $height = $(window).height(),
-            $box = $("#box")
-        // console.log($width, $height)
-            $box.css({
-                "left": ($width - 100) / 2,
-                "top": ($height - 40) / 2,
-            }).show(0).fadeOut(2000)
-
-}
     
     $('#startUpload').click(function() {
-        submitImg()
-        alertuploadSucccess()
+        if( dataurl === null){
+            alert('请选择图片')
+        }else {
+            submitImg()
+        }
     })
 })
