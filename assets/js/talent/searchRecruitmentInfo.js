@@ -44,30 +44,22 @@ function getQueryStringArgs() {
 //创建列表
 function createList(msg) {
     for (var i = 0; i < msg.data01.length; i++) {
-        var template= ' <div class="container result">' +
-                        '<div class="row">' +
-                        '<div class="result_pic col-md-2 col-sm-12 col-xs-12"><i class="iconfont icon-ren1"></i></div> ' +
-                        '<div class="row result_body col-md-10 col-sm-12 col-xs-12">' +
-                        '<p class="col-md-12 col-sm-12 col-xs-12 name"><a href="./detailTalent.html?ID=' + msg.data01[i].Id + '">' + msg.data01[i].Position + '</a></p>' +
-                        '<p class="col-md-6 col-sm-6 col-xs-6">' +
-                        '工作年限：' +
-                        '<span>' + msg.data01[i].Seniority + '</span>' +
-                        '</p>' +
-                        '<p class="col-md-6 col-sm-6 col-xs-6">' +
-                        '招聘企业名称：' +
-                        '<span>' + msg.data01[i].recuitment_name + '</span>' +
-                        '</p>' +
-                        '<p class="col-md-6 col-sm-6 col-xs-6">' +
-                        '工作地点：' +
-                        '<span>' + msg.data01[i].Areas+msg.data01[i].Areas02+msg.data01[i].Areas03+ '</span>' +
-                        '</p>' +
-                        '<p class="col-md-6 col-sm-6 col-xs-6">' +
-                        '提交时间：' +
-                        '<span>' + msg.data01[i].Load_time + '</span>' +
-                        '</p>' +
-                        '</div>' +
-                        '</div>' +
-                        ' </div>'
+        var template= '<div class="col-md-4">'+
+            '<div class="recruitmentBox">'+
+                '<p class="recruitmentTitle clearfix"><a href="./detailTalent.html?ID='+msg.data01[i].Id+'">'+msg.data01[i].Position+'</a><span>'+msg.data01[i].salary01+'</span></p>'+
+                '<p class="jobYear">工作年限：'+msg.data01[i].Seniority+'</p>'+
+                '<div class="types">'+
+                    '<span class="type">'+msg.data01[i].type+'</span>'+
+                '</div>'+
+                '<div class="company clearfix">'+
+                    '<a href="javascript:;" class="comapnyLogo"><img alt="" width="40" height="40"></a>'+
+                    '<div class="companyInfo">'+
+                        '<p class="companyName">'+msg.data01[i].recuitment_name+'</p>'+
+                        '<p class="companyAdd">'+msg.data01[i].Areas+msg.data01[i].Areas02+msg.data01[i].Areas03+'</p>'+
+                    '</div>'+
+                '</div>'+
+            '</div>'+
+        '</div>'
         $("#result").append(template)
     }
 }
