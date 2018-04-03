@@ -157,33 +157,43 @@ function createList(msg) {
 // })
 
 // 人才搜索
-$("#search").on("click", function() {
-    var val = $("#searchKey").val();
-    if ($("#rck").is(".active")) {
-        // window.location.href = "./search.html?whereFrom=" + val;
-        generalSearch()
-        $("#searchKey").keydown(function(e) {
-            var curKey = e.which;
-            if (curKey === 13) {
-                // window.location.href = "./search.html?whereFrom=" + val;
-                generalSearch();
-                return false;
-            }
-        })
-    } else {
-        // window.location.href = "./zhaopinxinxi.html?whereFrom=" + val;
-        generalSearch()
-        $("#searchKey").keydown(function(e) {
-            var val = $("#searchKey").val(),
-                curKey = e.which;
-            if (curKey === 13) {
-                // window.location.href = "./zhaopinxinxi.html?whereFrom=" + val;
-                generalSearch();
-                return false;
-            }
-        })
-    }
-})
+// $("#search").on("click", function() {
+//     var val = $("#searchKey").val();
+//     if ($("#rck").is(".active")) {
+//         // window.location.href = "./search.html?whereFrom=" + val;
+//         generalSearch()
+//         $("#searchKey").keydown(function(e) {
+//             var curKey = e.which;
+//             if (curKey === 13) {
+//                 // window.location.href = "./search.html?whereFrom=" + val;
+//                 generalSearch();
+//                 return false;
+//             }
+//         })
+//     } else {
+//         // window.location.href = "./zhaopinxinxi.html?whereFrom=" + val;
+//         generalSearch()
+//         $("#searchKey").keydown(function(e) {
+//             var val = $("#searchKey").val(),
+//                 curKey = e.which;
+//             if (curKey === 13) {
+//                 // window.location.href = "./zhaopinxinxi.html?whereFrom=" + val;
+//                 generalSearch();
+//                 return false;
+//             }
+//         })
+//     }
+// })
+ $("#search").on("click", function() {
+    generalSearch()
+ })
+ $("#searchKey").keydown(function(e) {
+        var curKey = e.which;
+        if (curKey === 13) {
+            generalSearch();
+            return false;
+        }
+    })
 
 
 //搜索20条
@@ -201,7 +211,7 @@ function generalSearch() {
         dataType: "jsonp", //数据类型为jsonp  
         jsonp:   "Callback", //服务端用于接收callback调用的function名的参数  
         success :   function(data) {
-            console.log(data)
+            // console.log(data)
             var totalPages = Math.ceil((data.countAllRS / 20));
             //分页
             layui.use(['layer', 'laypage', 'element'], function() {
