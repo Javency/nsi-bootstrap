@@ -164,6 +164,37 @@
 }
 
 
+/*智能搜索 */
+
+.serchContent {
+    border: 2px solid #1f508a;
+    width: 456px;
+    background: #FFF;
+    z-index: 1000;
+    position: relative;
+    top: -2px;
+    left: -2px;
+    border-radius: 0 0 4px 4px;
+}
+
+.serchContent>li {
+    cursor: pointer;
+    height: 30px;
+    line-height: 30px;
+    transition: all .3s;
+    text-indent: 10px;
+}
+
+.serchContent>li:hover {
+    background-color: #a2cdf7;
+    color: #FFF;
+}
+
+.hide {
+    display: none;
+}
+
+
 /*主题内容*/
 
 .productList {
@@ -444,6 +475,9 @@
     transition: all .5s;
     position: relative;
     z-index: 99;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .dynamicList>ul>li::before {

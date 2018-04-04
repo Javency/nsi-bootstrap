@@ -1,8 +1,8 @@
 //登录后的导航条状态
 $(function() {
     // alert(0)
-    console.log($.cookie('usertitle'))
-    console.log($.cookie('username'))
+    // console.log($.cookie('usertitle'))
+    // console.log($.cookie('username'))
     if ($.cookie('usertitle') && $.cookie('username')) {
         //导航条登录显示控制
         // alert(1)
@@ -110,7 +110,7 @@ $(function() {
         success: function(msg) {
             for (var i = 0; i < msg.length; i++) {
                 $scrollBox.append(
-                    '<li><a class="white" href="http://data.xinxueshuo.cn/nsi/school/detail.html?whereFrom=search&School_name=' + msg[i].Id + '">• &nbsp;' + msg[i].School_name + '</a></li>'
+                    '<li title='+msg[i].School_name+'><a class="white" href="http://data.xinxueshuo.cn/nsi/school/detail.html?whereFrom=search&School_name=' + msg[i].Id + '">• &nbsp;' + msg[i].School_name + '</a></li>'
                 )
             }
         },
@@ -164,32 +164,25 @@ $(function() {
         }
     })
 
+
     var oUl = $("#searchTab"),
         aLi = oUl.children(),
         aHotSearch = $(".hotContent");
+    schoolFlag = true;
     aLi.on("click", function() {
         var search = $("#search"),
             searchVal = $("#search").val(),
-            searchBtn = $("#SearchButton");
+            searchBtn = $("#SearchButton")
+
         $(this).addClass("activeTab").siblings().removeClass("activeTab");
         aHotSearch.eq($(this).index()).fadeIn(100).siblings().fadeOut(100);
         switch ($(this).index()) {
             case 0:
-                searchBtn.click(function() {
-                    var searchVal = $("#search").val();
-                    window.location.href = '../school/search.html?whereFrom=' + searchVal
-                })
-                search.keydown(function(e) {
-                    // console.log(1)
-                    var searchVal = $("#search").val();
-                    e = e || window.event;
-                    var curkey = e.which;
-                    if (curkey == 13) {
-                        window.location.href = '../school/search.html?whereFrom=' + searchVal
-                    }
-                })
+                schoolFlag = true;
                 break;
             case 1:
+                schoolFlag = false;
+                $('#serchContent').addClass('hide')
                 searchBtn.click(function() {
                     var searchVal = $("#search").val();
                     window.location.href = '../company/searchCompany.html?whereFrom=' + searchVal
@@ -204,6 +197,8 @@ $(function() {
                 })
                 break;
             case 2:
+                schoolFlag = false;
+                $('#serchContent').addClass('hide')
                 searchBtn.click(function() {
                     var searchVal = $("#search").val();
                     window.location.href = '../talent/searchTalent.html?whereFrom=' + searchVal
@@ -218,6 +213,8 @@ $(function() {
                 })
                 break;
             case 3:
+                schoolFlag = false;
+                $('#serchContent').addClass('hide')
                 searchBtn.click(function() {
                     var searchVal = $("#search").val();
                     window.location.href = '../project/searchProject.html?whereFrom=' + searchVal
@@ -232,14 +229,102 @@ $(function() {
                 })
                 break;
         }
+        // console.log(schoolFlag)
     })
 })
 
 
-$('.hoverClose').on('click',function () {
+$('.hoverClose').on('click', function() {
     $('#toMobile').addClass('hide')
 })
 
 
-console.log('2018-04-03-16:40')
 
+var searchTips = document.getElementById('serchContent')
+searchTips.addEventListener("click", function(e) {
+    // e.stopPropagation()
+    var target = e.target
+    $('#search').val(target.innerHTML)
+    window.location.href = '../school/search.html?whereFrom=' + target.innerHTML
+})
+
+//搜索提示
+$('#search').on('input propertychange', function(e) {
+    // e.stopPropagation()
+    // $('#serchContent').html('')
+    var searchVal = $(this).val()
+        // console.log(schoolFlag)
+    if (schoolFlag) {
+        $.ajax({
+            type: 'get',
+            url: 'http://' + changeUrl.address + '/School_api?whereFrom=suggestSearch',
+            data: {
+                keyword: searchVal
+            },
+            success: function(msg) {
+                $('#serchContent').html('')
+                if (msg.data.length !== 0) {
+                    $('#serchContent').removeClass('hide')
+                    for (var i = 0; i < msg.data.length; i++) {
+                        $('#serchContent').append(
+                            '<li>' + msg.data[i] + '</li>'
+                        )
+                    }
+                } else {
+                    $('#serchContent').addClass('hide')
+                }
+
+            },
+            error: function() {
+                alert('服务器繁忙，请稍后再试~')
+            }
+        })
+    }
+})
+
+//获取焦点(如果之前输入了值，那么就显示提示)
+$('#search').focus(function(event) {
+    // event.stopPropagation()
+    // $('#serchContent').html('')
+    var searchVal = $(this).val()
+        // console.log(schoolFlag)
+    if (schoolFlag) {
+        console.log(1)
+        if (searchVal !== '') {
+            $.ajax({
+                type: 'get',
+                url: 'http://' + changeUrl.address + '/School_api?whereFrom=suggestSearch',
+                data: {
+                    keyword: searchVal
+                },
+                success: function(msg) {
+                    $('#serchContent').html('')
+                    if (msg.data.length !== 0) {
+                        $('#serchContent').removeClass('hide')
+                        for (var i = 0; i < msg.data.length; i++) {
+                            $('#serchContent').append(
+                                '<li>' + msg.data[i] + '</li>'
+                            )
+                        }
+                    } else {
+                        $('#serchContent').addClass('hide')
+                    }
+
+                },
+                error: function() {
+                    alert('服务器繁忙，请稍后再试~')
+                }
+            })
+        }
+    }
+
+})
+
+//失去焦点
+$('#search').blur(function() {
+    setTimeout(function() {
+        $('#serchContent').addClass('hide')
+    }, 300)
+})
+
+console.log('2018-04-03-16:40')
