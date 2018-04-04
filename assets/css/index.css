@@ -147,7 +147,7 @@
     border-radius: 4px;
     margin-left: 1px;
 }
-
+#search:focus{  box-shadow: 0 0 12px #000;}
 #SearchButton {
     /*background-image: url(search-button.png);*/
     width: 78px;

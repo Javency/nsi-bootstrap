@@ -239,6 +239,7 @@ $('.hoverClose').on('click', function() {
 })
 
 
+
 var searchTips = document.getElementById('serchContent')
 searchTips.addEventListener("click", function(e) {
     // e.stopPropagation()
@@ -326,4 +327,4 @@ $('#search').blur(function() {
     }, 300)
 })
 
-console.log('2018-03-06-11:00')
+console.log('2018-04-03-16:40')

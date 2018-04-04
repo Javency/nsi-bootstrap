@@ -72,7 +72,7 @@
 
 /* 企业简介 */
 
-#corporateProfile {
+#Intro {
     width: 84%;
     height: 80%;
     outline: none;
@@ -252,8 +252,8 @@
 
 /* 职位描述 */
 
-#jobDes,
-#treatment {
+#Job_requirement,#Job_weal,
+#Job_description {
     resize: none;
     width: 100%;
     border-radius: 4px;
@@ -270,11 +270,6 @@
     margin-right: 15px;
 }
 
-#jobManage_tab2 {
-    display: none;
-}
-
-
 /* 剪裁图片 */
 
 #cropperPic {
@@ -283,17 +278,3 @@
     overflow: hidden;
 }
 
-
-/*上传成功*/
-
-#box {
-    width: 100px;
-    height: 40px;
-    line-height: 40px;
-    text-align: center;
-    background: rgba(0, 0, 0, 0.8);
-    color: #FFF;
-    border-radius: 5px;
-    position: absolute;
-    display: none;
-}
