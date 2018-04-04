@@ -42,17 +42,22 @@ function getQueryStringArgs() {
 
 
 //创建列表
+
+function judgeSalary(salary01,salary02){
+   return salary01==="面议"?"面议":salary01+'K-'+salary02+'K'
+}
+
 function createList(msg) {
     for (var i = 0; i < msg.data01.length; i++) {
         var template= '<div class="col-md-4">'+
             '<div class="recruitmentBox">'+
-                '<p class="recruitmentTitle clearfix"><a href="./detailTalent.html?ID='+msg.data01[i].Id+'">'+msg.data01[i].Position+'</a><span>'+msg.data01[i].salary01+'</span></p>'+
+                '<p class="recruitmentTitle clearfix"><a href="./detailRecruitment.html?ID='+msg.data01[i].Id+'">'+msg.data01[i].Position+'</a><span>'+judgeSalary(msg.data01[i].salary01,msg.data01[i].salary02)+'</span></p>'+
                 '<p class="jobYear">工作年限：'+msg.data01[i].Seniority+'</p>'+
                 '<div class="types">'+
                     '<span class="type">'+msg.data01[i].type+'</span>'+
                 '</div>'+
                 '<div class="company clearfix">'+
-                    '<a href="javascript:;" class="comapnyLogo"><img alt="" width="40" height="40"></a>'+
+                    '<a href="javascript:;" class="comapnyLogo"><img src="'+msg.data02[i].Logo+'" alt="" width="40" height="40"></a>'+
                     '<div class="companyInfo">'+
                         '<p class="companyName">'+msg.data01[i].recuitment_name+'</p>'+
                         '<p class="companyAdd">'+msg.data01[i].Areas+msg.data01[i].Areas02+msg.data01[i].Areas03+'</p>'+
@@ -93,7 +98,7 @@ function generalSearch() {
         // jsonp:   "Callback", //服务端用于接收callback调用的function名的参数  
         success:function(data) {
             // console.log(data.data01)
-            var totalPages = Math.ceil((data.count / 10));
+            var totalPages = Math.ceil((data.count / 12));
             // console.log(totalPages)
             //分页
             layui.use(['layer', 'laypage', 'element'], function() {
@@ -113,7 +118,7 @@ function generalSearch() {
                         var data01 = {
                             'recuitment_searchKey': passVal,
                             'pageNum': obj.curr,
-                            'OnePageNum': 10
+                            'OnePageNum': 12
                         }
                         if (data.count !== 0) {
                             myAjax(data01, "http://" + changeUrl.address + "/Recuitment_api?whereFrom=job_search", createList)
@@ -139,7 +144,7 @@ function initLoad(fn) {
         var data02 = {
             'recuitment_searchKey': '',
             'pageNum': 1,
-            'OnePageNum': 40
+            'OnePageNum': 12
         }
         myAjax(data02, 'http://' + changeUrl.address + '/Recuitment_api?whereFrom=job_search', fn)
     } else {
@@ -147,7 +152,7 @@ function initLoad(fn) {
         var data01 = {
             'recuitment_searchKey': datailRecruitment,
             'pageNum': 1,
-            'OnePageNum': 40
+            'OnePageNum': 12
         }
         $('#searchKey').val(datailRecruitment)
         $('#result').html('')

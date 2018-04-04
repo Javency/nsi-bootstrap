@@ -9,6 +9,7 @@
     <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://at.alicdn.com/t/font_383860_nhxwtt632xu5wmi.css">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_616804_678w1t3vo45qm2t9.css">
     <link rel="stylesheet" href="../assets/css/talent/talPublic.css?v=1.0.2">
     <link rel="stylesheet" href="../assets/css/layui.css">
     <link rel="stylesheet" href="../assets/css/talent/talent.css">
@@ -34,10 +35,15 @@
         <div class="row text-center talentBtn">
             <!-- 加入新学说数据库&发布招聘需求 -->
             <div class="col-md-6 col-sm-6 join">
-                <a href="./createresume.html" id="join" class="title_desc">加入新学说人才数据库<span>获众多人才认可信赖</span></a>
+                <a href="./createresume.html" id="join" class="title_desc"><span class="iconfont icon-jiarujiazuxianxing tochange"></span></a>
+                <p class="talentBtnDesc">加入人才库</p>
             </div>
-            <div class="col-md-6 col-sm-6 release">
-                <a href="./releaseRecruit.html" id="release" class="title_desc">发布招聘需求<span>更加专业的团队在我们这里，期待你的加入</span></a>
+            <!--<div class="col-md-6 col-sm-6 release">-->
+            <!--<a href="./releaseRecruit.html" id="release" class="title_desc animated">发布招聘需求<span>更加专业的团队在我们这里，期待你的加入</span></a>-->
+            <!--</div>-->
+            <div class="col-md-6 col-sm-6 release" onclick="alert('更新中，敬请期待')">
+                <a id="release" class="title_desc" href="javascript:;"><span class="iconfont icon-fabu tochange"></span></a>
+                <p class="talentBtnDesc">发布招聘</p>
             </div>
         </div>
     </div>
@@ -50,9 +56,6 @@
                     <li class="dib">
                         <input type="button" value="招聘信息" name="" class="active rck" id="zpxi">
                     </li>
-                    <!--<li class="dib ">-->
-                    <!--<input type="button" value="招聘需求" name="" id="zpxq">-->
-                    <!--</li>-->
                 </ul>
             </div>
             <div class="row">
@@ -75,36 +78,7 @@
     <!-- 搜索结果 -->
     <div>
         <div class="container">
-            <div class="row mb15" id="result">
-                <div class="col-md-4">
-                    <div class="recruitmentBox">
-                        <p class="recruitmentTitle clearfix"><a href="javascript:;">英语翻译</a><span>3K-5K</span></p>
-                        <p class="jobYear">经验应届毕业生</p>
-                        <div class="types">
-                            <span class="type">教育</span>
-                            <span>教育</span>
-                            <span>教育</span>
-                        </div>
-                        <div class="company clearfix">
-                            <a href="javascript:;" class="comapnyLogo"><img alt="" width="40" height="40"></a>
-                            <div class="companyInfo">
-                                <p class="companyName">新学说</p>
-                                <p class="companyAdd">北京西城区</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="recruitmentBox">
-                        
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="recruitmentBox">
-                        
-                    </div>
-                </div>
-            </div>
+            <div class="row mb15" id="result"></div>
         </div>
     </div>
     <!-- 分页 -->

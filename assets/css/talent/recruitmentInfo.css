@@ -8,10 +8,13 @@
     transition: all .3s;
     padding: 15px;
     position: relative;
-    box-shadow: 0 0 3px#ccc;
+    box-shadow: 0 0 3px #ccc;
+    /* box-shadow: 0 0 3px #215089; */
+    margin-bottom: 15px;
 }
 .recruitmentBox:hover{
-    box-shadow: 0 8px 16px 0 rgba(7, 17, 27, .1);
+    /* box-shadow: 0 8px 16px 0 rgba(7, 17, 27, .1); */
+    box-shadow: 0 8px 16px 0 rgb(33, 80, 137);
 }
 .recruitmentTitle{
     max-width: 145px;
@@ -50,7 +53,7 @@
 }
 .types>span{
     display: inline-block;
-    width: 61px;
+    /* width: 61px; */
     height: 26px;
     padding: 0 5px;
     font-size: 12px;
@@ -79,4 +82,8 @@
 }
 .companyAdd{
     color: #999;
+    max-width: 275px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

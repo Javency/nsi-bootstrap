@@ -83,17 +83,22 @@
 
 .talentBtn>.col-md-6>a {
     display: inline-block;
+    width: 90px;
+    height: 90px;
+    line-height:90px;
+    text-align: center;
+    background: #f3f3f3;
     position: relative;
     font-size: 20px;
     text-decoration: none;
     color: #000;
-    padding: 10px 10px 10px 41px;
-    border-radius: 4px;
+    border-radius: 50px;
+    transition: all .5s;
     /* box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 6px, rgba(0, 0, 0, 0.24) 0px 1px 2px; */
-    box-shadow: 0 0 10px #215089;
+    /* box-shadow: 0 0 10px #215089; */
 }
 
-.talentBtn>.col-md-6>a::before {
+/* .talentBtn>.col-md-6>a::before {
     display: inline-block;
     content: "";
     width: 30px;
@@ -102,29 +107,30 @@
     left: 8px;
     top: 10px;
     transition: all .5s;
-}
+} */
 
 .talentBtn>.col-md-6>a.title_desc>span {
-    display: inline-block;
-    content: "";
-    /* width: 100px; */
-    /* height: 30px; */
-    position: absolute;
-    /* background: #000; */
-    left: 0;
-    bottom: -25px;
-    font-size: 12px;
-    color: #888;
-    text-align: left;
-    font-size: 15px;
-    text-indent: 6px;
+   font-size: 55px;
+   color: #3775bf
 }
 
+.talentBtnDesc{
+    color: #888;
+    /* text-align: left; */
+    font-size: 15px;
+}
+
+.talentBtn>.col-md-6>a:hover{
+    background: #3775bf;
+}
+.talentBtn>.col-md-6>a:hover .tochange{
+    color: #f3f3f3
+}
 .join,
 .release {
     padding-top: 20px;
 }
-
+/* 
 .talentBtn>.col-md-6>a#join::before {
     background: url("../../img/talent/join.png");
     background-size: 100% 100%;
@@ -133,7 +139,7 @@
 .talentBtn>.col-md-6>a#release::before {
     background: url("../../img/talent/goto.png");
     background-size: 100% 100%;
-}
+} */
 
 
 /* .talentBtn>.col-md-6>a#join::after {
@@ -143,10 +149,10 @@
 .talentBtn>.col-md-6>a#release::after {
     content: "更加专业的团队在我们这里，期待你的加入"
 } */
-
+/* 
 #release {
     text-align: left;
-}
+} */
 
 #release span {
     width: 300px;
@@ -181,7 +187,7 @@
 /* 搜索框 */
 
 .searchPart {
-    padding-top: 60px;
+    padding-top: 30px;
 }
 
 .searchPart .btns {
