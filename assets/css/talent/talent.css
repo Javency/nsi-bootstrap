@@ -76,11 +76,6 @@
 /* 加入新学说数据库&发布招聘需求 */
 
 
-/* .talentBtn {
-    padding-top: 20px;
-    padding-bottom: 45px;
-} */
-
 .talentBtn>.col-md-6>a {
     display: inline-block;
     width: 90px;
@@ -98,16 +93,7 @@
     /* box-shadow: 0 0 10px #215089; */
 }
 
-/* .talentBtn>.col-md-6>a::before {
-    display: inline-block;
-    content: "";
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    left: 8px;
-    top: 10px;
-    transition: all .5s;
-} */
+
 
 .talentBtn>.col-md-6>a.title_desc>span {
    font-size: 55px;
@@ -130,29 +116,7 @@
 .release {
     padding-top: 20px;
 }
-/* 
-.talentBtn>.col-md-6>a#join::before {
-    background: url("../../img/talent/join.png");
-    background-size: 100% 100%;
-}
 
-.talentBtn>.col-md-6>a#release::before {
-    background: url("../../img/talent/goto.png");
-    background-size: 100% 100%;
-} */
-
-
-/* .talentBtn>.col-md-6>a#join::after {
-    content: "获众多人才认可信赖"
-}
-
-.talentBtn>.col-md-6>a#release::after {
-    content: "更加专业的团队在我们这里，期待你的加入"
-} */
-/* 
-#release {
-    text-align: left;
-} */
 
 #release span {
     width: 300px;

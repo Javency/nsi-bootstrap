@@ -1,34 +1,4 @@
 // 点击跳转查询
-
-// $("#search").on("click", function() {
-//     var val = $("#searchKey").val();
-//     if ($("#rck").is(".active")) {
-//         window.location.href = "./searchTalent.html?whereFrom=" + val;
-//         // talentTemplatesLoad()
-//         $("#searchKey").keydown(function(e) {
-//             var curKey = e.which;
-//             if (curKey === 13) {
-//                 window.location.href = "./searchTalent.html?whereFrom=" + val;
-//                 talentTemplatesLoad();
-//                 return false;
-//             }
-//         })
-//     } else {
-//         window.location.href = "./searchRecruitmentInfo.html?whereFrom=" + val;
-//         // recruitmentTemplatesLoad()
-//         $("#searchKey").keydown(function(e) {
-//             var val = $("#searchKey").val(),
-//                 curKey = e.which;
-//             if (curKey === 13) {
-//                 console.log("123")
-//                 window.location.href = "./searchRecruitmentInfo.html?whereFrom=" + val;
-//                 // recruitmentTemplatesLoad();
-//                 return false;
-//             }
-//         })
-//     }
-// })
-
 $(function () { 
     $("#search").click(function () { 
         var val=$("#searchKey").val()
@@ -51,3 +21,26 @@ $(function () {
         }
      })
  })
+
+
+//是否可以进入人才库
+$.ajax({
+    type:'get',
+    url:'http://'+changeUrl.address+'/manager/talent/check_upfile.do',
+    data:{
+        userMail:$.cookie('username')
+    },
+    success:function (msg) {
+        console.log(msg)
+        if(msg.code == 0){
+            $('#join').on('click',function () {
+                alert('您已提交简历，可在个人中心查看')
+                return false;
+            })
+        }else {
+            $('#join').on('click',function () {
+                window.location.href='./createresume.html'
+            })
+        }
+    }
+})

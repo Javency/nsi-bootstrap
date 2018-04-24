@@ -1,272 +1,223 @@
-
-//获取我的简历信息
-function getResumeInfo() {
-    $.ajax({
-        type: "get",
-        async: false,
-        traditional: true,
-        data: {
-            Id:$.cookie('username')
-        },//提交的参数
-        url: 'http://' + changeUrl.address + '/talent_api?whereFrom=detail',
-        dataType: "jsonp",//数据类型为jsonp  
-        jsonp: "Callback",//服务端用于接收callback调用的function名的参数  
-        success: function (msg) {
-            console.log(msg)
-            $('#Name').val(msg[0].Name)
-            if( msg[0].Sex == 0){
-                $("#optionsRadios2").attr('checked','checked')
-            }else {
-                $("#optionsRadios1").attr('checked','checked')
-            }
-            $('#Phone').val(msg[0].Phone)
-            $('#Mail').val(msg[0].Mail)
-            $('#Education').val(msg[0].Education)
-            $('#Major').val(msg[0].Major)
-            $('#NowWorkplace').val(msg[0].NowWorkplace)
-            $('#WorkYear').val(msg[0].WorkYear)
-            if( msg[0].Public == 0){
-                $("#optionsRadios4").attr('checked','checked')
-            }else {
-                $("#optionsRadios3").attr('checked','checked')
-            }
-
-            $('#ExpectWorkPlace').val(msg[0].ExpectWorkPlace)
-            $('#ExpectWorkPosition').val(msg[0].ExpectWorkPosition)
-            $('#ExpectSalary').val(msg[0].ExpectSalary)
-            $('#Other').val(msg[0].Other)
-
-            $('#WorkExperience').val(msg[0].WorkExperience)
-            $('#EducationBackground').val(msg[0].EducationBackground)
-            $('#TrainingBackground').val(msg[0].TrainingBackground)
-        },
-        error: function () {
-            alert('网络繁忙，请稍后再试！');
-        }
-    });
-}
-
-//过滤函数（如果为空，自动补零）
-function autoAddZero( str ) {
-    var strFilter = null;
-    return strFilter = (str == '')? 0 : str;
-}
-
-//全局查询结果定义
-var checkNameResult = null;
-var checkPhoneResult = null;
-var checkMailResult =null;
-var checkEducationResult = null;
-var checkNowWorkplaceResult = null;
-var checkWorkYearResult = null;
-
-//用户名不能为空的验证
-function checkName(){
-    if($('#Name').val() ==''){
-        $('.hasError').eq(0).addClass('has-error')
-        $('.hasError:eq(0) span').removeClass('hide')
-        $('.NameCheck').text('姓名不能为空')
-        $('.NameCheck').css('color','red')
-        checkNameResult = false;
-    }else{
-        $('.NameCheck').text('')
-        $('.hasError').eq(0).removeClass('has-error')
-        $('.hasError:eq(0) span').addClass('hide')
-        checkNameResult = true;
-    }
-}
-
-//手机号码不能为空的验证
-function checkPhone(){
-    if($('#Phone').val() ==''){
-        $('.hasError').eq(2).addClass('has-error')
-        $('.hasError:eq(2) span').removeClass('hide')
-        $('.PhoneCheck').text('电话号码不能为空')
-        $('.PhoneCheck').css('color','red')
-        checkPhoneResult = false;
-    }else{
-        $('.PhoneCheck').text('')
-        $('.hasError').eq(2).removeClass('has-error')
-        $('.hasError:eq(2) span').addClass('hide')
-        checkPhoneResult = true;
-    }
-}
-
-//邮箱不能为空的验证
-function checkMail(){
-    if($('#Mail').val() ==''){
-        $('.hasError').eq(3).addClass('has-error')
-        $('.hasError:eq(3) span').removeClass('hide')
-        $('.MailCheck').text('邮箱不能为空')
-        $('.MailCheck').css('color','red')
-        checkMailResult = false;
-    }else{
-        $('.MailCheck').text('')
-        $('.hasError').eq(3).removeClass('has-error')
-        $('.hasError:eq(3) span').addClass('hide')
-        checkMailResult = true;
-    }
-}
-
-//最高学历不能为空的验证
-function checkEducation(){
-    if($('#Education').val() ==''){
-        $('.hasError').eq(4).addClass('has-error')
-        $('.hasError:eq(4) span').removeClass('hide')
-        $('.EducationCheck').text('最高学历不能为空')
-        $('.EducationCheck').css('color','red')
-        checkEducationResult = false;
-    }else{
-        $('.EducationCheck').text('')
-        $('.hasError').eq(4).removeClass('has-error')
-        $('.hasError:eq(4) span').addClass('hide')
-        checkEducationResult = true;
-    }
-}
-
-//专业不能为空的验证
-function checkMajor(){
-    if($('#Major').val() ==''){
-        $('.hasError').eq(5).addClass('has-error')
-        $('.hasError:eq(5) span').removeClass('hide')
-        $('.MajorCheck').text('专业不能为空')
-        $('.MajorCheck').css('color','red')
-        checkMajorResult = false;
-    }else{
-        $('.MajorCheck').text('')
-        $('.hasError').eq(5).removeClass('has-error')
-        $('.hasError:eq(5) span').addClass('hide')
-        checkMajorResult = true;
-    }
-}
-
-//工作单位不能为空的验证
-function checkNowWorkplace(){
-    if($('#NowWorkplace').val() ==''){
-        $('.hasError').eq(6).addClass('has-error')
-        $('.hasError:eq(6) span').removeClass('hide')
-        $('.NowWorkplaceCheck').text('工作单位不能为空')
-        $('.NowWorkplaceCheck').css('color','red')
-        checkNowWorkplaceResult = false;
-    }else{
-        $('.NowWorkplaceCheck').text('')
-        $('.hasError').eq(6).removeClass('has-error')
-        $('.hasError:eq(6) span').addClass('hide')
-        checkNowWorkplaceResult = true;
-    }
-}
-
-//工作年限不能为空的验证
-function checkWorkYear(){
-    if($('#WorkYear').val() ==''){
-        $('.hasError').eq(7).addClass('has-error')
-        $('.hasError:eq(7) span').removeClass('hide')
-        $('.WorkYearCheck').text('工作年限不能为空')
-        $('.WorkYearCheck').css('color','red')
-        checkWorkYearResult = false;
-    }else{
-        $('.WorkYearCheck').text('')
-        $('.hasError').eq(7).removeClass('has-error')
-        $('.hasError:eq(7) span').addClass('hide')
-        checkWorkYearResult = true;
-    }
-}
-
-var timeNum = 5
-function autoJump() {
-    $('.timeNum').text(timeNum)
-    timeNum--;
-    // console.log(timeNum)
-    if(timeNum == 0){
-        window.location.href = '../user/userInfo.html'
-    }
-}
-
-//表单提交（注意：只能绑定在标签内部）
-function formSubmit() {
-    checkName();
-    checkPhone();
-    checkMail();
-    checkEducation();
-    checkMajor();
-    checkNowWorkplace();
-    checkWorkYear();
-    //全局查询结果定义
-    var Sex = $('#Sex input:radio:checked').val()
-    var Public = $('#Public input:radio:checked').val()
-    var UserMail= $.cookie('username')
-    if (  checkNameResult == true && checkPhoneResult == true && checkMailResult == true && checkEducationResult == true  && checkNowWorkplaceResult == true && checkWorkYearResult == true ) {
-        var insertData = {
-            'Name': autoAddZero($('#Name').val()),
-            'Sex': Sex,
-            'Phone': autoAddZero($('#Phone').val()),
-            'Mail': autoAddZero($('#Mail').val()),
-            'Education': autoAddZero($('#Education').val()),
-            'Major': autoAddZero($('#Major').val()),
-            'NowWorkplace': autoAddZero($('#NowWorkplace').val()),
-            'WorkYear': autoAddZero($('#WorkYear').val()),
-            'ExpectWorkPlace': autoAddZero($('#ExpectWorkPlace').val()),
-            'ExpectWorkPosition': autoAddZero($('#ExpectWorkPosition').val()),
-            'ExpectSalary': autoAddZero($('#ExpectSalary').val()),
-            'Other': autoAddZero($('#Other').val()),
-            'WorkExperience': autoAddZero($('#WorkExperience').val()),
-            'EducationBackground': autoAddZero($('#EducationBackground').val()),
-            'TrainingBackground': autoAddZero($('#TrainingBackground').val()),
-            'Public': Public,
-
-            'UserMail': UserMail
-
-        }
-        $.ajax({
-            type: "get",
-            async: false,
-            traditional: true,
-            data: insertData,//提交的参数
-            url: 'http://' + changeUrl.address + '/talent_api?whereFrom=insert',
-            dataType: "jsonp",//数据类型为jsonp  
-            jsonp: "Callback",//服务端用于接收callback调用的function名的参数  
-            beforeSend:function() { //触发ajax请求开始时执行
-                $('#insertSubmit').text('提交数据中...');
-                $('#insertSubmit').addClass('disabled')
-                $('#insertSubmit').attr('onclick','javascript:void();');//改变提交按钮上的文字并将按钮设置为不可点击
-            },
-            success: function (msg) {
-                console.log(msg)
-                $('.shadowWrap').removeClass('hide')
-                $('#autoJump').removeClass('hide')
-                if(msg.msg ==1){
-                   setInterval(function () {
-                       autoJump()
-                   },1000)
-                    $('#insertSubmit').text('立即提交');
-                    $('#insertSubmit').removeClass('disabled')
-                }else {
-                    $('#insertSubmit').text('立即提交');
-                    $('#insertSubmit').removeClass('disabled')
-                    $('#insertSubmit').attr('onclick','formSubmit();');//改变提交按钮上的文字并将按钮设置为可点击
-                }
-            },
-            error: function () {
-                alert('网络繁忙，请稍后再试！');
-                $('#insertSubmit').text('立即提交');
-                $('#insertSubmit').removeClass('disabled')
-                $('#insertSubmit').attr('onclick','formSubmit();');//改变提交按钮上的文字并将按钮设置为可点击
-            }
-        });
-    } else {
-        $('#myModal').modal({
-            keyboard: true
-        })
-    }
-}
-
 $(function () {
     getCookie()
-    getResumeInfo()
 })
 
+function autoChangeStyle( obj ) {
+    var val = $(obj).val()
+    var reg = new RegExp('\n','g');
+    val = val.replace(reg,'</p><p>')
+    return val = '<p>' + val + '</p>'
+}
+
+function closeChangeStyle( obj ) {
+    if(obj){
+        var reg = new RegExp('</p><p>','g')
+        var newObj = obj.replace(reg,'\n')
+        return newObj.slice(3,newObj.length-4)
+    }else {
+        return obj
+    }
+
+}
+layui.use(['form', 'layedit', 'laydate','layer','upload'], function(){
+    var form = layui.form
+        ,layer = layui.layer
+        ,layedit = layui.layedit
+        ,laydate = layui.laydate
+        ,layer = layui.layer
+        ,upload = layui.upload
+
+    form.render();
+    //日期
+    laydate.render({
+        elem: '#entryTime'
+        ,type: 'month'
+        ,range: '~'
+        ,format: 'yyyy-MM'
+    });
+
+    //自定义验证规则
+    form.verify({
+        title: function(value){
+            if(value.length < 5){
+                return '标题至少得5个字符啊';
+            }
+        }
+        ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+        ,content: function(value){
+            layedit.sync(editIndex);
+        }
+    });
+
+
+    //监听指定开关
+    var isPublic = "是"
+    form.on('switch(onoffSwitch)', function(data){
+        this.checked ? isPublic="是" : isPublic="否";
+    });
+
+
+    //选完文件后不自动上传
+   document.getElementById('addAffix').addEventListener('click',function (e) {
+       // console.log(e.target.nextSibling)
+       $(e.target.nextSibling).change(function () {
+           $('#upAffix').removeClass('hide')
+       })
+   })
+    upload.render({
+        elem: '#addAffix'
+        ,url: 'http://' + changeUrl.address + '/manager/talent/upfile.do'
+        ,auto: false
+        ,data:{
+            userMail:$.cookie('username'),
+            userTrueName:$.cookie('User_TureName')
+        }
+        //,multiple: true
+        ,bindAction: '#upAffix'
+        ,done: function(res){
+            console.log(res)
+            layer.msg('上传成功')
+            $('#upAffix').addClass('hide')
+            $('#resumeSite').text(res.data.url).attr('src',res.data.url)
+            $('#havaTalent').val(res.data.url)
+        }
+    });
+
+    //监听第一步
+    form.on('submit(step01)', function(data){
+        $.ajax({
+            type:'post',
+            url: 'http://' + changeUrl.address + '/manager/talent/update.do',
+            data:{
+                name:$('#name').val(),
+                sex:$('#sex input:radio:checked').val(),
+                phone:$('#phone').val(),
+                mail:$('#mail').val(),
+                education:$('#education').val(),
+                major:$('#major').val(),
+                workPlace:$('#workPlace').val(),
+                workYear:$('#workYear').val(),
+                isPublic:isPublic,
+
+                userMail:$.cookie('username')
+            },
+            success:function (msg) {
+               console.log(msg)
+                layer.msg('修改成功,可在个人中心查看')
+            },
+            error:function () {
+
+            }
+        })
+        return false;
+    });
+    //监听第二步
+    form.on('submit(step02)', function(data){
+        $.ajax({
+            type:'post',
+            url: 'http://' + changeUrl.address + '/manager/talent/update.do',
+            data:{
+                expectWorkPlace:$('#expectWorkPlace').val(),
+                expectWorkPosition:$('#expectWorkPosition').val(),
+                expectSalary:$('#expectSalary').val(),
+                entryTime:$('#entryTime').val(),
+
+                userMail:$.cookie('username')
+            },
+            success:function (msg) {
+                console.log(msg)
+                layer.msg('修改成功,可在个人中心查看')
+            },
+            error:function () {
+
+            }
+        })
+        return false;
+    });
+    //监听第三步  （提交）
+    form.on('submit(confirmSubmit)', function(data){
+
+        var addData = {
+            workExperience:autoChangeStyle('#workExperience'),
+            educationBackground:autoChangeStyle('#educationBackground'),
+            trainingBackground:autoChangeStyle('#trainingBackground'),
+            other:autoChangeStyle('#other'),
+
+            userMail:$.cookie('username')
+        }
+        $.ajax({
+            type:'post',
+            url: 'http://' + changeUrl.address + '/manager/talent/update.do',
+            data:addData,
+            success:function (msg) {
+                console.log(msg)
+               layer.msg('修改成功,可在个人中心查看')
+            },
+            error:function () {
+
+            }
+        })
+        return false;
+    });
+
+
+    //左侧切换
+    $('#ulWarp li').on('click',function () {
+        var _index = $(this).index()
+            $('#tabRight-baseInfo,#tabRight-jobInfo,#tabRight-otherInfo').addClass('hide')
+            $('#ulWarp li').removeClass('liActive')
+            $(this).addClass('liActive')
+        if( _index === 0){
+            $('#tabRight-baseInfo').removeClass('hide')
+        }else if (_index ===1 ){
+            $('#tabRight-jobInfo').removeClass('hide')
+        }else if (_index ===2 ){
+            $('#tabRight-otherInfo').removeClass('hide')
+        }
+    })
+
+
+   //获取已填信息
+   $.ajax({
+       type:'get',
+       url:'http://'+changeUrl.address+'/manager/talent/check_upfile.do',
+       data:{
+           userMail:$.cookie('username')
+       },
+       success:function (msg) {
+          console.log(msg)
+           var userLogo = msg.data.image ? msg.data.image : 'http://img.zcool.cn/community/01786557e4a6fa0000018c1bf080ca.png'
+           $('#resumeLogo').attr('src',userLogo)
+
+           $('#name').val(msg.data.name)
+           $('#sex input[type=radio][value='+msg.data.sex+']').attr('checked',true)
+           $('#phone').val(msg.data.phone)
+           $('#mail').val(msg.data.mail)
+           $('#education').val(msg.data.education)
+           $('#major').val(msg.data.major)
+           $('#workPlace').val(msg.data.workPlace)
+           $('#workYear').val(msg.data.workYear)
+           msg.data.isPublic ==='是' ? $('#isPublic').attr('checked',true):$('#isPublic').attr('checked',false)
+
+
+           $('#expectWorkPlace').val(msg.data.expectWorkPlace)
+           $('#expectWorkPosition').val(msg.data.expectWorkPosition)
+           $('#expectSalary').val(msg.data.expectSalary)
+           $('#entryTime').val(msg.data.entryTime)
+
+
+           $('#workExperience').val(closeChangeStyle(msg.data.workExperience))
+           $('#eductionBackground').val(closeChangeStyle(msg.data.eductionBackground))
+           $('#trainingBackground').val(closeChangeStyle(msg.data.trainingBackground))
+           $('#other').val(closeChangeStyle(msg.data.other))
+           form.render()
+       }
+
+   })
 
 
 
+
+});
 
 

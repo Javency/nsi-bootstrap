@@ -21,6 +21,9 @@ function myAjax(data, url, success) {
     });
 }
 
+function filterFn(para) {
+    return para == 0 ? '未填写': para;
+}
 // 解析url
 function getQueryStringArgs() {
     var qs = (location.search.length > 0 ? location.search.substring(1) : "");
@@ -44,146 +47,42 @@ function getQueryStringArgs() {
 //创建列表
 function createList(msg) {
     for (var i = 0; i < msg.length; i++) {
+        var sex = msg[i].Sex ==1 ? 'icon-nan' : 'icon-nv'
+        var img = msg[i].Sex ==1 ? 'http://img.zcool.cn/community/01786557e4a6fa0000018c1bf080ca.png' :'http://img.zcool.cn/community/01a29158b69c22a801219c774b4b0b.png@1280w_1l_2o_100sh.png'
         $("#result").append(
-            '<div class="container result">' +
-            '<div class="row">' +
-            '<div class="result_pic col-md-2 col-sm-12 col-xs-12"><i class="iconfont icon-ren1"></i></div> ' +
-            '<div class="row result_body col-md-10 col-sm-12 col-xs-12">' +
-            '<p class="col-md-12 col-sm-12 col-xs-12 name"><a href="./detailTalent.html?ID=' + msg[i].Id + '" id="talent${i}">' + msg[i].Name + '</a></p>' +
-            '<p class="col-md-6 col-sm-6 col-xs-6">' +
-            '工作年限：' +
-            '<span>' + msg[i].WorkYear + '</span>' +
-            '</p>' +
-            '<p class="col-md-6 col-sm-6 col-xs-6">' +
-            '期望工作职位：' +
-            '<span>' + msg[i].ExpectWorkPosition + '</span>' +
-            '</p>' +
-            '<p class="col-md-6 col-sm-6 col-xs-6">' +
-            '专业：' +
-            '<span>' + msg[i].Major + '</span>' +
-            '</p>' +
-            '<p class="col-md-6 col-sm-6 col-xs-6">' +
-            '期望工作城市：' +
-            '<span>' + msg[i].ExpectWorkPlace + '</span>' +
-            '</p>' +
-            '</div>' +
-            '</div>' +
-            ' </div>'
+        '<div class="talent-list row">'+
+            '<div class="col-md-8 ">'+
+                   '<div class="talent-list_left01">'+
+                      '<span>'+filterFn(msg[i].ExpectWorkPlace)+'</span> &nbsp;&nbsp;|&nbsp;&nbsp;'+
+                      '工作经验：<span>'+msg[i].WorkYear+'年</span> &nbsp;&nbsp;|&nbsp;&nbsp;'+
+                      '<span>'+msg[i].Education+'</span> &nbsp;&nbsp;|&nbsp;&nbsp;'+
+                      ' <span>'+filterFn(msg[i].Other)+'</span>'+
+                   '</div>'+
+                  '<div class="clearfix talent-list_left02">'+
+                     '<div class="pull-left text-center talent-list_left02Bottom">'+
+                         '<img src="' +img+ '" alt="" class="talent-list_logo">'+
+                         '<span class="iconfont '+ sex +' " id=""></span>'+
+                         '<p class=" text-center"> <span class="expect-salary">期望年薪：<span>'+filterFn(msg[i].ExpectSalary)+'</span></span></p>'+
+                     '</div>'+
+                     '<div class="pull-left talent-list_left02Right">'+
+                         '<p>  <span class="talent-name">'+msg[i].Name+'</span> &nbsp;&nbsp;  期望职位：<span>'+filterFn(msg[i].ExpectWorkPosition)+'</span>     </p>'+
+                         '<p>   现工作地点：<span> '+msg[i].NowWorkplace+'</span>  </p>'+
+                         '<p class="talent-educationBackground">  <span> '+filterFn(msg[i].EducationBackground)+'  </span></p>'+
+                     '</div>'+
+                  '</div>'+
+           '</div>'+
+            '<div class="col-md-4 clearfix">'+
+                '<h3 class="talent-list_workTitle">工作经历</h3>'+
+                '<p class="talent-list_workExperience">'+filterFn(msg[i].WorkExperience)+'</p>'+
+                '<div class="pull-right forMore">'+
+                     '<a href="./detailTalent.html?ID='+msg[i].Id+'">查看更多</a>'+
+                '</div>'+
+            '</div>'+
+      '</div>'
         )
     }
 }
 
-
-
-// 招聘需求模板
-// function recruitmentTemplatesLoad() {
-//     var val = $("#searchKey").val();
-//     $("#result").html("");
-//     $.ajax({
-//         type: "get",
-//         async: false,
-//         traditional: true,
-//         dataType: "jsonp", //数据类型为jsonp  
-//         jsonp:   "Callback",
-//         data: {
-//             'searchKey': val
-//         }, //提交的参数
-//         url: 'http://' + changeUrl.address + '/talent_api?whereFrom=search',
-//         success: function(msg) {
-//             for (var i = 0; i < msg.length; i++) {
-//                 $("#result").append(
-//                     `
-//                     <div class="container result">
-//                         <div class="row">
-//                             <div class="result_pic col-md-2 col-sm-12 col-xs-12"><img src="" alt=""></div>
-//                             <div class="row result_body col-md-10 col-sm-12 col-xs-12">
-//                                 <p class="col-md-12 col-sm-12 col-xs-12 name"> <a href="#">${msg[i].Id}</a> </p>
-//                                 <p class="col-md-6 col-sm-6 col-xs-6">
-//                                     工作年限：
-//                                     <span>${msg[i].WorkYear}年</span>
-//                                 </p>
-//                                 <p class="col-md-6 col-sm-6 col-xs-6">
-//                                     招聘企业名称：
-//                                     <span>${msg[i].CompanyName}</span>
-//                                 </p>
-//                                 <p class="col-md-6 col-sm-6 col-xs-6">
-//                                     工作地点：
-//                                     <span>${msg[i].WorkPlace}</span>
-//                                 </p>
-//                                 <p class="col-md-6 col-sm-6 col-xs-6">
-//                                     提交时间：
-//                                     <span>${msg[i].UpLoadDate}</span>
-//                                 </p>
-//                             </div>
-//                         </div>
-//                     </div>
-//                 `
-//                 )
-//             }
-//         }
-//     })
-// }
-
-// 点击跳转查询
-// $("#searchKey").on("click", function() {
-//     var val = $("#searchKey").val();
-//     if ($("#rck").is(".active")) {
-//         $("#search").on("click", function() {
-//             // window.location.href = "./search.html?whereFrom=" + val;
-//             talentTemplatesLoad();
-//         })
-//         $("#searchKey").keydown(function(e) {
-//             var curKey = e.which;
-//             if (curKey === 13) {
-//                 // window.location.href = "./search.html?whereFrom=" + val;
-//                 talentTemplatesLoad();
-//                 return false;
-//             }
-//         })
-//     } else {
-//         $("#search").on("click", function() {
-//             // window.location.href = "./zhaopinxinxi.html?whereFrom=" + val;
-//             recruitmentTemplatesLoad();
-//         })
-//         $("#searchKey").keydown(function(e) {
-//             var curKey = e.which;
-//             if (curKey === 13) {
-//                 // window.location.href = "./zhaopinxinxi.html?whereFrom=" + val;
-//                 recruitmentTemplatesLoad();
-//                 return false;
-//             }
-//         })
-//     }
-// })
-
-// 人才搜索
-// $("#search").on("click", function() {
-//     var val = $("#searchKey").val();
-//     if ($("#rck").is(".active")) {
-//         // window.location.href = "./search.html?whereFrom=" + val;
-//         generalSearch()
-//         $("#searchKey").keydown(function(e) {
-//             var curKey = e.which;
-//             if (curKey === 13) {
-//                 // window.location.href = "./search.html?whereFrom=" + val;
-//                 generalSearch();
-//                 return false;
-//             }
-//         })
-//     } else {
-//         // window.location.href = "./zhaopinxinxi.html?whereFrom=" + val;
-//         generalSearch()
-//         $("#searchKey").keydown(function(e) {
-//             var val = $("#searchKey").val(),
-//                 curKey = e.which;
-//             if (curKey === 13) {
-//                 // window.location.href = "./zhaopinxinxi.html?whereFrom=" + val;
-//                 generalSearch();
-//                 return false;
-//             }
-//         })
-//     }
-// })
  $("#search").on("click", function() {
     generalSearch()
  })
@@ -231,7 +130,7 @@ function generalSearch() {
                         var data01 = {
                             'talent_searchKey': passVal,
                             'pageNum': obj.curr,
-                            'OnePageNum': 40
+                            'OnePageNum': 20
                         }
                         if (data.countAllRS != 0) {
                             myAjax(data01, "http://" + changeUrl.address + "/talent_api?whereFrom=search", createList)
@@ -265,7 +164,7 @@ function initLoad(fn) {
         var data01 = {
             'talent_searchKey': datailSchool,
             'pageNum': 1,
-            'OnePageNum': 40
+            'OnePageNum': 20
         }
         $('#searchKey').val(datailSchool)
         $('#result').html('')

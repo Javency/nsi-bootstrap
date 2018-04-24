@@ -1,173 +1,273 @@
-//我的基本信息
+
+
+// //////////////////////////////////////////////////////////////////////////
 $(function () {
-    // console.log($.cookie('username'))
+    getCookie();
+})
+
+$('#revise-WebsiteLogo').on('click',function () {
+    $('#upLoad-WebsiteLogo').removeClass('hide')
+    $('#upLoad-ResumeLogo02').addClass('hide')
+    $('#myModal').modal('show')
+})
+
+$('#revise-ResumeLogo').on('click',function () {
+    $('#upLoad-ResumeLogo02').removeClass('hide')
+    $('#upLoad-WebsiteLogo').addClass('hide')
+    $('#myModal').modal('show')
+})
+
+//修改基本信息
+$(function () {
+    var alertTip = '';
+
+    $('#saveBaseInfo').on('click',function () {
+        if(!$('#userTurename').val().toString().length){
+            alertTip='请输入用户名'
+        }else if(!$('#userOrganization').val().toString().length){
+            alertTip='请输入公司或机构'
+        }else if(!$('#userPosition').val().toString().length){
+            alertTip='请输入职位'
+        }else if(!$('#userPhone').val().toString().length){
+            alertTip='请输入手机号'
+        }else {
+            alertTip='修改成功'
+        }
+
+        if(alertTip =='修改成功'){
+           //  提交后台
+            $.ajax({
+                type:'post',
+                url:'http://'+changeUrl.address+'/user/update_userInfo.do',
+                data:{
+                    userTurename:$('#userTurename').val(),
+                    userOrganization:$('#userOrganization').val(),
+                    userPosition:$('#userPosition').val(),
+                    userPhone:$('#userPhone').val(),
+                    id:$.cookie('userId')
+                },
+                success:function (msg) {
+                    // console.log(msg)
+                    alert('修改成功')
+                    window.location.reload()
+                },
+                error:function (msg) {
+                   alert('服务器发生错误，稍后再试')
+                }
+            })
+        }else {
+            alert(alertTip)
+        }
+
+    })
+})
+
+
+$(function () {
+    //左边切换
+    $('#ulWarp li').click(function () {
+        $('#ulWarp li').removeClass('liActive')
+        $(this).addClass('liActive')
+
+        var _index = $(this).index()
+        if( _index === 0 ){
+            $('#tabRight-myResume').addClass('hide')
+            $('#tabRight-myInfo').removeClass('hide')
+            $('#tabLeft02').addClass('hide')
+        }else if ( _index ===1 ){
+            $('#tabRight-myInfo').addClass('hide')
+            $('#tabRight-myResume').removeClass('hide')
+            $('#tabLeft02').removeClass('hide')
+        }
+    })
+
+
+    //我的基本信息
     $.ajax({
         type:"get",
-        async:false,
-        traditional :true,
         data: {
-            UserName:$.cookie('username')
+            userName:$.cookie('username')
         },//提交的参数
-        url:'http://'+changeUrl.address+'/User_api?whereFrom=UserInfo',
-        dataType : "jsonp",//数据类型为jsonp  
-        jsonp: "Callback",//服务端用于接收callback调用的function名的参数  
+        url:'http://'+changeUrl.address+'/user/get_userInfo.do',
         success : function(msg){
-            console.log(msg)
-            $('.User_TureName').text(msg[0].User_TureName)
-            $('#Member_sign').text(msg[0].Member_sign)
-            $('#User_score').text(msg[0].User_score)
-            $('#name').text(msg[0].name)
-            $('#User_phone').text(msg[0].User_phone)
+            // console.log(msg)
+            var userLogo = msg.data.userPortrait ? msg.data.userPortrait : 'http://img.zcool.cn/community/01786557e4a6fa0000018c1bf080ca.png'
+            $('#username01').text(msg.data.username)
+            $('#userTurename01').text(msg.data.userTurename)
+            $('#userOrganization01').text(msg.data.userOrganization)
+            $('#userScore01').text(msg.data.userScore)
+            $('#userPosition01').text(msg.data.userPosition)
+             $('#userPhone01').text(msg.data.userPhone)
+            $('#userLogo01,#userLogo02').attr('src',userLogo)
         },
         error:function(){
             alert('发生错误，请求数据失败！');
         }
     });
-})
 
-//获取我的简历信息
-function getResumeInfo() {
+    //判断简历信息 是否上传
     $.ajax({
-        type: "get",
-        async: false,
-        traditional: true,
-        data: {
-            Id:$.cookie('username')
-        },//提交的参数
-        url: 'http://' + changeUrl.address + '/talent_api?whereFrom=detail',
-        dataType: "jsonp",//数据类型为jsonp  
-        jsonp: "Callback",//服务端用于接收callback调用的function名的参数  
-        success: function (msg) {
-            console.log(msg)
-            $('#ResumeName').text(msg[0].Name)
-            $('#Sex').text((msg[0].Sex == 0) ? '女' : '男')
-            $('#Phone').text(msg[0].Phone)
-            $('#Mail').text(msg[0].Mail)
-            $('#Education').text(msg[0].Education)
-            $('#Major').text(msg[0].Major)
-            $('#NowWorkplace').text(msg[0].NowWorkplace)
-            $('#WorkYear').text(msg[0].WorkYear)
-            $('#Public').text((msg[0].Public == 0) ? '否' : '是')
-
-            $('#ExpectWorkPlace').text(msg[0].ExpectWorkPlace)
-            $('#ExpectWorkPosition').text(msg[0].ExpectWorkPosition)
-            $('#ExpectSalary').text(msg[0].ExpectSalary)
-            $('#Other').text(msg[0].Other)
-
-            $('#WorkExperience').text(msg[0].WorkExperience)
-            $('#EducationBackground').text(msg[0].EducationBackground)
-            $('#TrainingBackground').text(msg[0].TrainingBackground)
+        type:'get',
+        url:'http://'+changeUrl.address+'/manager/talent/check_upfile.do',
+        data:{
+            userMail:$.cookie('username')
         },
-        error: function () {
-            alert('网络繁忙，请稍后再试！');
-        }
-    });
-}
-// 判断是否填写基本信息
-function isAddPrimaryInfo() {
-    $.ajax({
-        type: "get",
-        async: false,
-        traditional: true,
-        data: {
-            UserMail:$.cookie('username')
-        },//提交的参数
-        url: 'http://' + changeUrl.address + '/talent_api?whereFrom=HavaTalent',
-        dataType: "jsonp",//数据类型为jsonp  
-        jsonp: "Callback",//服务端用于接收callback调用的function名的参数  
-        success: function (msg) {
+        success:function (msg) {
             console.log(msg)
-            if(msg.msg01 == -1){
-                //没有填写简历基本信息
-                $('#upLoadResume').click(function () {
-                    $('#myModal02').modal({
-                        keyboard: true
-                    })
-                    return false;
-                })
-            }else {
-                //已填写简历基本信息
-                $('#noBaseInfo').addClass('hide')
-                $('#hasBaseInfo').removeClass('hide')
-                getResumeInfo()
-                //点击显示图片上传模态框（自制）
-                $('#upLoadResume').click(function () {
-                    $('#upImgModal').animate({
-                        top:100
-                    },500)
-                    $('#modalBg').css({'background':'rgba(0,0,0,.6)','position':'fixed','z-index':5})
-                    var api = 'talent_api',key01 = 'whereFrom',key02 = 'UserMail' ,key03 = 'User_TureName' ,key04 = 'CompanyName' ;
-                    var para01 = 'UpResume' , para02 = $.cookie('username') , para03 = $.cookie('User_TureName') ,para04 = 0 ;
-                    uploadFile(api,key01,key02,key03,key04,para01,para02,para03,para04,setAutoJump)
-                })
-                $('#closeUpImg').click(function () {
-                    $('#upImgModal').animate({
-                        top:-500
-                    },500)
-                    $('#modalBg').css({'background':'','position':'','z-index':''})
-                })
-            }
+            if(msg.code == 0 ){
+                $('#noUploadResume').addClass('hide')
+                $('#UploadResume').removeClass('hide')
 
-            if(msg.msg02 != -1 ){  //已上传简历附件
-                $('#noUpResume').addClass('hide')
-                $('#UpResume').removeClass('hide')
-                $('#previewResume').attr('href','http://data.xinxueshuo.cn/upFile/talent/'+$.cookie('username')+$.cookie('User_TureName')+'.'+msg.msg02)
-                //点击显示图片上传模态框（自制）加简历更新
-                $('#refreshResume').click(function () {
-                    $('#upImgModal').animate({
-                        top:100
-                    },500)
-                    $('#modalBg').css({'background':'rgba(0,0,0,.6)','position':'fixed','z-index':5})
-                    var api = 'talent_api',key01 = 'whereFrom',key02 = 'UserMail' ,key03 = 'User_TureName' ,key04 = 'CompanyName' ;
-                    var para01 = 'UpResume' , para02 = $.cookie('username') , para03 = $.cookie('User_TureName') ,para04 = 0 ;
-                    uploadFile(api,key01,key02,key03,key04,para01,para02,para03,para04,setAutoJump)
-                })
-                $('#closeUpImg').click(function () {
-                    $('#upImgModal').animate({
-                        top:-500
-                    },500)
-                    $('#modalBg').css({'background':'','position':'','z-index':''})
-                })
+               var resumeLogo = msg.data.image ? msg.data.image : 'http://img.zcool.cn/community/01786557e4a6fa0000018c1bf080ca.png'
 
-            }else {
-                $('#noUpResume').removeClass('hide')
-                $('#UpResume').addClass('hide')
+                $('#name').text(msg.data.name)
+                $('#sex').text(msg.data.sex)
+                $('#phone').text(msg.data.phone)
+                $('#mail').text(msg.data.mail)
+                $('#isPublic').text(msg.data.isPublic)
+                $('#resumeLogo').attr('src',resumeLogo)
+
+                $('#major').text(msg.data.major)
+                $('#expectWorkPlace').text(msg.data.expectWorkPlace)
+                $('#workPlace').text(msg.data.workPlace)
+                $('#education').text(msg.data.education)
+
+                $('#expectWorkPlace').text(msg.data.expectWorkPlace)
+                $('#expectWorkPosition').text(msg.data.expectWorkPosition)
+                $('#expectSalary').text(msg.data.expectSalary)
+                $('#entryTime').text(msg.data.entryTime)
+
+                $('#workExperience').html(msg.data.workExperience)
+                $('#educationBackground').html(msg.data.educationBackground)
+                $('#trainingBackground').html(msg.data.trainingBackground)
+                $('#other').html(msg.data.other)
+
+                //判断是否上传简历附件
+                if(msg.data.havaTalent){  //已上传
+                    $('#noUploadResumeAffix').addClass('hide')
+                    $('#UploadResumeAffix').removeClass('hide')
+                    $('#affixSite').text(msg.data.havaTalent)
+                }
+
             }
         },
-        error: function () {
-            alert('网络繁忙，请稍后再试！');
+        error:function () {
+            alert('服务器繁忙。请稍后再试')
+        }
+
+    })
+
+
+    //点击修改
+    $('#doReviseBaseInfo').on('click',function () {
+        $('.detailInfo').addClass('hide')
+        $('.reviseBaseInfo').removeClass('hide')
+        $(this).addClass('hide')
+        $('#undoReviseBaseInfo').removeClass('hide')
+        document.getElementById('userTurename').focus()
+    })
+    // 撤销修改
+    $('#undoReviseBaseInfo').on('click',function () {
+        $(this).addClass('hide')
+        $('#doReviseBaseInfo').removeClass('hide')
+        $('.reviseBaseInfo').addClass('hide')
+        $('.detailInfo').removeClass('hide')
+    })
+
+    $('#affix-right').hover(function () {
+        $('#resume-do').show()
+    })
+    $('#resume-do').hover(function () {
+        $('#affix-right').css('color','#5FB878')
+    },function () {
+        $(this).hide()
+        $('#affix-right').css('color','#ccc')
+    })
+
+})
+
+
+layui.use(['upload','layer'],function () {
+    var layer = layui.layer
+        ,upload = layui.upload
+
+    //上传附件
+    upload.render({
+        elem: '#addAffix'
+        ,url: 'http://' + changeUrl.address + '/manager/talent/upfile.do'
+        ,auto: true
+        ,accept:'file'
+        ,data:{
+            userMail:$.cookie('username'),
+            userTrueName:$.cookie('User_TureName')
+        }
+        //,multiple: true
+        ,done: function(res){
+            // console.log(res)
+            layer.alert('上传成功')
+            $('#noUploadResumeAffix').addClass('hide')
+            $('#UploadResumeAffix').removeClass('hide')
+            $('#affixSite').text(res.data.url)
+            $.ajax({
+                type:'post',
+                url:'http://' + changeUrl.address + '/manager/talent/update.do',
+                data:{
+                    userMail:$.cookie('username'),
+                    havaTalent:res.data.url
+                },
+                success:function (msg) {
+                    // console.log(msg)
+                }
+            })
         }
     });
-}
 
-$(function () {
-    if($.cookie('username') != undefined){
-        isAddPrimaryInfo()
-    }
+    // 删除附件
+    $('#deleteAffix').on('click',function () {
+        console.log($('#affixSite').text())
+        $.ajax({
+            type:'get',
+            url:'http://' + changeUrl.address + '/manager/talent/delete_file.do',
+            data:{
+                userMail:$.cookie('username'),
+                fileUrl:$('#affixSite').text()
+            },
+            success:function (msg) {
+                console.log(msg)
+                if(msg.code ==0){
+                    layer.alert('删除成功')
+                    $('#UploadResumeAffix').addClass('hide')
+                    $('#noUploadResumeAffix').removeClass('hide')
+                }
+
+            },
+            error:function () {
+                layer.msg('服务器繁忙，请稍后再试')
+            }
+        })
+    })
+
 })
 
-//自动跳转
-var timeNum = 3
-function autoJump() {
-    $('.timeNum').text(timeNum)
-    timeNum--;
-    // console.log(timeNum)
-    if(timeNum == 0){
-        window.location.href = '../user/userInfo.html'
-    }
-}
-
-function setAutoJump() {
-    $('.shadowWrap,#autoJump').removeClass('hide')
-    setInterval(function () {
-        autoJump()
-    },1000)
-}
 
 
-$(function () {
-    getCookie();
-})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
