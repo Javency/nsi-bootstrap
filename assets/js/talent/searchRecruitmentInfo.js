@@ -8,7 +8,7 @@ function myAjax(data, url, success) {
         url: url,
         // dataType :   "jsonp", //数据类型为jsonp  
         // jsonp:   "Callback", //服务端用于接收callback调用的function名的参数  
-        success:function(msg) {
+        success: function(msg) {
             success(msg);
             $('#loadgif').hide()
             $('#floatLayer').hide() //遮罩层
@@ -43,49 +43,53 @@ function getQueryStringArgs() {
 
 //创建列表
 
-function judgeSalary(salary01,salary02){
-   return salary01==="面议"?"面议":salary01+'K-'+salary02+'K'
+function judgeSalary(salary01, salary02) {
+    return salary01 === "面议" ? "面议" : salary01 + 'K-' + salary02 + 'K'
 }
 
 function createList(msg) {
     for (var i = 0; i < msg.data01.length; i++) {
-        var template= '<div class="col-md-4">'+
-            '<div class="recruitmentBox">'+
-                '<p class="recruitmentTitle clearfix"><a href="./detailRecruitment.html?ID='+msg.data01[i].Id+'">'+msg.data01[i].Position+'</a><span>'+judgeSalary(msg.data01[i].salary01,msg.data01[i].salary02)+'</span></p>'+
-                '<p class="jobYear">工作年限：'+msg.data01[i].Seniority+'</p>'+
-                '<div class="types">'+
-                    '<span class="type">'+msg.data01[i].type+'</span>'+
-                '</div>'+
-                '<div class="company clearfix">'+
-                    '<a href="javascript:;" class="comapnyLogo"><img src="'+msg.data02[i].Logo+'" alt="" width="40" height="40"></a>'+
-                    '<div class="companyInfo">'+
-                        '<p class="companyName">'+msg.data01[i].recuitment_name+'</p>'+
-                        '<p class="companyAdd">'+msg.data01[i].Areas+msg.data01[i].Areas02+msg.data01[i].Areas03+'</p>'+
-                    '</div>'+
-                '</div>'+
-            '</div>'+
-        '</div>'
+        var template = '<div class="col-md-4">' +
+            '<div class="recruitmentBox">' +
+            '<p class="recruitmentTitle clearfix"><a class="currentHref" href="./detailRecruitment.html?ID=' + msg.data01[i].Id + '">' + msg.data01[i].Position + '</a><span>' + judgeSalary(msg.data01[i].salary01, msg.data01[i].salary02) + '</span></p>' +
+            '<p class="jobYear">工作年限：' + msg.data01[i].Seniority + '</p>' +
+            '<div class="types">' +
+            '<span class="type">' + msg.data01[i].type + '</span>' +
+            '</div>' +
+            '<div class="company clearfix">' +
+            '<a href="javascript:;" class="comapnyLogo"><img src="' + msg.data02[i].Logo + '" alt="" width="40" height="40"></a>' +
+            '<div class="companyInfo">' +
+            '<p class="companyName">' + msg.data01[i].recuitment_name + '</p>' +
+            '<p class="companyAdd">' + msg.data01[i].Areas + msg.data01[i].Areas02 + msg.data01[i].Areas03 + '</p>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>'
         $("#result").append(template)
+        $(".recruitmentBox").click(function() {
+            var _href = $(this).find(".currentHref").attr("href")
+            window.location.href = _href
+        })
     }
 }
 
 // 招聘信息
 $("#search").on("click", function() {
     generalSearch()
- })
- $("#searchKey").keydown(function(e) {
-        var curKey = e.which;
-        if (curKey === 13) {
-            generalSearch();
-            return false;
-        }
-    })
+})
+$("#searchKey").keydown(function(e) {
+    var curKey = e.which;
+    if (curKey === 13) {
+        generalSearch();
+        return false;
+    }
+})
 
 
 // //搜索20条
 function generalSearch() {
     var passVal = $('#searchKey').val()
-    // console.log(passVal);
+        // console.log(passVal);
     $.ajax({
         type: "get",
         async: true,
@@ -96,7 +100,7 @@ function generalSearch() {
         url: "http://" + changeUrl.address + "/Recuitment_api?whereFrom=job_search", //获取搜索的总条数
         // dataType: "jsonp", //数据类型为jsonp  
         // jsonp:   "Callback", //服务端用于接收callback调用的function名的参数  
-        success:function(data) {
+        success: function(data) {
             // console.log(data.data01)
             var totalPages = Math.ceil((data.count / 12));
             // console.log(totalPages)
