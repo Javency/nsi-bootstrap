@@ -16,7 +16,7 @@ $(function() {
             // console.log(msg.verifyResult);
             if (msg.verifyResult < 0) {
                 alert('您还没有登录，登录后即可发布招聘信息')
-                window.location.href = "../user/login.html" //未登录，跳回登录页面
+                // window.location.href = "../user/login.html" //未登录，跳回登录页面
                 console.log($.cookie('usertitle'))
                 console.log($.cookie('username'))
                 console.log($.cookie('userVerifyCode'))
@@ -29,17 +29,6 @@ $(function() {
             alert('发生错误，请求数据失败！');
         }
     });
-
-
-    //输入框传后台带标签
-    // function autoChangeStyle(obj) {
-    //     var val = $(obj).val();
-    //     var reg = new RegExp("\n", "g")
-    //     val = val.replace(reg, "</p><p>");
-    //     return val = "<p>" + val + "</p>";
-    //     console.log(val);
-    // }
-
 
 
     //监听用户输入字数

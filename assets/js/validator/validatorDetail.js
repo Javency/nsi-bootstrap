@@ -244,7 +244,7 @@ $(function() {
        $('#saveNewJob').on('click',function () {
 
           $("#jobManage_tab2").bootstrapValidator('validate');//提交验证
-           if($('#salary02').val() =='' || $('#salary01').val() ==''){
+           if( ($('#salary02').val() =='' || $('#salary01').val() =='') && $('#salary input:radio:checked').val()==='区间'){
                alert('请选择薪资')
            }else if($("#jobManage_tab2").data('bootstrapValidator').isValid()){
                var salary01 =  $('#salary input:radio:checked').val()==='区间' ? $('#salary01').val() : '面议'

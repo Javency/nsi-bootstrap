@@ -28,39 +28,103 @@ $(function() {
         return new Blob([ia], { type: mimeString });
     }
 
-    function submitImg() {
+    function submitImg( url,success ) {
         //            第二步，构建formData
         var blob = dataURItoBlob(dataurl); // 上一步中的函数
         console.log(blob)
-        var canvas = document.createElement('canvas');
-        var dataURL = canvas.toDataURL('image/jpeg', 0.5);
-        var fd = new FormData(document.forms[0]);
-        fd.append("Base64", blob, 'image.png');
+        var fd = new FormData();
+        fd.append("file", blob, 'image.png');
 
-        //            第三步，使用AJAX提交
+        //  第三步，使用AJAX提交
         $.ajax({
-            // url: 'http://data.xinxueshuo.cn:80/nsi-0.9/Admin_api?whereFrom=EditorUpImg',
-            url: 'http://' + changeUrl.address + '/Admin_api?whereFrom=OosUpImg',
-            // url: 'http://data.xinxueshuo.cn:80/nsi-0.9/Admin_api?whereFrom=OosUpImg',
+            // url: 'http://' + changeUrl.address + '/Admin_api?whereFrom=OosUpImg',
+            // url: 'http://' + changeUrl.address + '/manager/talent/upload.do?type='+type+'/',
+            url:url,
             method: 'POST',
             processData: false, //  不会将 data 参数序列化字符串
             contentType: false, //  根据表单 input 提交的数据使用其默认的 contentType
             dataType: 'json',
             data: fd,
             success:function(data) {
-                console.log(data.data[0]);
+                console.log(data)
                 alert('上传成功')
-                $('#Logo').val(data.data[0])
+                success(data)
                 $('#myModal').modal('hide')
             }
         });
     }
-    
+
+
+    //上传网站头像
+    $('#upLoad-WebsiteLogo').on('click',function () {
+        if( dataurl === null){
+            alert('请选择图片')
+        }else {
+            function successUpLoadResumeLogo(data) {
+                $('#userLogo01,#userLogo02').attr('src',data.data.url)
+                $.ajax({
+                    type:'post',
+                    url:'http://' + changeUrl.address + '/user/update_user_information.do',
+                    data:{
+                        id:$.cookie('userId'),
+                        userPortrait:data.data.url
+                    },
+                    success:function (msg) {
+                        // alert(1)
+                        // console.log(msg)
+                    }
+                })
+            }
+            submitImg('http://' + changeUrl.address + '/manager/talent/upload.do?type=UserPortrait/',successUpLoadResumeLogo)
+        }
+    })
+
+    //(初次发布时)上传简历头像
+    $('#upLoad-ResumeLogo').on('click',function () {
+        if( dataurl === null){
+            alert('请选择图片')
+        }else {
+            function successUpLoadResumeLogo(data) {
+                $('#resumeLogo').attr('src',data.data.url)
+                $('#ResumeImage').val(data.data.url)
+            }
+            submitImg('http://' + changeUrl.address + '/manager/talent/upload.do?type=ResumePortrait/',successUpLoadResumeLogo)
+        }
+    })
+
+    //(修改时)上传简历头像
+    $('#upLoad-ResumeLogo02').on('click',function () {
+        if( dataurl === null){
+            alert('请选择图片')
+        }else {
+            function successUpLoadResumeLogo(data) {
+                $('#resumeLogo').attr('src',data.data.url)
+                $.ajax({
+                    type:'post',
+                    url:'http://' + changeUrl.address + '/manager/talent/update.do',
+                    data:{
+                        userMail:$.cookie('username'),
+                        image:data.data.url
+                    },
+                    success:function (msg) {
+                        console.log(msg)
+                    }
+                })
+            }
+            submitImg('http://' + changeUrl.address + '/manager/talent/upload.do?type=ResumePortrait/',successUpLoadResumeLogo)
+        }
+    })
+
+     //招聘单位发布公司LOGO
     $('#startUpload').click(function() {
         if( dataurl === null){
             alert('请选择图片')
         }else {
-            submitImg()
+            function successUpLoadCompanyLogo(data) {
+                $('#Logo').val(data.data[0])
+            }
+            submitImg('http://' + changeUrl.address + '/Admin_api?whereFrom=OosUpImg',successUpLoadCompanyLogo)
         }
     })
+
 })
