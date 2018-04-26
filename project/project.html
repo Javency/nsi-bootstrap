@@ -70,41 +70,44 @@
         <div class="row">
             <div class="col-sm-6 col-md-4 col-lg-4">
                 <div class="thumbnail">
-                    <a href=""><img src="../assets/img/project/project01.jpg" alt="新学说">
-                        <div class="caption">
-                            <h3 class="projectName"></h3>
-                            <p class="content" style="min-height: 60px;"><a href="" class="linkHref"></a></p>
-                            <div class="clearfix publishCompany">
-                                <p class="pull-right">发布单位：<span>北京新学说</span></p>
-                            </div>
+                    <img src="../assets/img/project/project01.jpg" alt="新学说">
+                    <div class="caption">
+                        <h3 class="projectName"></h3>
+                        <p class="content" style="min-height: 60px;">
+                            <a href="" class="linkHref"></a>
+                        </p>
+                        <div class="clearfix publishCompany">
+                            <p class="pull-right">发布单位：<span>北京新学说</span></p>
                         </div>
-                    </a>
+                    </div>
                 </div>
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4">
                 <div class="thumbnail">
-                    <a href=""><img src="../assets/img/project/project02.jpg" alt="新学说">
-                        <div class="caption">
-                            <h3 class="projectName"></h3>
-                            <p class="content" style="min-height: 60px;"><a href="" class="linkHref"></a></p>
-                            <div class="clearfix publishCompany">
-                                <p class="pull-right">发布单位：<span>北京新学说</span></p>
-                            </div>
+                    <img src="../assets/img/project/project02.jpg" alt="新学说">
+                    <div class="caption">
+                        <h3 class="projectName"></h3>
+                        <p class="content" style="min-height: 60px;">
+                            <a href="" class="linkHref"></a>
+                        </p>
+                        <div class="clearfix publishCompany">
+                            <p class="pull-right">发布单位：<span>北京新学说</span></p>
                         </div>
-                    </a>
+                    </div>
                 </div>
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4">
                 <div class="thumbnail">
-                    <a href=""><img src="../assets/img/project/project03.jpg" alt="新学说">
-                        <div class="caption">
-                            <h3 class="projectName"></h3>
-                            <p class="content" style="min-height:60px;"><a href="" class="linkHref"></a></p>
-                            <div class="clearfix publishCompany">
-                                <p class="pull-right">发布单位：<span>北京新学说</span></p>
-                            </div>
+                    <img src="../assets/img/project/project03.jpg" alt="新学说">
+                    <div class="caption">
+                        <h3 class="projectName"></h3>
+                        <p class="content" style="min-height:60px;">
+                            <a href="" class="linkHref"></a>
+                        </p>
+                        <div class="clearfix publishCompany">
+                            <p class="pull-right">发布单位：<span>北京新学说</span></p>
                         </div>
-                    </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -116,6 +119,38 @@
     <script src="../assets/js/jquery.cookie.js"></script>
     <script src="../assets/js/config.js"></script>
     <script src="../assets/js/project/project.js?v=1.0.3"></script>
+    <script>
+        // 信息动态展示
+        $(function() {
+            var projectName = $(".projectName"),
+                linkHref = $(".linkHref")
+            $.ajax({
+                type: 'get',
+                dataType: "jsonp", //数据类型为jsonp  
+                jsonp:   "Callback", //服务端用于接收callback调用的function名的参数 
+                async: true,
+                traditional: true,
+                 
+                data: {
+                    'SearchKey': '',
+                    'pageNum': 1,
+                    'OnePageNum': 20
+                }, //提交的参数
+                url: "http://" + changeUrl.address + "/Subject_api?whereFrom=search", //获取搜索的总条数
+                success: function(msg) {
+                    console.log(msg)
+                    for (var i = 0; i < 3; i++) {
+                        projectName.eq(i).text(msg[i].SubjectName)
+                        linkHref.eq(i).attr('href', '../project/detailProject.html?whereFrom=search&School_name=' + msg[i].Id)
+                        linkHref.eq(i).text(msg[i].SubjectIntroduction)
+                    }
+                },
+                error: function() {
+                    console.log("错误")
+                }
+            })
+        })
+    </script>
 </body>
 
 </html>
