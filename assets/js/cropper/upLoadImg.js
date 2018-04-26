@@ -122,6 +122,7 @@ $(function() {
         }else {
             function successUpLoadCompanyLogo(data) {
                 $('#Logo').val(data.data[0])
+                $('#imgLogo').attr('src',data.data[0])
             }
             submitImg('http://' + changeUrl.address + '/Admin_api?whereFrom=OosUpImg',successUpLoadCompanyLogo)
         }

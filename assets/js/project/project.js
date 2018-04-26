@@ -77,8 +77,7 @@ $(function() {
     $('#userLevel').text('Lv' + $.cookie('usertitle'))
 })
 
-//chrome动态加载JS 代码：
-//@ sourceURL=dynamicScript.js
+
 var setPos = function(o) {
     if (o.setSelectionRange) { //W3C
         setTimeout(function() {
@@ -92,6 +91,7 @@ var setPos = function(o) {
         textRange.select();
     }
 };
+
 //标签点击按钮输入
 function InsertLable(str) {
     var obj = document.getElementById('SubjectLabel');
@@ -179,4 +179,6 @@ function browserRedirect(url) {
     }
 }
 
+
 browserRedirect('http://data.xinxueshuo.cn/wap')
+

@@ -119,37 +119,40 @@
     <script src="../assets/js/jquery.cookie.js"></script>
     <script src="../assets/js/config.js"></script>
     <script src="../assets/js/project/project.js?v=1.0.3"></script>
+
+
     <script>
         // 信息动态展示
-        $(function() {
-            var projectName = $(".projectName"),
-                linkHref = $(".linkHref")
+        $(function(){
+            var projectName=$(".projectName"),
+                linkHref=$(".linkHref")
             $.ajax({
-                type: 'get',
-                dataType: "jsonp", //数据类型为jsonp  
-                jsonp:   "Callback", //服务端用于接收callback调用的function名的参数 
-                async: true,
-                traditional: true,
-                 
+                type:'get',
+                dataType:"jsonp",//数据类型为jsonp  
+                jsonp: "Callback",//服务端用于接收callback调用的function名的参数 
+                async:true,
+                traditional :true,
                 data: {
-                    'SearchKey': '',
-                    'pageNum': 1,
-                    'OnePageNum': 20
-                }, //提交的参数
-                url: "http://" + changeUrl.address + "/Subject_api?whereFrom=search", //获取搜索的总条数
-                success: function(msg) {
+                    'SearchKey':'',
+                    'pageNum':1,
+                    'OnePageNum':20
+                },//提交的参数
+                url:"http://"+changeUrl.address+"/Subject_api?whereFrom=search",//获取搜索的总条数
+                success:function(msg){
                     console.log(msg)
-                    for (var i = 0; i < 3; i++) {
+                    for(var i=0;i<3;i++){
                         projectName.eq(i).text(msg[i].SubjectName)
-                        linkHref.eq(i).attr('href', '../project/detailProject.html?whereFrom=search&School_name=' + msg[i].Id)
+                        linkHref.eq(i).attr('href','../project/detailProject.html?whereFrom=search&School_name='+msg[i].Id)
                         linkHref.eq(i).text(msg[i].SubjectIntroduction)
                     }
                 },
-                error: function() {
+                error:function(){
+
                     console.log("错误")
                 }
             })
         })
+
     </script>
 </body>
 
