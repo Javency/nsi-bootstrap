@@ -78,7 +78,7 @@ $(function () {
 })
 
 //chrome动态加载JS 代码：
-//@ sourceURL=dynamicScript.js
+// @ sourceURL=dynamicScript.js
 var setPos=function(o){
     if(o.setSelectionRange){//W3C
         setTimeout(function(){
@@ -92,6 +92,7 @@ var setPos=function(o){
         textRange.select();
     }
 };
+
 //标签点击按钮输入
 function InsertLable(str) {
     var obj = document.getElementById('SubjectLabel');
@@ -178,35 +179,5 @@ function browserRedirect(url) {
         window.location.replace(url);
     }
 }
-
-// 信息动态展示
-$(function(){
-    var projectName=$(".projectName"),
-        linkHref=$(".linkHref")
-    $.ajax({
-        type:'get',
-        dataType:"jsonp",//数据类型为jsonp  
-        jsonp: "Callback",//服务端用于接收callback调用的function名的参数 
-        async:true,
-        traditional :true, 
-        data: {
-            'SearchKey':'',
-            'pageNum':1,
-            'OnePageNum':20
-        },//提交的参数
-        url:"http://"+changeUrl.address+"/Subject_api?whereFrom=search",//获取搜索的总条数
-        success:function(msg){
-            console.log(msg)
-            for(var i=0;i<3;i++){
-                projectName.eq(i).text(msg[i].SubjectName)
-                linkHref.eq(i).attr('href','../project/detailProject.html?whereFrom=search&School_name='+msg[i].Id)
-                linkHref.eq(i).text(msg[i].SubjectIntroduction)
-            }
-        },
-        error:function(){
-            console.log("错误")
-        }
-    })
-})
 
 browserRedirect('http://data.xinxueshuo.cn/wap')

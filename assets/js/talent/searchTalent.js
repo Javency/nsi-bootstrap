@@ -3,13 +3,10 @@ function myAjax(data, url, success) {
     $.ajax({
         type :   "get",
         async: true,
-        traditional: true,
         data: data, //提交的参数
         url: url,
-        dataType :   "jsonp", //数据类型为jsonp  
-        jsonp:   "Callback", //服务端用于接收callback调用的function名的参数  
         success :   function(msg) {
-            console.log(msg);
+            // console.log(msg);
             success(msg);
             $('#loadgif').hide()
             $('#floatLayer').hide() //遮罩层
@@ -24,6 +21,17 @@ function myAjax(data, url, success) {
 function filterFn(para) {
     return para == 0 ? '未填写': para;
 }
+
+function closeChangeStyle( obj ) {
+    if(obj){
+        var reg = new RegExp('</p><p>','g')
+        var newObj = obj.replace(reg,'\n')
+        return newObj.slice(3,newObj.length-4)
+    }else {
+        return obj
+    }
+}
+
 // 解析url
 function getQueryStringArgs() {
     var qs = (location.search.length > 0 ? location.search.substring(1) : "");
@@ -46,36 +54,36 @@ function getQueryStringArgs() {
 
 //创建列表
 function createList(msg) {
-    for (var i = 0; i < msg.length; i++) {
-        var sex = msg[i].Sex ==1 ? 'icon-nan' : 'icon-nv'
-        var img = msg[i].Sex ==1 ? 'http://img.zcool.cn/community/01786557e4a6fa0000018c1bf080ca.png' :'http://img.zcool.cn/community/01a29158b69c22a801219c774b4b0b.png@1280w_1l_2o_100sh.png'
+    for (var i = 0; i < msg.data.length; i++) {
+        var sex = msg.data[i].sex ==1 ? 'icon-nan' : 'icon-nv'
+        var img = msg.data[i].sex ==1 ? 'http://img.zcool.cn/community/01786557e4a6fa0000018c1bf080ca.png' :'http://img.zcool.cn/community/01a29158b69c22a801219c774b4b0b.png@1280w_1l_2o_100sh.png'
         $("#result").append(
         '<div class="talent-list row">'+
             '<div class="col-md-8 ">'+
                    '<div class="talent-list_left01">'+
-                      '<span>'+filterFn(msg[i].ExpectWorkPlace)+'</span> &nbsp;&nbsp;|&nbsp;&nbsp;'+
-                      '工作经验：<span>'+msg[i].WorkYear+'年</span> &nbsp;&nbsp;|&nbsp;&nbsp;'+
-                      '<span>'+msg[i].Education+'</span> &nbsp;&nbsp;|&nbsp;&nbsp;'+
-                      ' <span>'+filterFn(msg[i].Other)+'</span>'+
+                      '<span>'+filterFn(msg.data[i].expectWorkPlace)+'</span> &nbsp;&nbsp;|&nbsp;&nbsp;'+
+                      '工作经验：<span>'+msg.data[i].workYear+'年</span> &nbsp;&nbsp;|&nbsp;&nbsp;'+
+                      '<span>'+msg.data[i].education+'</span> &nbsp;&nbsp;|&nbsp;&nbsp;'+
+                      ' <span>入职时间：'+filterFn(msg.data[i].entryTime)+'</span>'+
                    '</div>'+
                   '<div class="clearfix talent-list_left02">'+
                      '<div class="pull-left text-center talent-list_left02Bottom">'+
                          '<img src="' +img+ '" alt="" class="talent-list_logo">'+
                          '<span class="iconfont '+ sex +' " id=""></span>'+
-                         '<p class=" text-center"> <span class="expect-salary">期望年薪：<span>'+filterFn(msg[i].ExpectSalary)+'</span></span></p>'+
+                         '<p class=" text-center"> <span class="expect-salary">期望年薪：<span>'+filterFn(msg.data[i].expectSalary)+'</span></span></p>'+
                      '</div>'+
                      '<div class="pull-left talent-list_left02Right">'+
-                         '<p>  <span class="talent-name">'+msg[i].Name+'</span> &nbsp;&nbsp;  期望职位：<span>'+filterFn(msg[i].ExpectWorkPosition)+'</span>     </p>'+
-                         '<p>   现工作地点：<span> '+msg[i].NowWorkplace+'</span>  </p>'+
-                         '<p class="talent-educationBackground">  <span> '+filterFn(msg[i].EducationBackground)+'  </span></p>'+
+                         '<p>  <span class="talent-name">'+msg.data[i].name+'</span> &nbsp;&nbsp;  期望职位：<span>'+filterFn(msg.data[i].expectWorkPosition)+'</span>     </p>'+
+                         '<p>   现工作地点：<span> '+msg.data[i].workPlace+'</span>  </p>'+
+                         '<p class="talent-educationBackground">  <span> '+closeChangeStyle(filterFn(msg.data[i].educationBackground))+'  </span></p>'+
                      '</div>'+
                   '</div>'+
            '</div>'+
             '<div class="col-md-4 clearfix">'+
                 '<h3 class="talent-list_workTitle">工作经历</h3>'+
-                '<p class="talent-list_workExperience">'+filterFn(msg[i].WorkExperience)+'</p>'+
+                '<p class="talent-list_workExperience">'+closeChangeStyle(filterFn(msg.data[i].workExperience))+'</p>'+
                 '<div class="pull-right forMore">'+
-                     '<a href="./detailTalent.html?ID='+msg[i].Id+'">查看更多</a>'+
+                     '<a href="./detailTalent.html?ID='+msg.data[i].id+'">查看更多</a>'+
                 '</div>'+
             '</div>'+
       '</div>'
@@ -98,20 +106,17 @@ function createList(msg) {
 //搜索20条
 function generalSearch() {
     var passVal = $('#searchKey').val()
-    console.log(passVal);
+    // console.log(passVal);
     $.ajax({
         type: "get",
         async: true,
-        traditional: true,
         data: {
             'talent_searchKey': passVal,
         }, //提交的参数
-        url: "http://" + changeUrl.address + "/talent_api?whereFrom=count", //获取搜索的总条数
-        dataType: "jsonp", //数据类型为jsonp  
-        jsonp:   "Callback", //服务端用于接收callback调用的function名的参数  
+        url: "http://" + changeUrl.address + "/manager/talent/list.do", //获取搜索的总条数
         success :   function(data) {
-            // console.log(data)
-            var totalPages = Math.ceil((data.countAllRS / 20));
+            console.log(data)
+            var totalPages = Math.ceil((data.count / 20));
             //分页
             layui.use(['layer', 'laypage', 'element'], function() {
                 var layer = layui.layer,
@@ -132,8 +137,8 @@ function generalSearch() {
                             'pageNum': obj.curr,
                             'OnePageNum': 20
                         }
-                        if (data.countAllRS != 0) {
-                            myAjax(data01, "http://" + changeUrl.address + "/talent_api?whereFrom=search", createList)
+                        if (data.count != 0) {
+                            myAjax(data01, "http://" + changeUrl.address + "/manager/talent/list.do", createList)
                         } else {
                             $('#loadgif').hide()
                             $('#floatLayer').hide() //遮罩层
@@ -141,7 +146,7 @@ function generalSearch() {
                     }
                 });
             })
-            $('.gengeralSearchNum').text(data.countAllRS)
+            $('.gengeralSearchNum').text(data.count)
         },
         error: function() {
             alert('请求数据失败！');
@@ -156,9 +161,9 @@ function initLoad(fn) {
         var data02 = {
             'talent_searchKey': '',
             'pageNum': 1,
-            'OnePageNum': 40
+            'OnePageNum': 20
         }
-        myAjax(data02, 'http://' + changeUrl.address + '/talent_api?whereFrom=search', fn)
+        myAjax(data02, 'http://' + changeUrl.address + '/manager/talent/list.do', fn)
     } else {
         var datailSchool = decodeURIComponent(args['whereFrom'])
         var data01 = {
@@ -168,7 +173,7 @@ function initLoad(fn) {
         }
         $('#searchKey').val(datailSchool)
         $('#result').html('')
-        myAjax(data01, 'http://' + changeUrl.address + '/talent_api?whereFrom=search', fn)
+        myAjax(data01, 'http://' + changeUrl.address + '/manager/talent/list.do', fn)
     }
 }
 //初始数据加载

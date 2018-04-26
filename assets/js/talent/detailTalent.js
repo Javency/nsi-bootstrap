@@ -25,33 +25,40 @@ function zeroToEmpty( str ) {
     return strFilter = (str == 0)? '  ' : str;
 }
 
+function closeChangeStyle( obj ) {
+    if(obj){
+        var reg = new RegExp('</p><p>','g')
+        var newObj = obj.replace(reg,'\n')
+        return newObj.slice(3,newObj.length-4)
+    }else {
+        return obj
+    }
+}
+
+
 var args = getQueryStringArgs()
 // console.log(args.ID)
 $.ajax({
     type: "get",
-    async: false,
-    traditional: true,
-    dataType: "jsonp", //数据类型为jsonp  
-    jsonp: "Callback",
     data: {
-        "Id": args.ID
+        "talentId": args.ID
     },
-    url: 'http://' + changeUrl.address + '/talent_api?whereFrom=detail',
+    url: 'http://' + changeUrl.address + '/manager/talent/detail.do',
     success: function(msg) {
         console.log(msg);
-        $("#name").text(zeroToEmpty(msg[0].Name))
-        $("#education").text(zeroToEmpty(msg[0].Education))
-        $("#workYear").text(zeroToEmpty(msg[0].WorkYear))
-        $("#workPosition").text(zeroToEmpty(msg[0].ExpectWorkPlace))
-        $("#salsry").text(zeroToEmpty(msg[0].ExpectSalary))
-        $("#phone").text(zeroToEmpty(msg[0].Phone))
-        $("#major").text(zeroToEmpty(msg[0].Major))
-        $("#workNow").text(zeroToEmpty(msg[0].NowWorkplace))
-        $("#wantedJob").text(zeroToEmpty(msg[0].ExpectWorkPosition))
-        $("#email").text(zeroToEmpty(msg[0].Mail))
-        $("#workExperience").text(zeroToEmpty(msg[0].WorkExperience))
-        $("#educationalBackground").text(zeroToEmpty(msg[0].EducationBackground))
-        $("#trainingExperience").text(zeroToEmpty(msg[0].TrainingBackground))
-        $("#othersRequest").text(zeroToEmpty(msg[0].Other))
+        $("#name").text(zeroToEmpty(msg.data.name))
+        $("#major").text(zeroToEmpty(msg.data.major))
+        $("#education").text(zeroToEmpty(msg.data.education))
+        $("#workNow").text(zeroToEmpty(msg.data.workPlace))
+        $("#workYear").text(zeroToEmpty(msg.data.workYear))
+        $("#expectWorkPosition").text(zeroToEmpty(msg.data.expectWorkPosition))
+        $("#expectWorkPlace").text(zeroToEmpty(msg.data.expectWorkPlace))
+        $("#expectSalary").text(zeroToEmpty(msg.data.expectSalary))
+
+
+        $("#workExperience").text(closeChangeStyle(zeroToEmpty(msg.data.workExperience)))
+        $("#educationalBackground").text(closeChangeStyle(zeroToEmpty(msg.data.educationBackground)))
+        $("#trainingBackground").text(closeChangeStyle(zeroToEmpty(msg.data.trainingBackground)))
+        $("#other").text(closeChangeStyle(zeroToEmpty(msg.data.other)))
     }
 })

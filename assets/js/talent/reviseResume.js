@@ -17,7 +17,6 @@ function closeChangeStyle( obj ) {
     }else {
         return obj
     }
-
 }
 layui.use(['form', 'layedit', 'laydate','layer','upload'], function(){
     var form = layui.form
