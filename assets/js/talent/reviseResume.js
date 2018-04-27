@@ -50,9 +50,9 @@ layui.use(['form', 'layedit', 'laydate','layer','upload'], function(){
 
 
     //监听指定开关
-    var isPublic = "是"
+    var isPublic = 1 // 1 公开 ，0 不公开
     form.on('switch(onoffSwitch)', function(data){
-        this.checked ? isPublic="是" : isPublic="否";
+        this.checked ? isPublic=1 : isPublic=0;
     });
 
 
@@ -196,7 +196,7 @@ layui.use(['form', 'layedit', 'laydate','layer','upload'], function(){
            $('#major').val(msg.data.major)
            $('#workPlace').val(msg.data.workPlace)
            $('#workYear').val(msg.data.workYear)
-           msg.data.isPublic ==='是' ? $('#isPublic').attr('checked',true):$('#isPublic').attr('checked',false)
+           msg.data.isPublic == 1 ? $('#isPublic').attr('checked',true):$('#isPublic').attr('checked',false)
 
 
            $('#expectWorkPlace').val(msg.data.expectWorkPlace)
@@ -206,7 +206,7 @@ layui.use(['form', 'layedit', 'laydate','layer','upload'], function(){
 
 
            $('#workExperience').val(closeChangeStyle(msg.data.workExperience))
-           $('#eductionBackground').val(closeChangeStyle(msg.data.eductionBackground))
+           $('#educationBackground').val(closeChangeStyle(msg.data.educationBackground))
            $('#trainingBackground').val(closeChangeStyle(msg.data.trainingBackground))
            $('#other').val(closeChangeStyle(msg.data.other))
            form.render()

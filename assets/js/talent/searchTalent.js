@@ -1,7 +1,7 @@
 //封装ajax
 function myAjax(data, url, success) {
     $.ajax({
-        type :   "get",
+        type: "get",
         async: true,
         data: data, //提交的参数
         url: url,
@@ -73,7 +73,7 @@ function createList(msg) {
                          '<p class=" text-center"> <span class="expect-salary">期望年薪：<span>'+filterFn(msg.data[i].expectSalary)+'</span></span></p>'+
                      '</div>'+
                      '<div class="pull-left talent-list_left02Right">'+
-                         '<p>  <span class="talent-name">'+msg.data[i].name+'</span> &nbsp;&nbsp;  期望职位：<span>'+filterFn(msg.data[i].expectWorkPosition)+'</span>     </p>'+
+                         '<p>  <span class="talent-name"><a class="talent-name" href="./detailTalent.html?ID='+msg.data[i].id+'">'+ msg.data[i].name+'</a> </span> &nbsp;&nbsp;  期望职位：<span>'+filterFn(msg.data[i].expectWorkPosition)+'</span>     </p>'+
                          '<p>   现工作地点：<span> '+msg.data[i].workPlace+'</span>  </p>'+
                          '<p class="talent-educationBackground">  <span> '+closeChangeStyle(filterFn(msg.data[i].educationBackground))+'  </span></p>'+
                      '</div>'+
