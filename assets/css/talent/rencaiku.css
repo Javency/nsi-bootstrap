@@ -16,7 +16,7 @@
 
 .talent-list_left02Right p {color:#101010;padding:15px;}
 .talent-name{color:#215089;font-weight: bold;}
-.talent-educationBackground{overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 450px;}
+.talent-nowWorkplace, .talent-educationBackground{overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 450px;}
 .talent-list_workTitle{font-size: 20px;}
 
 .talent-list_workExperience{

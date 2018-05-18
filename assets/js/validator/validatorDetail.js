@@ -300,3 +300,4 @@ $('#addNewJob').on('click',function () {
     $('#jobManage_tab2').addClass('active')
     return false;
 })
+
