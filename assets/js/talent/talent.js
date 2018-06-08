@@ -17,7 +17,7 @@ function getCookie() {
                 // alert('成功')
                 console.log(msg.verifyResult);
                 if(msg.verifyResult<0){
-                    alert('您还没有登录，登录后即可提交个人简历信息')
+                    alert('请先登录！')
                     window.location.href="../user/login.html"   //未登录，跳回登录页面
                     console.log($.cookie('usertitle'))
                     console.log($.cookie('username'))

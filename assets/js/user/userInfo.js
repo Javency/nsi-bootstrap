@@ -119,17 +119,20 @@ $(function () {
                 $('#UploadResume').removeClass('hide')
 
                var resumeLogo = msg.data.image ? msg.data.image : 'http://img.zcool.cn/community/01786557e4a6fa0000018c1bf080ca.png'
+               var isPublic = msg.data.isPublic ==1 ? '是' : '否'
+
 
                 $('#name').text(msg.data.name)
                 $('#sex').text(msg.data.sex)
                 $('#phone').text(msg.data.phone)
                 $('#mail').text(msg.data.mail)
-                $('#isPublic').text(msg.data.isPublic)
+                $('#isPublic').text(isPublic)
                 $('#resumeLogo').attr('src',resumeLogo)
 
                 $('#major').text(msg.data.major)
                 $('#expectWorkPlace').text(msg.data.expectWorkPlace)
                 $('#workPlace').text(msg.data.workPlace)
+                $('#workYear').text(msg.data.workYear)
                 $('#education').text(msg.data.education)
 
                 $('#expectWorkPlace').text(msg.data.expectWorkPlace)

@@ -16,7 +16,7 @@ $(function() {
             // console.log(msg.verifyResult);
             if (msg.verifyResult < 0) {
                 alert('您还没有登录，登录后即可发布招聘信息')
-                // window.location.href = "../user/login.html" //未登录，跳回登录页面
+                window.location.href = "../user/login.html" //未登录，跳回登录页面
                 console.log($.cookie('usertitle'))
                 console.log($.cookie('username'))
                 console.log($.cookie('userVerifyCode'))

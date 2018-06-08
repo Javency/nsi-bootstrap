@@ -39,10 +39,10 @@ layui.use(['form', 'layedit', 'laydate','layer','upload'], function(){
     });
 
 
-    //监听指定开关
-    var isPublic = "是"
+    //监听指定开关  1公开，0不公开
+    var isPublic = 1
     form.on('switch(onoffSwitch)', function(data){
-        this.checked ? isPublic="是" : isPublic="否";
+        this.checked ? isPublic=1 : isPublic=0;
     });
 
 

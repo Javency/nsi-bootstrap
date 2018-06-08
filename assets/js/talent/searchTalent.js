@@ -1,7 +1,7 @@
 //封装ajax
 function myAjax(data, url, success) {
     $.ajax({
-        type :   "get",
+        type: "get",
         async: true,
         data: data, //提交的参数
         url: url,
@@ -73,8 +73,8 @@ function createList(msg) {
                          '<p class=" text-center"> <span class="expect-salary">期望年薪：<span>'+filterFn(msg.data[i].expectSalary)+'</span></span></p>'+
                      '</div>'+
                      '<div class="pull-left talent-list_left02Right">'+
-                         '<p>  <span class="talent-name">'+msg.data[i].name+'</span> &nbsp;&nbsp;  期望职位：<span>'+filterFn(msg.data[i].expectWorkPosition)+'</span>     </p>'+
-                         '<p>   现工作地点：<span> '+msg.data[i].workPlace+'</span>  </p>'+
+                         '<p>  <span class="talent-name"><a class="talent-name" href="./detailTalent.html?ID='+msg.data[i].id+'">'+ msg.data[i].name+'</a> </span> &nbsp;&nbsp;  期望职位：<span>'+filterFn(msg.data[i].expectWorkPosition)+'</span>     </p>'+
+                         '<p class="talent-nowWorkplace">   现工作地点：<span> '+msg.data[i].workPlace+'</span>  </p>'+
                          '<p class="talent-educationBackground">  <span> '+closeChangeStyle(filterFn(msg.data[i].educationBackground))+'  </span></p>'+
                      '</div>'+
                   '</div>'+
@@ -135,7 +135,7 @@ function generalSearch() {
                         var data01 = {
                             'talent_searchKey': passVal,
                             'pageNum': obj.curr,
-                            'OnePageNum': 20
+                            'pageSize': 20
                         }
                         if (data.count != 0) {
                             myAjax(data01, "http://" + changeUrl.address + "/manager/talent/list.do", createList)
@@ -161,7 +161,7 @@ function initLoad(fn) {
         var data02 = {
             'talent_searchKey': '',
             'pageNum': 1,
-            'OnePageNum': 20
+            'pageSize': 20
         }
         myAjax(data02, 'http://' + changeUrl.address + '/manager/talent/list.do', fn)
     } else {
@@ -169,7 +169,7 @@ function initLoad(fn) {
         var data01 = {
             'talent_searchKey': datailSchool,
             'pageNum': 1,
-            'OnePageNum': 20
+            'pageSize': 20
         }
         $('#searchKey').val(datailSchool)
         $('#result').html('')
