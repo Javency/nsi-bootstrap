@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="../assets/css/layui.css" rel="stylesheet" media="all">
     <link rel="stylesheet" href="../assets/css/project/projectPublic.css?v=1.0.2">
-    <link rel="stylesheet" href="../assets/css/project/searchProject.css">
+    <link rel="stylesheet" href="../assets/css/project/searchProject.css?v=06111646">
 </head>
 
 <body style="background: #f7f7f7;">
@@ -29,9 +29,9 @@
     </div>
 
     <!--搜索框-->
-    <div class="container" style="font-size: 16px;margin-bottom: 30px;margin-top:20px;">
+    <!-- <div class="container" style="font-size: 16px;margin-bottom: 30px;margin-top:20px;">
         <div class="row clearfix">
-            <div class="col-lg-8 column col-lg-offset-2">
+            <div class="col-lg-12 column text-center">
                 <nav class="navbar navbar-default innerNav" role="navigation">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
@@ -49,20 +49,53 @@
                                 <a href="releaseProject.html"><span style="font-size: 16px;font-weight: bold;">+</span> 发布项目</a>
                             </li>
                         </ul>
-                        <div class="navbar-form navbar-left" role="search" name="myform">
+                        <div class="navbar-form" role="search" name="myform">
                             <div class="form-group">
                                 <input type="text" style="width:300px" class="form-control" name="School_name" id="searchContent" placeholder="请输入项目名或其他关键字" />
                             </div>
                             <button class="btn btn-primary glyphicon glyphicon-search" id="searchBtn" style="top:0;left:6px;"></button>
                         </div>
-
                     </div>
                 </nav>
             </div>
         </div>
         <br>
+    </div> -->
+    <div class="container" style="font-size: 16px;margin-bottom: 30px;margin-top:20px;">
+        <div class="row clearfix">
+            <div class="col-md-12 text-right">
+                <span class="glyphicon glyphicon-plus-sign" style="font-size: 20px;top:3px;padding-right: 6px;"></span> <a href="releaseProject.html" class="add_info" style="text-decoration: none;">发布项目</a>
+            </div>
+            <div class="col-lg-12 column text-center">
+                <input type="text" name="School_name" id="searchContent" placeholder="请输入项目名或其他关键字" class="search_input" />
+                <button class="btn btn-primary glyphicon glyphicon-search search_button" id="searchBtn"></button>
+                <!-- <nav class="navbar navbar-default innerNav" role="navigation">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                            <a class="navbar-brand" href="../company/company.html">机构数据库</a>
+                        </div>
+    
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                            <ul class="nav navbar-nav">
+                                <li class="dropdown active" style="border-radius: 10px;">
+                                    <a href="insertCompany.html"><span style="font-size: 16px;font-weight: bold;">+</span> 新增数据</a>
+                                </li>
+                            </ul>
+                            <div class="navbar-form navbar-left" role="search" name="myform">
+    
+                            </div>
+    
+                        </div>
+                    </nav> -->
+            </div>
+        </div>
+        <br>
     </div>
-
 
     <div class="container" style="margin-top:20px;margin-bottom: 40px;">
         <div class="row" id="outerWrap">

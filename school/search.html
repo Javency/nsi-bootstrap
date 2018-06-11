@@ -11,7 +11,7 @@
     <link href="../assets/css/jquery-labelauty.css" rel="stylesheet">
     <link href="../assets/css/layui.css" rel="stylesheet" media="all">
     <link href="../assets/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
-    <link href="../assets/css/search.css" rel="stylesheet">
+    <link href="../assets/css/search.css?v=06111646" rel="stylesheet">
     <link href="../assets/css/public.css?v=1.0.2" rel="stylesheet">
 </head>
 
@@ -32,9 +32,12 @@
     <!--搜索框-->
     <div class="container" style="font-size: 16px;margin-bottom: 30px;margin-top:20px;">
         <div class="row clearfix">
-            <div class="col-md-12 column">
-                <nav class="navbar navbar-default innerNav" role="navigation">
-                    <div class="navbar-header">
+            <div class="col-md-12 text-right">
+                <span class="glyphicon glyphicon-plus-sign" style="font-size: 20px;top:3px;padding-right: 6px;"></span> <a href="./insert.html" class="add_school" style="text-decoration: none;">新增学校</a>
+            </div>
+            <div class="col-md-12 column text-center">
+
+                <!-- <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
@@ -42,9 +45,9 @@
                         <span class="icon-bar"></span>
                     </button>
                         <a href="../school/school.html" class="navbar-brand">学校数据库</a>
-                    </div>
+                    </div> -->
 
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                <!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
                         <ul class="nav navbar-nav">
                             <li class="dropdown active" style="border-radius: 10px;">
                                 <a href="insert.html"><span style="font-size: 16px;font-weight: bold;">+</span> 新增数据</a>
@@ -58,31 +61,29 @@
                                     <li>
                                         <a href="../show/EchartShow01.html" target="_blank">省市学校数量条形分布图</a>
                                     </li>
-                                    <!--<li>-->
-                                    <!--<a href="../show/histogram.html" target="_blank">条形图2</a>-->
-                                    <!--</li>-->
+                                    <li>
+                                        <a href="../show/histogram.html" target="_blank">条形图2</a>
+                                    </li>
                                 </ul>
                             </li>
-                        </ul>
-                        <div class="navbar-form navbar-left" role="search" name="myform" id="GeneralSearch">
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="School_name" id="searchContent" placeholder="请输入学校名或关键字" />
-                            </div>
-                            <button class="btn btn-primary glyphicon glyphicon-search " id="searchBtn"></button>
-                        </div>
-                        <!--高级搜索 -->
-                        <div class="navbar-form navbar-left" id="AdvancedSearchBtn">
+                        </ul> -->
+                <div class="navbar-form" role="search" name="myform" id="GeneralSearch">
+                    <!-- <div class="form-group"> -->
+                    <input type="text" class="search_input" name="School_name" id="searchContent" placeholder="请输入学校名或关键字" />
+                    <!-- </div> -->
+                    <button class="btn btn-primary glyphicon glyphicon-search search_icon" id="searchBtn"></button>
+                </div>
+                <!--高级搜索 -->
+                <!-- <div class="navbar-form navbar-left" id="AdvancedSearchBtn">
                             <button type="button" name="submit" class="btn btn-primary" id="advanceSearch">高级搜索</button>
-                        </div>
-
-                    </div>
-                </nav>
+                        </div> -->
+                <!-- </div> -->
             </div>
         </div>
         <br>
     </div>
     <!-- 高级搜索选择框 -->
-    <div id="AdvancedSearchID" class="container" style="display: none;">
+    <div id="AdvancedSearchID" class="container">
         <div class="row">
             <form class="clearfix" action="123.com">
                 <div id="AdvanDivID01" class="col-lg-12">
@@ -204,13 +205,13 @@
                         <div class="col-lg-1"></div>
                         <button type="reset" class="btn btn-default" id="AdvanceResetID">重置</button>
                         <button type="submit" class="btn btn-primary" id="AdvanceSubmitID">搜索</button>
-                        <button type="button" class="btn btn-danger" id="closeAdvanceSearch">关闭</button>
+                        <!-- <button type="button" class="btn btn-danger" id="closeAdvanceSearch">关闭</button> -->
                     </ul>
                 </div>
             </form>
         </div>
     </div>
-    </div>
+
     <!--方框形式展示搜索列表-->
     <div class="container">
         <div class="row">

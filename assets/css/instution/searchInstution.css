@@ -66,6 +66,43 @@ body {
 }
 
 
+/* 搜索框更改 */
+
+.search_input {
+    width: 454px;
+    height: 40px;
+    padding-left: 10px;
+    outline: none;
+    border: 2px solid #215089;
+    border-right: 0;
+    border-radius: 5px 0 0 5px;
+}
+
+.search_button {
+    background: #215089;
+    left: -5px;
+    top: -2px;
+    height: 40px;
+    width: 60px;
+    font-size: 24px;
+    padding-top: 2px;
+    border-radius: 0 5px 5px 0;
+    font-weight: 100;
+}
+
+.add_info {
+    font-size: 20px;
+    color: #215089;
+    padding-right: 30px;
+    font-weight: bold;
+    transition: all .3s;
+}
+
+.add_info:hover {
+    color: #3075c9;
+}
+
+
 /*提交按钮*/
 
 #AdvanceSubmitID {

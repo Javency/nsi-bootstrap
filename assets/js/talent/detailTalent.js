@@ -20,24 +20,25 @@ function getQueryStringArgs() {
 
 
 //过滤函数（如果为零，自动补空）
-function zeroToEmpty( str ) {
-    var strFilter = null;
-    return strFilter = (str == 0)? '  ' : str;
+function zeroToEmpty(str) {
+    // var strFilter = null;
+    // return strFilter = (str == 0) ? ' ' : str;
+    return str == null ? "" : str
 }
 
-function closeChangeStyle( obj ) {
-    if(obj){
-        var reg = new RegExp('</p><p>','g')
-        var newObj = obj.replace(reg,'\n')
-        return newObj.slice(3,newObj.length-4)
-    }else {
+function closeChangeStyle(obj) {
+    if (obj) {
+        var reg = new RegExp('</p><p>', 'g')
+        var newObj = obj.replace(reg, '\n')
+        return newObj.slice(3, newObj.length - 4)
+    } else {
         return obj
     }
 }
 
 
 var args = getQueryStringArgs()
-// console.log(args.ID)
+    // console.log(args.ID)
 $.ajax({
     type: "get",
     data: {

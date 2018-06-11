@@ -11,7 +11,7 @@
     height: 100px;
     background: #9cd9fc;
     font-size: 70px;
-    padding:0;
+    padding: 0;
 }
 
 .desc {
@@ -98,5 +98,5 @@
     height: 123px;
     border: 1px solid #cccccc;
     border-radius: 4px;
+    padding-top: 15px;
 }
-

@@ -9,7 +9,7 @@
     <title>国际学校四库全书-国际学校项目库</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/project/projectPublic.css?v=1.0.2">
-    <link rel="stylesheet" href="../assets/css/project/project.css?v=03161014">
+    <link rel="stylesheet" href="../assets/css/project/project.css?v=06111646">
     <style>
         .projectName {
             font-size: 14px;
@@ -35,14 +35,17 @@
     <div class="container wrap text-center">
         <h1 style="color:rgb(33,80,137)">项目数据系统</h1>
         <div class="row">
-            <div class="col-lg-4 pcPL266">
+            <!-- <div class="col-lg-4 pcPL266">
                 <a class="btn btn-primary" href="releaseProject.html" style="margin-top:10px;font-size: 16px;padding:8px 12px; ">发布项目</a>
+            </div> -->
+            <div class="col-md-12 text-right">
+                <span class="glyphicon glyphicon-plus-sign" style="font-size: 20px;top:3px;padding-right: 6px;"></span><a class="add_info" href="releaseProject.html">发布项目</a>
             </div>
-            <div class="col-lg-8 header-search">
+            <div class="col-lg-12 header-search">
                 <div role="search">
-                    <div class="clearfix">
-                        <input type="text" id="search" placeholder="请输入机构名或其他关键字" />
-                        <button id="SearchButton" type="submit">搜 索</button>
+                    <div class="clearfix text-center">
+                        <input type="text" id="search" class="search_input" placeholder="请输入机构名或其他关键字" />
+                        <button class="btn btn-primary glyphicon glyphicon-search search_button" id="SearchButton" type="submit"></button>
                     </div>
                 </div>
             </div>
@@ -123,36 +126,35 @@
 
     <script>
         // 信息动态展示
-        $(function(){
-            var projectName=$(".projectName"),
-                linkHref=$(".linkHref")
+        $(function() {
+            var projectName = $(".projectName"),
+                linkHref = $(".linkHref")
             $.ajax({
-                type:'get',
-                dataType:"jsonp",//数据类型为jsonp  
-                jsonp: "Callback",//服务端用于接收callback调用的function名的参数 
-                async:true,
-                traditional :true,
+                type: 'get',
+                dataType: "jsonp", //数据类型为jsonp  
+                jsonp:   "Callback", //服务端用于接收callback调用的function名的参数 
+                async: true,
+                traditional: true,
                 data: {
-                    'SearchKey':'',
-                    'pageNum':1,
-                    'OnePageNum':20
-                },//提交的参数
-                url:"http://"+changeUrl.address+"/Subject_api?whereFrom=search",//获取搜索的总条数
-                success:function(msg){
+                    'SearchKey': '',
+                    'pageNum': 1,
+                    'OnePageNum': 20
+                }, //提交的参数
+                url: "http://" + changeUrl.address + "/Subject_api?whereFrom=search", //获取搜索的总条数
+                success: function(msg) {
                     console.log(msg)
-                    for(var i=0;i<3;i++){
+                    for (var i = 0; i < 3; i++) {
                         projectName.eq(i).text(msg[i].SubjectName)
-                        linkHref.eq(i).attr('href','../project/detailProject.html?whereFrom=search&School_name='+msg[i].Id)
+                        linkHref.eq(i).attr('href', '../project/detailProject.html?whereFrom=search&School_name=' + msg[i].Id)
                         linkHref.eq(i).text(msg[i].SubjectIntroduction)
                     }
                 },
-                error:function(){
+                error: function() {
 
                     console.log("错误")
                 }
             })
         })
-
     </script>
 </body>
 

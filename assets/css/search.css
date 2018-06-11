@@ -175,15 +175,6 @@ body {
 
 /*搜索和高级搜索按钮*/
 
-#searchBtn {
-    top: 0px;
-    left: 6px;
-}
-
-#searchContent {
-    width: 300px;
-}
-
 #AdvancedSearchBtn {
     padding: 0;
     margin-top: 8px;
@@ -268,4 +259,41 @@ body {
 .schoolName a:hover {
     color: #1E9FFF;
     text-decoration: none;
+}
+
+
+/* 2018.06.11 */
+
+.search_input {
+    width: 454px;
+    height: 40px;
+    padding-left: 10px;
+    outline: none;
+    border: 2px solid #215089;
+    border-right: 0;
+    border-radius: 5px 0 0 5px;
+}
+
+.search_icon {
+    background: #215089;
+    left: -5px;
+    top: -2px;
+    height: 40px;
+    width: 60px;
+    font-size: 24px;
+    padding-top: 2px;
+    border-radius: 0 5px 5px 0;
+    font-weight: 100;
+}
+
+.add_school {
+    font-size: 20px;
+    color: #215089;
+    padding-right: 30px;
+    font-weight: bold;
+    transition: all .3s;
+}
+
+.add_school:hover {
+    color: #3075c9;
 }
